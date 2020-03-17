@@ -1,0 +1,15 @@
+$#include "../Service/CacheClientService.hpp"
+
+class CacheClientService
+{
+public:
+	static CacheClientService& Instance();
+	bool Init(const std::string& json);
+	bool Start();
+	bool Stop();
+	bool Running();
+	bool Boot();
+	std::string ReadJson();	
+	bool WriteJson(const std::string& request);
+};
+

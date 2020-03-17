@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Multi_UV_Loop|Win32">
+      <Configuration>Multi_UV_Loop</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Multi_UV_Loop|x64">
+      <Configuration>Multi_UV_Loop</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{42B44FFC-626C-45C6-AA2A-2F7A241E4A59}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ServerWin32</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)../Release</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)../Release</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)../Release</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WIN32;_DEBUG;_CONSOLE;ZMQ_HAVE_WINDOWS;ZMQ_STATIC;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../include/zeromq;../include/tolua;../include/rapidjson;../include/mysql++;../include/mysql;../include/luajit;../include/LuaIntf;../include/log4cplus;../include/libuv;../include/librabbitmq;../src;../include/cppzmq;../include/boost;../include;../../Source/Cxx/Libs;../../Source/Cxx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <OpenMPSupport>false</OpenMPSupport>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>libboost_chrono-vc140-mt-gd-1_60.lib;libboost_date_time-vc140-mt-gd-1_60.lib;libboost_filesystem-vc140-mt-gd-1_60.lib;libboost_system-vc140-mt-gd-1_60.lib;libboost_thread-vc140-mt-gd-1_60.lib;libmysql.lib;libuv.lib;libzmq.lib;log4cplus.lib;lua51.lib;luajit.lib;mysqlpp.lib;rabbitmq.lib;tolua++.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <Profile>true</Profile>
+      <AdditionalOptions> /ignore:4099 /ignore:4217 /ignore:4049 /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>MULTI_UV_LOOP;WIN32;_WIN32;_DEBUG;_CONSOLE;ZMQ_HAVE_WINDOWS;ZMQ_STATIC;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../include/zeromq;../include/tolua;../include/rapidjson;../include/mysql++;../include/mysql;../include/luajit;../include/LuaIntf;../include/log4cplus;../include/libuv;../include/librabbitmq;../src;../include/cppzmq;../include/boost;../include;../../Source/Cxx/Libs;../../Source/Cxx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <OpenMPSupport>false</OpenMPSupport>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>libboost_chrono-vc140-mt-gd-1_60.lib;libboost_date_time-vc140-mt-gd-1_60.lib;libboost_filesystem-vc140-mt-gd-1_60.lib;libboost_system-vc140-mt-gd-1_60.lib;libboost_thread-vc140-mt-gd-1_60.lib;libmysql.lib;libuv.lib;libzmq.lib;log4cplus.lib;lua51.lib;luajit.lib;mysqlpp.lib;rabbitmq.lib;tolua++.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <Profile>true</Profile>
+      <AdditionalOptions> /ignore:4099 /ignore:4217 /ignore:4049 /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>MULTI_UV_LOOP;WIN32;_WIN32;_DEBUG;_CONSOLE;ZMQ_HAVE_WINDOWS;ZMQ_STATIC;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../include/zeromq;../include/tolua;../include/rapidjson;../include/mysql++;../include/mysql;../include/luajit;../include/LuaIntf;../include/log4cplus;../include/libuv;../include/librabbitmq;../src;../include/cppzmq;../include/boost;../include;../../Source/Cxx/Libs;../../Source/Cxx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <OpenMPSupport>false</OpenMPSupport>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>libboost_chrono-vc140-mt-gd-1_60.lib;libboost_date_time-vc140-mt-gd-1_60.lib;libboost_filesystem-vc140-mt-gd-1_60.lib;libboost_system-vc140-mt-gd-1_60.lib;libboost_thread-vc140-mt-gd-1_60.lib;libmysql.lib;libuv.lib;libzmq.lib;log4cplus.lib;lua51.lib;luajit.lib;mysqlpp.lib;rabbitmq.lib;tolua++.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <Profile>true</Profile>
+      <AdditionalOptions> /ignore:4099 /ignore:4217 /ignore:4049 /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;ZMQ_HAVE_WINDOWS;_CONSOLE;ZMQ_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./src;../hiredis;..;..\dlfcn-win32;..\mysql\include;..\mysql++-3.2.3\include;..\rabbitmq-c\librabbitmq;..\zeromq-4.1.4\include;../cppzmq;..\LuaIntf;../../Source/Cxx;e:\local\boost_1_60_0;..\log4cplus-1.2.0\include;..\rapidjson\include;..\tolua++-1.0\include;..\lua-5.1.5\src;..\libuv-1.9.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>lua5.1.lib;hiredis_static.lib;log4cplus.lib;mysqlpp.lib;rabbitmq.lib;libboost_chrono-vc140-mt-gd-1_60.lib;libboost_date_time-vc140-mt-gd-1_60.lib;libboost_filesystem-vc140-mt-gd-1_60.lib;libboost_system-vc140-mt-gd-1_60.lib;libboost_thread-vc140-mt-gd-1_60.lib;libzmq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Multi_UV_Loop|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;ZMQ_HAVE_WINDOWS;_CONSOLE;ZMQ_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./src;../hiredis;..;..\dlfcn-win32;..\mysql\include;..\mysql++-3.2.3\include;..\rabbitmq-c\librabbitmq;..\zeromq-4.1.4\include;../cppzmq;..\LuaIntf;../../Source/Cxx;e:\local\boost_1_60_0;..\log4cplus-1.2.0\include;..\rapidjson\include;..\tolua++-1.0\include;..\lua-5.1.5\src;..\libuv-1.9.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>lua5.1.lib;hiredis_static.lib;log4cplus.lib;mysqlpp.lib;rabbitmq.lib;libboost_chrono-vc140-mt-gd-1_60.lib;libboost_date_time-vc140-mt-gd-1_60.lib;libboost_filesystem-vc140-mt-gd-1_60.lib;libboost_system-vc140-mt-gd-1_60.lib;libboost_thread-vc140-mt-gd-1_60.lib;libzmq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;ZMQ_HAVE_WINDOWS;_CONSOLE;ZMQ_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./src;../hiredis;..;..\dlfcn-win32;..\mysql\include;..\mysql++-3.2.3\include;..\rabbitmq-c\librabbitmq;..\zeromq-4.1.4\include;../cppzmq;..\LuaIntf;../../Source/Cxx;e:\local\boost_1_60_0;..\log4cplus-1.2.0\include;..\rapidjson\include;..\tolua++-1.0\include;..\lua-5.1.5\src;..\libuv-1.9.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>lua5.1.lib;hiredis_static.lib;log4cplus.lib;mysqlpp.lib;rabbitmq.lib;libboost_chrono-vc140-mt-gd-1_60.lib;libboost_date_time-vc140-mt-gd-1_60.lib;libboost_filesystem-vc140-mt-gd-1_60.lib;libboost_system-vc140-mt-gd-1_60.lib;libboost_thread-vc140-mt-gd-1_60.lib;libzmq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../libs</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Cxx\Base\BaseHeaders.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Config.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Logger.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Loop.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\LuaState.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Macro.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Mysql.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Packet.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Pool.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Process.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Redis.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Resource.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Service.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Session.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\Singleton.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\TCPConnection.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\TCPServer.h" />
+    <ClInclude Include="..\..\Source\Cxx\Base\ZeroMessageQueue.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\file.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\lua.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\luax.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\Userdata.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\values.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\pbc.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\alloc.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\array.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\bootstrap.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\context.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\descriptor.pbc.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\map.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\pattern.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\proto.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\stringpool.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\varint.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\tolua\tolua++.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\tolua\tolua_event.h" />
+    <ClInclude Include="..\..\Source\Cxx\Libs\tolua\tolua_fix.h" />
+    <ClInclude Include="..\..\Source\Cxx\Service\BackstageService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\CacheIntegratedService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\DatabaseIntegratedService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\DispatcherService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\LoggerService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\MainService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\ManagerClientService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\ManagerService.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\Service\ServiceHeaders.hpp" />
+    <ClInclude Include="..\src\hiredis\adapters\ae.h" />
+    <ClInclude Include="..\src\hiredis\adapters\glib.h" />
+    <ClInclude Include="..\src\hiredis\adapters\ivykis.h" />
+    <ClInclude Include="..\src\hiredis\adapters\libev.h" />
+    <ClInclude Include="..\src\hiredis\adapters\libevent.h" />
+    <ClInclude Include="..\src\hiredis\adapters\libuv.h" />
+    <ClInclude Include="..\src\hiredis\adapters\libuv.hpp" />
+    <ClInclude Include="..\src\hiredis\adapters\macosx.h" />
+    <ClInclude Include="..\src\hiredis\adapters\qt.h" />
+    <ClInclude Include="..\src\hiredis\async.h" />
+    <ClInclude Include="..\src\hiredis\dict.h" />
+    <ClInclude Include="..\src\hiredis\fmacros.h" />
+    <ClInclude Include="..\src\hiredis\hiredis.h" />
+    <ClInclude Include="..\src\hiredis\net.h" />
+    <ClInclude Include="..\src\hiredis\read.h" />
+    <ClInclude Include="..\src\hiredis\resource.h" />
+    <ClInclude Include="..\src\hiredis\sds.h" />
+    <ClInclude Include="..\src\hiredis\win32.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Cxx\Base\Config.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Logger.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Loop.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\LuaState.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Mysql.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Packet.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Process.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Redis.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\Session.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\TCPConnection.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\TCPServer.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Base\ZeroMessageQueue.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\BackstageServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\CacheIntegratedServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\DatabaseIntegratedServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\DispatcherServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\LoggerServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\ManagerClientServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Intf\ManagerServiceIntf.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\Document.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\rapidjson.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\Schema.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\values.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\lspecialbase64.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\lsystem.cpp" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pb.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\binding\lua\pbc-lua.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\alloc.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\array.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\bootstrap.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\context.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\decode.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\map.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\pattern.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\proto.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\register.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\rmessage.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\stringpool.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\varint.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\wmessage.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_event.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_fix.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_is.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_map.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_push.c" />
+    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_to.c" />
+    <ClCompile Include="..\..\Source\Cxx\Server\Server.cpp" />
+    <ClCompile Include="..\src\hiredis\async.c" />
+    <ClCompile Include="..\src\hiredis\dict.c" />
+    <ClCompile Include="..\src\hiredis\hiredis.c" />
+    <ClCompile Include="..\src\hiredis\net.c" />
+    <ClCompile Include="..\src\hiredis\read.c" />
+    <ClCompile Include="..\src\hiredis\sds.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
