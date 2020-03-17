@@ -1,3 +1,0 @@
-VIPJoinConfig = {
-[1] = { id=1, shop_id=80001, price=4.99, desc="VIP JOIN TIER 1", base_prop_amount=1875000, extra_percent=0.5, prop_amount=2812500, vip_points=100, extra_vip_points=0},
-}

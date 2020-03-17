@@ -1,5 +1,0 @@
-DailyMissionsWinAwardConfig = {
-[1] = { id=1, task_level=1, value=1.8, value_min=1000000, value_max=1000000000, award_percent=0.04, weight=2, points=37},
-[2] = { id=2, task_level=2, value=2.1, value_min=1000000, value_max=1500000000, award_percent=0.05, weight=2, points=54},
-[3] = { id=3, task_level=3, value=2.4, value_min=1000000, value_max=2000000000, award_percent=0.06, weight=2, points=96},
-}

@@ -1,8 +1,0 @@
-formal_android_mirror_testaLuckyChristmasBoxConfig = {
-[1] = { id=1, Box_Type=1, Weight=0},
-[2] = { id=2, Box_Type=2, Weight=1},
-[3] = { id=3, Box_Type=3, Weight=2},
-[4] = { id=4, Box_Type=4, Weight=6},
-[5] = { id=5, Box_Type=5, Weight=12},
-[6] = { id=6, Box_Type=6, Weight=112},
-}

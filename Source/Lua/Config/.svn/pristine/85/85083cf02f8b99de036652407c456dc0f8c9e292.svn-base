@@ -1,9 +1,0 @@
-formal_android_mirror_testaNewLegendsOfOlympusNew2ReelConfig = {
-
-[1] = {sequence_array = {4,4,4,4,4,4,9,10,4, }},
-[2] = {sequence_array = {8,3,4,4,3,8,4,4,4, }},
-[3] = {sequence_array = {8,10,4,4,4,9,7,4,4, }},
-[4] = {sequence_array = {8,8,2,1,7,7,7,10,6, }},
-[5] = {sequence_array = {8,5,2,1,5,5,5,10,6, }},
-[6] = {sequence_array = {8,10,2,1,7,9,9,10,6, }},
-}

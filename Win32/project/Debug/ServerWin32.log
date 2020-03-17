@@ -1,0 +1,2 @@
+﻿  server.cpp
+LINK : fatal error LNK1104: cannot open file 'libboost_program_options-vc140-mt-gd-1_60.lib'

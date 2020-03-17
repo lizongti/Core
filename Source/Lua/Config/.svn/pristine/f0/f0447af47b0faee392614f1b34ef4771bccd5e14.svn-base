@@ -1,8 +1,0 @@
-formal_android_mirror_testaLuckyChristmasRespinTypeConfig = {
-[1] = { id=1, Respin_Type=1, Weight_Small = {0.02,}, Weight_equal = {0,},},
-[2] = { id=2, Respin_Type=2, Weight_Small = {0.03,}, Weight_equal = {0,},},
-[3] = { id=3, Respin_Type=3, Weight_Small = {0.05,}, Weight_equal = {0,},},
-[4] = { id=4, Respin_Type=4, Weight_Small = {0.15,}, Weight_equal = {0.2,},},
-[5] = { id=5, Respin_Type=5, Weight_Small = {0.25,}, Weight_equal = {0.3,},},
-[6] = { id=6, Respin_Type=6, Weight_Small = {0.5,}, Weight_equal = {0.5,},},
-}

@@ -1,6 +1,0 @@
-message Item
-{
-	optional int64 id = 1;
-	optional int64 numerator = 2;
-	optional bool has_fetched = 3;
-}

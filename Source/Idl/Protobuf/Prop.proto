@@ -1,5 +1,0 @@
-message Item
-{
-	optional int64 id = 1;
-	optional int64 amount = 2;
-}

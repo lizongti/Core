@@ -1,7 +1,0 @@
-//daily wheel协议 含转盘和连续登录奖励的数据
-message DailyWheel
-{
-    optional int64 continue_login_days = 1;//连续登录的天数
-    optional int64 acc_login_days = 2;//累计登陆天数,只是用作日志,不用作dailywheel逻辑
-    optional string json_str = 3;
-}

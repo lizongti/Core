@@ -1,6 +1,0 @@
-formal_android_mirror_testaRumblingVolcanoMultiplierConfig = {
-[1] = { id=1, bonus=2, base_game_weight=5, feature_game_weight=2},
-[2] = { id=2, bonus=3, base_game_weight=3, feature_game_weight=3},
-[3] = { id=3, bonus=5, base_game_weight=1, feature_game_weight=1},
-[4] = { id=4, bonus=10, base_game_weight=1, feature_game_weight=1},
-}

@@ -1,6 +1,0 @@
-formal_android_mirror_testaCashRainSpecialSymbolTriggerConfig = {
-[1] = { id=1, group_id=1, item_id=9, trigger_count=3, show_count=3, allowed_col = {3,3,3,3,3,0,0,0,0,0,}, sound = {"CashRain/CR_show_scatter01","CashRain/CR_show_scatter02","CashRain/CR_show_scatter03",}, trigger_sound="CashRain/CR_trigger_scatter"},
-[2] = { id=2, group_id=1, item_id=10, trigger_count=3, show_count=3, allowed_col = {3,3,3,3,3,0,0,0,0,0,}, sound = {"CashRain/CR_show_bonus","CashRain/CR_show_bonus","CashRain/CR_show_bonus",}, trigger_sound="CashRain/CR_trigger_bonus"},
-[3] = { id=3, group_id=1, item_id=11, trigger_count=1, show_count=1, allowed_col = {3,3,3,3,3,0,0,0,0,0,}, sound = {"CashRain/CR_reveal_appear","CashRain/CR_reveal_appear","CashRain/CR_reveal_appear",}, trigger_sound=""},
-[4] = { id=4, group_id=1, item_id=12, trigger_count=1, show_count=1, allowed_col = {3,3,3,3,3,0,0,0,0,0,}, sound = {"CashRain/CR_reveal_appear","CashRain/CR_reveal_appear","CashRain/CR_reveal_appear",}, trigger_sound=""},
-}

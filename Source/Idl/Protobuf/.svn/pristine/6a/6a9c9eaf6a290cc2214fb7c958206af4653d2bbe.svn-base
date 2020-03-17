@@ -1,1 +1,0 @@
-@python protoc-gen-lua

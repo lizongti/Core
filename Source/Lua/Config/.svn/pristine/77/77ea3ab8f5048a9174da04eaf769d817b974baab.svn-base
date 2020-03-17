@@ -1,5 +1,0 @@
-formal_android_mirror_testaRapidHitSpecialSymbolTriggerFreeSpinConfig = {
-[1] = { id=1, group_id=1, item_id = {1,0,0,0,0,}, is_trigger=1, trigger_count=2, show_count=2, allowed_col = {1,1,1,1,1,0,0,0,0,0,}, sound = {"RapidHit/RHJ_show_scatter","RapidHit/RHJ_show_scatter2","RapidHit/RHJ_show_scatter3","RapidHit/RHJ_show_scatter3","RapidHit/RHJ_show_scatter3",}, trigger_sound="RapidHit/RHJ_feature_login"},
-[2] = { id=2, group_id=1, item_id = {2,3,0,0,0,}, is_trigger=1, trigger_count=5, show_count=3, allowed_col = {3,3,3,3,3,0,0,0,0,0,}, sound = {"RapidHit/RHJ_show_rapid","RapidHit/RHJ_show_rapid","RapidHit/RHJ_show_rapid","RapidHit/RHJ_show_rapid","RapidHit/RHJ_show_rapid",}, trigger_sound="RapidHit/RHJ_feature_login"},
-[3] = { id=3, group_id=1, item_id = {4,5,6,7,8,}, is_trigger=0, trigger_count=3, show_count=3, allowed_col = {3,3,3,3,3,0,0,0,0,0,}, sound = {"RapidHit/RHJ_show_star","RapidHit/RHJ_show_star","RapidHit/RHJ_show_star","RapidHit/RHJ_show_star","RapidHit/RHJ_show_star",}, trigger_sound="RapidHit/RHJ_feature_login"},
-}

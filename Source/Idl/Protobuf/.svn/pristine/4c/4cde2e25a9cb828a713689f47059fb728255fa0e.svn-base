@@ -1,4 +1,0 @@
-message Notice
-{
-	optional int64 check_lobby_bonus = 1; //宝箱推送消息是否已经发送
-}

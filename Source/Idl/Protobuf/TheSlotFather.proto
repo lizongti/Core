@@ -1,4 +1,0 @@
-message TheSlotFather
-{
-	optional int64 bet_amount = 1;
-}

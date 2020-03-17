@@ -1,5 +1,0 @@
-formal_android_mirror_testaNomalSpinLuckyChange2 = {
-[1] = { id=1, level_min=0, level_max=50, spin_count_min=100, spin_count_max=120, creditschange_min=-0.2, creditschange_max=0.2, luckygiven=20, unluckygiven=20, forcewinspin=3, forcewinfeature=1},
-[2] = { id=2, level_min=0, level_max=50, spin_count_min=100, spin_count_max=120, creditschange_min=-0.5, creditschange_max=2, luckygiven=5, unluckygiven=5, forcewinspin=3, forcewinfeature=1},
-[3] = { id=3, level_min=0, level_max=50, spin_count_min=100, spin_count_max=120, creditschange_min=-0.8, creditschange_max=4, luckygiven=2, unluckygiven=2, forcewinspin=3, forcewinfeature=1},
-}

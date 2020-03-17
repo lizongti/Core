@@ -1,3 +1,0 @@
-formal_android_mirror_testaHoneyFortuneOthersConfig = {
-[1] = { id=1, Base_Bet_Ratio=1},
-}

@@ -1,6 +1,0 @@
-message Account
-{
-	optional string account_type = 1;
-    optional string facebook_id = 2;
-    optional string google_id = 3;
-}

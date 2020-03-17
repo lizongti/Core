@@ -1,6 +1,0 @@
-formal_android_mirror_testaHoneyFortuneWildInitialConfig = {
-[2] = { id=2, WildInitial=1, WildWeight=0.6},
-[3] = { id=3, WildInitial=2, WildWeight=0.12},
-[4] = { id=4, WildInitial=3, WildWeight=0.06},
-[5] = { id=5, WildInitial=5, WildWeight=0.02},
-}

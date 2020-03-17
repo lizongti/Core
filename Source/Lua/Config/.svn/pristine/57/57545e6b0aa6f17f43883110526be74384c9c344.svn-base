@@ -1,7 +1,0 @@
-JackpotTypeConfig = {
-[0] = { id=0, min_bet_count=100, jackpot_init_value_min=0, jackpot_init_value_max=0, reward_type=0, grow_chip_second=0, jackpot_max_limit=0, jackpot_player_max_limit=0, jackpot_player_min_limit=0, robot_rate_up=0.5, robot_rate_max=1, player_reward_limit=5},
-[1] = { id=1, min_bet_count=100, jackpot_init_value_min=1000000, jackpot_init_value_max=2000000, reward_type=1, grow_chip_second=16670, jackpot_max_limit=100000000, jackpot_player_max_limit=50000000, jackpot_player_min_limit=12500000, robot_rate_up=0.5, robot_rate_max=1, player_reward_limit=5},
-[2] = { id=2, min_bet_count=100, jackpot_init_value_min=50000000, jackpot_init_value_max=60000000, reward_type=2, grow_chip_second=25000, jackpot_max_limit=500000000, jackpot_player_max_limit=250000000, jackpot_player_min_limit=62500000, robot_rate_up=0.5, robot_rate_max=1, player_reward_limit=5},
-[3] = { id=3, min_bet_count=100, jackpot_init_value_min=200000000, jackpot_init_value_max=250000000, reward_type=3, grow_chip_second=33330, jackpot_max_limit=2000000000, jackpot_player_max_limit=1000000000, jackpot_player_min_limit=250000000, robot_rate_up=0.5, robot_rate_max=1, player_reward_limit=5},
-[4] = { id=4, min_bet_count=100, jackpot_init_value_min=500000000, jackpot_init_value_max=550000000, reward_type=4, grow_chip_second=50000, jackpot_max_limit=5000000000, jackpot_player_max_limit=2500000000, jackpot_player_min_limit=625000000, robot_rate_up=0.5, robot_rate_max=1, player_reward_limit=5},
-}

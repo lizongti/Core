@@ -26,6 +26,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Cxx\server\server.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Cxx\lime\base\process.hpp" />
+    <ClInclude Include="..\..\Source\Cxx\lime\base\singleton.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{42B44FFC-626C-45C6-AA2A-2F7A241E4A59}</ProjectGuid>
@@ -235,127 +242,6 @@
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\Cxx\Base\BaseHeaders.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Config.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Logger.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Loop.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\LuaState.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Macro.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Mysql.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Packet.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Pool.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Process.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Redis.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Resource.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Service.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Session.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\Singleton.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\TCPConnection.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\TCPServer.h" />
-    <ClInclude Include="..\..\Source\Cxx\Base\ZeroMessageQueue.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\file.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\lua.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\luax.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\Userdata.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\lrapidjson\values.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\pbc.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\alloc.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\array.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\bootstrap.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\context.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\descriptor.pbc.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\map.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\pattern.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\proto.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\stringpool.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\pbc\src\varint.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\tolua\tolua++.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\tolua\tolua_event.h" />
-    <ClInclude Include="..\..\Source\Cxx\Libs\tolua\tolua_fix.h" />
-    <ClInclude Include="..\..\Source\Cxx\Service\BackstageService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\CacheIntegratedService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\DatabaseIntegratedService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\DispatcherService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\LoggerService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\MainService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\ManagerClientService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\ManagerService.hpp" />
-    <ClInclude Include="..\..\Source\Cxx\Service\ServiceHeaders.hpp" />
-    <ClInclude Include="..\src\hiredis\adapters\ae.h" />
-    <ClInclude Include="..\src\hiredis\adapters\glib.h" />
-    <ClInclude Include="..\src\hiredis\adapters\ivykis.h" />
-    <ClInclude Include="..\src\hiredis\adapters\libev.h" />
-    <ClInclude Include="..\src\hiredis\adapters\libevent.h" />
-    <ClInclude Include="..\src\hiredis\adapters\libuv.h" />
-    <ClInclude Include="..\src\hiredis\adapters\libuv.hpp" />
-    <ClInclude Include="..\src\hiredis\adapters\macosx.h" />
-    <ClInclude Include="..\src\hiredis\adapters\qt.h" />
-    <ClInclude Include="..\src\hiredis\async.h" />
-    <ClInclude Include="..\src\hiredis\dict.h" />
-    <ClInclude Include="..\src\hiredis\fmacros.h" />
-    <ClInclude Include="..\src\hiredis\hiredis.h" />
-    <ClInclude Include="..\src\hiredis\net.h" />
-    <ClInclude Include="..\src\hiredis\read.h" />
-    <ClInclude Include="..\src\hiredis\resource.h" />
-    <ClInclude Include="..\src\hiredis\sds.h" />
-    <ClInclude Include="..\src\hiredis\win32.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\Cxx\Base\Config.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Logger.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Loop.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\LuaState.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Mysql.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Packet.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Process.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Redis.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\Session.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\TCPConnection.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\TCPServer.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Base\ZeroMessageQueue.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\BackstageServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\CacheIntegratedServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\DatabaseIntegratedServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\DispatcherServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\LoggerServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\ManagerClientServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Intf\ManagerServiceIntf.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\Document.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\rapidjson.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\Schema.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\lrapidjson\values.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\lspecialbase64.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\lsystem.cpp" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pb.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\binding\lua\pbc-lua.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\alloc.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\array.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\bootstrap.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\context.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\decode.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\map.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\pattern.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\proto.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\register.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\rmessage.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\stringpool.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\varint.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\pbc\src\wmessage.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_event.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_fix.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_is.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_map.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_push.c" />
-    <ClCompile Include="..\..\Source\Cxx\Libs\tolua\tolua_to.c" />
-    <ClCompile Include="..\..\Source\Cxx\Server\Server.cpp" />
-    <ClCompile Include="..\src\hiredis\async.c" />
-    <ClCompile Include="..\src\hiredis\dict.c" />
-    <ClCompile Include="..\src\hiredis\hiredis.c" />
-    <ClCompile Include="..\src\hiredis\net.c" />
-    <ClCompile Include="..\src\hiredis\read.c" />
-    <ClCompile Include="..\src\hiredis\sds.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

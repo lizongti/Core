@@ -1,8 +1,0 @@
-formal_android_mirror_testaActivityTimeConfig = {
-[1] = { id=1, activity_type="ShopActivity", start_time="2019:3:1:18:00", end_time="2019:3:4:00:00", desc="支付活动", file_name="ShopActivityConfig"},
-[2] = { id=2, activity_type="NewerActivity", start_time="2018:09:20:10:00", end_time="2018:09:23:10:00", desc="新手礼包", file_name=""},
-[3] = { id=3, activity_type="HalloweenActivity", start_time="2018:10:27:00:00", end_time="2018:11:03:00:00", desc="支付活动", file_name="ShopActivityConfig"},
-[4] = { id=4, activity_type="ThanksgivingActivity", start_time="2018:11:22:00:00", end_time="2018:11:26:00:00", desc="支付活动", file_name="ShopActivityConfig"},
-[5] = { id=5, activity_type="ChristmasActivity", start_time="2018:12:22:00:00", end_time="2018:12:28:00:00", desc="支付活动", file_name="ShopActivityConfig"},
-[6] = { id=6, activity_type="DontMissThanksgivingActivity", start_time="2019:11:25:00:00", end_time="2019:12:02:00:00", desc="感恩节活动", file_name=""},
-}

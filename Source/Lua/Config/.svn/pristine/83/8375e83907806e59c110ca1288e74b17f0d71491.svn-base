@@ -1,3 +1,0 @@
-formal_android_mirror_testaVampireRoseSpecialSymbolTriggerConfig = {
-[1] = { id=1, group_id=1, item_id=1, trigger_count=3, show_count=3, allowed_col = {1,1,1,1,1,0,0,0,0,0,}, sound = {"VampireRose/VR_show_scatter01","VampireRose/VR_show_scatter01","VampireRose/VR_show_scatter03",}, trigger_sound="VampireRose/VR_trigger_scatter"},
-}

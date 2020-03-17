@@ -1,9 +1,0 @@
-DontMissItConfig = {
-[1] = { id=1, shop_id=150001, max_charge_min=-1, max_charge_max=1.99, recent_charge_min=0, recent_charge_max=1.99, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-[2] = { id=2, shop_id=150002, max_charge_min=1.99, max_charge_max=4.99, recent_charge_min=1.99, recent_charge_max=4.99, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-[3] = { id=3, shop_id=150003, max_charge_min=4.99, max_charge_max=9.99, recent_charge_min=4.99, recent_charge_max=9.99, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-[4] = { id=4, shop_id=150004, max_charge_min=9.99, max_charge_max=19.99, recent_charge_min=9.99, recent_charge_max=19.99, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-[5] = { id=5, shop_id=150005, max_charge_min=19.99, max_charge_max=29.99, recent_charge_min=19.99, recent_charge_max=29.99, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-[6] = { id=6, shop_id=150006, max_charge_min=29.99, max_charge_max=49.99, recent_charge_min=29.99, recent_charge_max=49.99, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-[7] = { id=7, shop_id=150007, max_charge_min=49.99, max_charge_max=99999999, recent_charge_min=49.99, recent_charge_max=99999999, last_buy_time_extra_percent={[0]=2,[1]=3,[3]=4,[12]=5,[24]=7.5,[36]=10,[48]=13}, free_last_buy_time_extra_percent={[0]=0}},
-}

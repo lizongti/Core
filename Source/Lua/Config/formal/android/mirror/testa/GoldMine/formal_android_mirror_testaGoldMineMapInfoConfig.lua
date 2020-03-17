@@ -1,6 +1,0 @@
-formal_android_mirror_testaGoldMineMapInfoConfig = {
-[1] = { id=1, base_reel_weight_config="GoldMineBaseReelWeight2Config", feature_reel_weight_config="GoldMineFeatureReelWeight1Config", holdspin_reel_weight_config="GoldMineHoldSpinReelWeightConfig", holdspin_start_reel_weight_config="GoldMineHoldSpinStartReelWeightConfig"},
-[2] = { id=2, base_reel_weight_config="GoldMineBaseReelWeight3Config", feature_reel_weight_config="GoldMineFeatureReelWeight1Config", holdspin_reel_weight_config="GoldMineHoldSpinReelWeightConfig", holdspin_start_reel_weight_config="GoldMineHoldSpinStartReelWeightConfig"},
-[3] = { id=3, base_reel_weight_config="GoldMineBaseReelWeight4Config", feature_reel_weight_config="GoldMineFeatureReelWeight1Config", holdspin_reel_weight_config="GoldMineHoldSpinReelWeightConfig", holdspin_start_reel_weight_config="GoldMineHoldSpinStartReelWeightConfig"},
-[4] = { id=4, base_reel_weight_config="GoldMineBaseReelWeight1Config", feature_reel_weight_config="GoldMineFeatureReelWeight1Config", holdspin_reel_weight_config="GoldMineHoldSpinReelWeightConfig", holdspin_start_reel_weight_config="GoldMineHoldSpinStartReelWeightConfig"},
-}

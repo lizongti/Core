@@ -1,5 +1,0 @@
-DailyMissionsBetAwardConfig = {
-[1] = { id=1, task_level=1, value=2, value_min=1000000, value_max=1000000000, award_percent=0.03, weight=2, points=37},
-[2] = { id=2, task_level=2, value=2.2, value_min=1500000, value_max=1500000000, award_percent=0.03, weight=2, points=54},
-[3] = { id=3, task_level=3, value=2.4, value_min=2000000, value_max=2000000000, award_percent=0.03, weight=2, points=96},
-}
