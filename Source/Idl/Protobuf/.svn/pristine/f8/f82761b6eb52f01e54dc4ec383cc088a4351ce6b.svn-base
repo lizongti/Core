@@ -1,0 +1,14 @@
+message DailyWheelData
+{
+    optional int64 index = 1;//转盘转到哪一个
+    optional int64 chip_get = 2;//转盘获得筹码数
+    optional int64 vip_extra_chip = 3;//vip额外获得的筹码数
+    optional int64 con_login_reward = 4;//连续登录奖励的筹码数
+    optional int64 con_login_diamonds = 5;//连续登录奖励的钻石数
+	optional int64 continue_login_days = 6;//连续登录天数
+    optional int64 vip_point_award = 7;//vip点数
+    optional int64 is_old_hand = 8;//是否是新手
+    optional string cur_wheel_name = 9;
+    optional string old_wheel_name = 10;
+    optional string his_collect_info = 11;//历史记录
+}

@@ -1,0 +1,8 @@
+BalanceBoosterConfig = {
+[1] = { id=1, shop_id=160002, recent_charge_min=0, recent_charge_max=4.99},
+[2] = { id=2, shop_id=160003, recent_charge_min=4.99, recent_charge_max=9.99},
+[3] = { id=3, shop_id=160004, recent_charge_min=9.99, recent_charge_max=19.99},
+[4] = { id=4, shop_id=160005, recent_charge_min=19.99, recent_charge_max=29.99},
+[5] = { id=5, shop_id=160006, recent_charge_min=29.99, recent_charge_max=49.99},
+[6] = { id=6, shop_id=160007, recent_charge_min=49.99, recent_charge_max=9999999},
+}

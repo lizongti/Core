@@ -1,0 +1,94 @@
+import "Player.proto";
+
+message Club
+{
+	optional int64 club_id = 1;
+	optional string club_name = 2;
+	optional int64 club_logo = 3;//俱乐部avatar
+	optional int64 club_type = 4;//1:Invite Only, 2:Anyone can join
+	optional int64 min_level_limit = 5;//最低加入等级
+	optional string club_desc = 6;//俱乐部描述
+	optional int64 club_level = 7;//俱乐部等级
+	optional int64 max_member_count = 8;//最大人数
+	optional int64 member_count = 9;//当前人数
+	optional int64 cups = 10;//奖杯数
+	optional int64 grade = 11;//俱乐部段位,代表铜-传说
+	optional int64 total_donate = 12;//俱乐部的总捐赠,用于俱乐部升级
+	optional int64 player_identity = 13;//1:leader, 2:co-leader, 3:normal member
+	optional int64 is_requested = 14;//玩家是否申请过0:false, 1:true
+}
+
+//俱乐部公告结构
+message ClubPost
+{
+	optional int64 post_id = 1;
+	optional string post_content = 2;
+	optional string poster_nickname = 3;
+	optional int64 post_timestamp = 4;
+}
+
+//过滤器
+message ClubFilter
+{
+	optional int64 min_level_limit = 1;
+	optional int64 min_members = 2;
+	optional int64 min_club_level = 3;
+	optional int64 club_type = 4;//0:Invite Only, 1:Anyone can join
+}
+
+//俱乐部申请结构
+message ClubRequest
+{
+	optional int64 request_id = 1;
+	optional Player request_player = 2;
+}
+
+//俱乐部邀请结构
+message ClubInvitation
+{
+	optional int64 invite_id = 1;
+	optional Club invite_club = 2;
+}
+
+//俱乐部成员结构
+message ClubMember
+{
+	optional Player player = 1;
+	optional int64 identity = 2;//1:leader, 2:co-leader, 3:normal member
+	optional int64 cups = 3;
+	optional int64 fund_amount = 4;
+}
+
+//DailyChallenge项
+message ChallengeItem
+{
+	optional int64 id = 1;
+	optional int64 numerator = 2;//任务分子
+	optional int64 denominator = 3;//任务分母
+	optional int64 game_type = 4;//玩法类型
+	optional int64 bonus = 5;//完成任务后每个玩家获得的奖励
+}
+
+//Leader项
+message LeaderItem
+{
+	optional Player player = 1;
+	optional int64 identity = 2;
+	optional int64 cups = 3;
+}
+
+message ClubEvent
+{
+	optional int64 type = 1;//type=1表示membership类型的事件,type=2表示record类型的事件
+	optional Player player = 2;
+	optional string content = 3;//内容
+	optional int64 timestamp = 4;//事件的时间戳
+	optional int64 sub_type = 5;//子类型,仅用于records类型事件,membership类型事件用不着
+}
+
+message ClubChatItem
+{
+	optional Player chat_player = 1;
+	optional int64 player_identity = 2;
+	optional string content = 3;
+}

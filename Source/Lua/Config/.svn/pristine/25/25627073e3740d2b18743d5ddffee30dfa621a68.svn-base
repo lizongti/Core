@@ -1,0 +1,17 @@
+formal_android_mirror_testaMagicScarabMapInfoConfig = {
+[1] = { id=1, base_reel_weight_config="MagicScarabBaseReelWeightb130fs14Config", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[2] = { id=2, base_reel_weight_config="MagicScarabBaseReelWeightb66fs4Config", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[3] = { id=3, base_reel_weight_config="MagicScarabBaseReelWeightb194fs13Config", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[4] = { id=4, base_reel_weight_config="MagicScarabBaseReelWeightb105fs15Config", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[5] = { id=5, base_reel_weight_config="MagicScarabBaseReelWeightb80fs2Config", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[6] = { id=6, base_reel_weight_config="MagicScarabBaseReelWeightConfig", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[7] = { id=7, base_reel_weight_config="MagicScarabBaseReelWeight1Config", feature_reel_weight_config="MagicScarabFeatureReelWeightConfig", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeightConfig"},
+[8] = { id=8, base_reel_weight_config="MagicScarabBaseReelWeight2Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[9] = { id=9, base_reel_weight_config="MagicScarabBaseReelWeight3Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[10] = { id=10, base_reel_weight_config="MagicScarabBaseReelWeight4Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[11] = { id=11, base_reel_weight_config="MagicScarabBaseReelWeight10Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[12] = { id=12, base_reel_weight_config="MagicScarabBaseReelWeight11Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[13] = { id=13, base_reel_weight_config="MagicScarabBaseReelWeight12Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[14] = { id=14, base_reel_weight_config="MagicScarabBaseReelWeight13Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+[15] = { id=15, base_reel_weight_config="MagicScarabBaseReelWeight14Config", feature_reel_weight_config="MagicScarabFeatureReelWeight1Config", super_free_spin_reel_weight_config="MagicScarabSuperFreeSpinReelWeight1Config"},
+}

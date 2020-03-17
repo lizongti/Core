@@ -1,0 +1,13 @@
+message FruitSlice
+{
+	optional int64 bet_amount = 1;
+	optional int64 bouts_id = 2;
+	optional string channel_id = 3;
+	optional int64 trigger_times = 4;//触发房间内小游戏进度数
+	optional int64 total_loss = 5;
+    optional int64 enter_chip = 6;//记录上次进入该场次的筹码数
+    optional int64 spined_times = 7;
+    optional string trigger_amounts = 8;//json,记录玩家触发一个bonus时的投注额度
+	optional int64 bonus_win_chip = 9;
+	optional string json_str = 10;
+}

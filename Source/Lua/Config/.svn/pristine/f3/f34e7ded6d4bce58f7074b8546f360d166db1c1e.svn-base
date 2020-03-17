@@ -1,0 +1,10 @@
+formal_android_mirror_testaTikiIslandMapInfoConfig = {
+[1] = { id=1, base_reel_weight_config="TikiIslandBaseReelWeightConfig", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[2] = { id=2, base_reel_weight_config="TikiIslandBaseReelWeight1Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[3] = { id=3, base_reel_weight_config="TikiIslandBaseReelWeight2Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[4] = { id=4, base_reel_weight_config="TikiIslandBaseReelWeight3Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[5] = { id=5, base_reel_weight_config="TikiIslandBaseReelWeight4Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[6] = { id=6, base_reel_weight_config="TikiIslandBaseReelWeight5Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[7] = { id=7, base_reel_weight_config="TikiIslandBaseReelWeight6Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+[8] = { id=8, base_reel_weight_config="TikiIslandBaseReelWeight7Config", feature_reel_weight_config="TikiIslandFeatureReelWeightConfig"},
+}

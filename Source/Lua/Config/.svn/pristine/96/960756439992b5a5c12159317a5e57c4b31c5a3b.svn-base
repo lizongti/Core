@@ -1,0 +1,6 @@
+formal_android_mirror_testaHoneyFortuneMapInfoConfig = {
+[1] = { id=1, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight2Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight1Config"},
+[2] = { id=2, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight3Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight1Config"},
+[3] = { id=3, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight4Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight1Config"},
+[4] = { id=4, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight6Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight1Config"},
+}

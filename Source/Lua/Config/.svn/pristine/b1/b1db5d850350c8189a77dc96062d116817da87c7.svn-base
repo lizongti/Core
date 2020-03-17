@@ -1,0 +1,8 @@
+popupconfig_activity = {
+[1] = { id=1, activity_id=1, description="商城活动", popup_id=25, is_shop_activity=1},
+[2] = { id=2, activity_id=2, description="新手礼包", popup_id=9, is_shop_activity=0},
+[3] = { id=3, activity_id=2, description="新手礼包", popup_id=10, is_shop_activity=0},
+[4] = { id=4, activity_id=3, description="万圣节活动", popup_id=29, is_shop_activity=1},
+[5] = { id=5, activity_id=4, description="感恩节活动", popup_id=32, is_shop_activity=1},
+[6] = { id=6, activity_id=5, description="圣诞节活动", popup_id=37, is_shop_activity=1},
+}

@@ -1,0 +1,18 @@
+formal_android_mirror_testaAgentBondChipConfig = {
+[1] = { id=1, times=1, probability=0.02},
+[2] = { id=2, times=1, probability=0.02},
+[3] = { id=3, times=1, probability=0.02},
+[4] = { id=4, times=2, probability=0.08},
+[5] = { id=5, times=2, probability=0.08},
+[6] = { id=6, times=2, probability=0.08},
+[7] = { id=7, times=3, probability=0.1},
+[8] = { id=8, times=3, probability=0.1},
+[9] = { id=9, times=3, probability=0.1},
+[10] = { id=10, times=4, probability=0.08},
+[11] = { id=11, times=4, probability=0.08},
+[12] = { id=12, times=4, probability=0.08},
+[13] = { id=13, times=5, probability=0.04},
+[14] = { id=14, times=5, probability=0.04},
+[15] = { id=15, times=5, probability=0.04},
+[16] = { id=16, times=0, probability=0.04},
+}

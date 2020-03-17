@@ -1,0 +1,8 @@
+formal_android_mirror_testaNewBacktoJurassicMapInfoConfig = {
+[1] = { id=1, base_reel_weight_config="NewBacktoJurassicBaseReelWeightConfig", feature_reel_weight_config="NewBacktoJurassicFeatureReelWeightConfig", extra_payout_config="NewBacktoJurassicExtraPayoutConfig", extra_payout_value_config="NewBacktoJurassicExtraPayoutValueConfig"},
+[2] = { id=2, base_reel_weight_config="NewBacktoJurassicBaseReelWeight1Config", feature_reel_weight_config="NewBacktoJurassicFeatureReelWeightConfig", extra_payout_config="NewBacktoJurassicExtraPayoutConfig", extra_payout_value_config="NewBacktoJurassicExtraPayoutValueConfig"},
+[3] = { id=3, base_reel_weight_config="NewBacktoJurassicBaseReelWeight2Config", feature_reel_weight_config="NewBacktoJurassicFeatureReelWeightConfig", extra_payout_config="NewBacktoJurassicExtraPayoutConfig", extra_payout_value_config="NewBacktoJurassicExtraPayoutValueConfig"},
+[4] = { id=4, base_reel_weight_config="NewBacktoJurassicBaseReelWeight3Config", feature_reel_weight_config="NewBacktoJurassicFeatureReelWeight1Config", extra_payout_config="NewBacktoJurassicExtraPayoutConfig", extra_payout_value_config="NewBacktoJurassicExtraPayoutValueConfig"},
+[5] = { id=5, base_reel_weight_config="NewBacktoJurassicBaseReelWeight4Config", feature_reel_weight_config="NewBacktoJurassicFeatureReelWeightConfig", extra_payout_config="NewBacktoJurassicExtraPayoutConfig", extra_payout_value_config="NewBacktoJurassicExtraPayoutValueConfig"},
+[6] = { id=6, base_reel_weight_config="NewBacktoJurassicBaseReelWeight5Config", feature_reel_weight_config="NewBacktoJurassicFeatureReelWeightConfig", extra_payout_config="NewBacktoJurassicExtraPayoutConfig", extra_payout_value_config="NewBacktoJurassicExtraPayoutValueConfig"},
+}

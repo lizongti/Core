@@ -1,0 +1,68 @@
+import "Common.proto";
+import "Player.proto";
+
+message FeverQuestRankInfoHistory
+{
+    optional int32 season = 1;
+    optional int32 tier_type = 2; //等级 - novice...
+    optional int32 rank = 3; //排名
+}
+
+message FeverQuestTaskProgressItem
+{
+    optional int32 mission_type = 1; // QuestFeverMissionConfig中的任务类型
+    optional int32 mission_progress = 2; // 任务进度
+}
+
+message FeverQuestRankInfo
+{
+    optional int32 tier_type = 1; //当前等级 - novice...
+    optional int32 rank = 2; //当前排名
+    repeated FeverQuestRankInfoHistory historys = 3; //历史记录
+}
+
+message FeverQuest_GetQuestInfo_Request
+{
+    optional Header header = 1;
+}
+
+message FeverQuest_GetQuestInfo_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional int32 season = 3; //季度
+    optional int32 task_id = 4; //当前的进度
+    optional int32 hard_level = 5; //当前难度
+    optional FeverQuestRankInfo rank_info = 6; //排名信息
+    optional int32 star = 7; //星星
+    optional int32 is_boost = 8; //是否加速
+    repeated FeverQuestTaskProgressItem progresses = 9; //当前任务进度
+}
+
+message FeverQuest_SetQuestHardLevel_Request
+{
+    optional Header header = 1;
+    optional int32 hard_level = 2;
+}
+
+message FeverQuest_SetQuestHardLevel_Response
+{
+    optional Header header = 1;
+    optional int32 hard_level = 2;
+}
+
+message FeverQuest_UpdateQuestProgress_Notice
+{
+    optional Header header = 1;
+    optional int32 task_id = 2;
+    repeated int64 progresses = 3;
+}
+
+message FeverQuest_FinishQuest_Notice
+{
+    optional Header header = 1;
+    optional int32 task_id = 2;
+    optional Player player = 3;
+    optional int32 star = 4;
+}
+

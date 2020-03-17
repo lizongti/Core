@@ -1,0 +1,9 @@
+import "Common.proto";
+
+message JackpotInfo {
+  optional int64 game_type = 1;  //游戏类型,GameType.lua
+  optional int64 jackpot_type = 2;  //jackpot类型：all/mini/minor/major/grand - 0/1/2/3/4
+  optional int64 jackpot_value = 3; //当前值
+  optional int64 jackpot_time = 4; //该值所在的时间
+}
+

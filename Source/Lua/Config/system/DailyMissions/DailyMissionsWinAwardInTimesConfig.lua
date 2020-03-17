@@ -1,0 +1,5 @@
+DailyMissionsWinAwardInTimesConfig = {
+[1] = { id=1, task_level=1, value_a=0.4, value_b=30, value_a_min=500000, value_a_max=200000000, value_b_min=0, value_b_max=999, award_percent=0.03, wight=2, points=37},
+[2] = { id=2, task_level=2, value_a=0.45, value_b=30, value_a_min=600000, value_a_max=350000000, value_b_min=0, value_b_max=999, award_percent=0.03, wight=2, points=54},
+[3] = { id=3, task_level=3, value_a=0.5, value_b=30, value_a_min=800000, value_a_max=500000000, value_b_min=0, value_b_max=999, award_percent=0.03, wight=2, points=96},
+}

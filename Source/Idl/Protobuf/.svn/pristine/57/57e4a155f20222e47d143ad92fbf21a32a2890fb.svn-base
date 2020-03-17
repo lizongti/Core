@@ -1,0 +1,74 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsFruitSlice_Enter_Request
+{
+	optional Header header = 1;
+	optional int32 table_id = 2;
+}
+
+message SlotsFruitSlice_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+	repeated int64 item_ids = 4;
+}
+
+message SlotsFruitSlice_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message SlotsFruitSlice_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated int64 item_ids = 3; //物品列表
+	optional Player player = 4; //玩家信息
+	repeated Slots_Prize all_prize = 5; //奖励
+	repeated Slots_DropFruit all_drop_items = 6; //掉了水果
+	repeated Slots_EraseItems all_erase_items = 7; //删除的水果
+	repeated int64 win_chip = 8; //赢得chip
+    optional int64 trigger_bonus = 9; //是否触发了bonus,1:true, else:false
+	optional int64 all_win_chip = 10; //
+	optional int64 is_multiply = 11; //加成
+	optional int64 is_free_spin = 12; //是否是free spin模式
+}
+
+message SlotsFruitSlice_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsFruitSlice_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsFruitSlice_Slice_Request
+{
+	optional Header header = 1;
+	repeated int64 fruit_id = 2;
+}
+
+message SlotsFruitSlice_Slice_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+	optional int64 win_chip = 4;
+}
+
+message SlotsFruitSlice_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+    optional int64 bonus = 3;
+}
+

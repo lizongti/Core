@@ -1,0 +1,231 @@
+import "Common.proto";
+import "Player.proto";
+import "Prop.proto";
+
+message Mail_Present_Request
+{
+	optional Header header = 1;
+	optional string from_player_nickname = 2;
+	required int64 to_player_id = 3;
+	required string props = 4; 
+}
+
+message Mail_Present_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_AutoFetch_Request
+{
+	optional Header header = 1;
+	required int64 player_id = 2;
+	required string props = 3;
+	optional string json_str = 4;
+}
+
+message Mail_AutoFetch_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_NoticeFetch_Request
+{
+	optional Header header = 1;
+	required int64 player_id = 2;
+	required string props = 3;
+	required string type = 4;
+}
+
+message Mail_NoticeFetch_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_Commonmail_Request
+{
+	optional Header header = 1;
+	required int64 player_id = 2;
+	required string props = 3;
+	required string type = 4;
+	required string title = 5;
+	required string content = 6;
+	required string from = 7;
+}
+
+message Mail_Commonmail_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_SendChips_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string sender = 3;
+	optional string props = 4;
+}
+
+message Mail_SendChips_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_FinishClubChallenge_Request
+{
+	optional Header header = 1;
+	repeated int64 player_id = 2;
+	optional string props = 3;
+}
+
+message Mail_FinishClubChallenge_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;	
+}
+
+message Mail_FeverQuestPrizeCardPackage_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+	optional int64 rank = 4;
+	optional int64 tier_type = 5;
+}
+
+message Mail_FeverQuestPrizeCardPackage_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_BoosterCashback_Request
+{
+	optional Header header = 1;
+	optional string props = 2;
+	optional int64 player_id = 3;
+	optional int64 chips = 4;
+}
+
+message Mail_BoosterCashback_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_FeverQuestPrizeCoin_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+	optional int64 rank = 4;
+	optional int64 tier_type = 5;
+	optional int64 win_chip = 6;
+}
+
+message Mail_FeverQuestPrizeCoin_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;	
+}
+
+message Mail_FeverQuestPrizeVipPoint_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+	optional int64 rank = 4;
+	optional int64 tier_type = 5;
+	optional int64 vip_point = 6;
+}
+
+message Mail_FeverQuestPrizeVipPoint_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;	
+}
+
+message Mail_SettleTournament_Request
+{
+	optional Header header = 1;
+	repeated int64 player_id = 2;
+	optional string props = 3;
+	optional int64 rank = 4;
+}
+
+message Mail_SettleTournament_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;	
+}
+
+message Mail_JoinClub_Request
+{
+ 	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+}
+
+message Mail_JoinClub_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_BindFacebook_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+}
+
+message Mail_BindFacebook_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_VersionAward_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+}
+
+message Mail_VersionAward_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_TournamentPrize_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+	optional string rank_str = 4;
+	optional string json_str = 5;
+}
+
+message Mail_TournamentPrize_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Mail_DailyBonusAward_Request
+{
+	optional Header header = 1;
+	optional int64 player_id = 2;
+	optional string props = 3;
+}
+
+message Mail_DailyBonusAward_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}

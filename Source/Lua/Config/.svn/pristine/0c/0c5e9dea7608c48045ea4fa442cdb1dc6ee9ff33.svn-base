@@ -1,0 +1,14 @@
+formal_android_mirror_testaFrozenEraRespinConfig = {
+[3] = { id=3, addoneadjacent_weight=80, addtwoadjacent_weight=5, addthreeadjacent_weight=2, noadjacent_weight=0, addonenotadjacent_weight=20, addtwonotadjacent_weight=2, addthreenotadjacent_weight=2, nonotadjacent_weight=100},
+[4] = { id=4, addoneadjacent_weight=70, addtwoadjacent_weight=4, addthreeadjacent_weight=2, noadjacent_weight=15, addonenotadjacent_weight=15, addtwonotadjacent_weight=1, addthreenotadjacent_weight=1, nonotadjacent_weight=100},
+[5] = { id=5, addoneadjacent_weight=60, addtwoadjacent_weight=4, addthreeadjacent_weight=1, noadjacent_weight=20, addonenotadjacent_weight=10, addtwonotadjacent_weight=1, addthreenotadjacent_weight=0.5, nonotadjacent_weight=100},
+[6] = { id=6, addoneadjacent_weight=55, addtwoadjacent_weight=3, addthreeadjacent_weight=0, noadjacent_weight=20, addonenotadjacent_weight=20, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[7] = { id=7, addoneadjacent_weight=45, addtwoadjacent_weight=3, addthreeadjacent_weight=0, noadjacent_weight=30, addonenotadjacent_weight=30, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[8] = { id=8, addoneadjacent_weight=40, addtwoadjacent_weight=2, addthreeadjacent_weight=0, noadjacent_weight=40, addonenotadjacent_weight=30, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[9] = { id=9, addoneadjacent_weight=20, addtwoadjacent_weight=0, addthreeadjacent_weight=0, noadjacent_weight=50, addonenotadjacent_weight=30, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[10] = { id=10, addoneadjacent_weight=15, addtwoadjacent_weight=0, addthreeadjacent_weight=0, noadjacent_weight=65, addonenotadjacent_weight=30, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[11] = { id=11, addoneadjacent_weight=8, addtwoadjacent_weight=0, addthreeadjacent_weight=0, noadjacent_weight=100, addonenotadjacent_weight=0, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[12] = { id=12, addoneadjacent_weight=5, addtwoadjacent_weight=0, addthreeadjacent_weight=0, noadjacent_weight=100, addonenotadjacent_weight=0, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[13] = { id=13, addoneadjacent_weight=4, addtwoadjacent_weight=0, addthreeadjacent_weight=0, noadjacent_weight=100, addonenotadjacent_weight=0, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+[14] = { id=14, addoneadjacent_weight=3, addtwoadjacent_weight=0, addthreeadjacent_weight=0, noadjacent_weight=100, addonenotadjacent_weight=0, addtwonotadjacent_weight=0, addthreenotadjacent_weight=0, nonotadjacent_weight=100},
+}

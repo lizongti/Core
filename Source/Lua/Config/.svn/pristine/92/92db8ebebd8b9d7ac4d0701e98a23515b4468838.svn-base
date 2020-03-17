@@ -1,0 +1,4 @@
+formal_android_mirror_testaGoldMineSpecialSymbolTriggerConfig = {
+[1] = { id=1, group_id=1, item_id = {1,0,}, trigger_count=3, show_count=3, allowed_col = {1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,}, sound = {"GoldMine/GM_show_bonus","GoldMine/GM_show_bonus2","GoldMine/GM_show_bonus3",}, trigger_sound="GoldMine/GM_scatter&bonus"},
+[2] = { id=2, group_id=1, item_id = {4,5,}, trigger_count=6, show_count=6, allowed_col = {1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,}, sound = {"0","0","0",}, trigger_sound="GoldMine/GM_scatter&bonus"},
+}

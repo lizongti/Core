@@ -1,0 +1,17 @@
+formal_android_mirror_testaNewPurrfectPetsCoinSpinGenerateAllCoinCountConfig = {
+[1] = { id=1, coin_count=6, weight=1},
+[2] = { id=2, coin_count=7, weight=5},
+[3] = { id=3, coin_count=8, weight=10},
+[4] = { id=4, coin_count=9, weight=50},
+[5] = { id=5, coin_count=10, weight=100},
+[6] = { id=6, coin_count=11, weight=100},
+[7] = { id=7, coin_count=12, weight=150},
+[8] = { id=8, coin_count=13, weight=210},
+[9] = { id=9, coin_count=14, weight=200},
+[10] = { id=10, coin_count=15, weight=100},
+[11] = { id=11, coin_count=16, weight=53},
+[12] = { id=12, coin_count=17, weight=10},
+[13] = { id=13, coin_count=18, weight=5},
+[14] = { id=14, coin_count=19, weight=5},
+[15] = { id=15, coin_count=20, weight=1},
+}

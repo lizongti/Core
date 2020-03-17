@@ -1,0 +1,7 @@
+formal_android_mirror_testaHoneyFortuneWildIncreaseConfig = {
+[1] = { id=1, WildIncrease=1, WildWeight=0.8},
+[2] = { id=2, WildIncrease=2, WildWeight=0.1},
+[3] = { id=3, WildIncrease=3, WildWeight=0.05},
+[4] = { id=4, WildIncrease=5, WildWeight=0.03},
+[5] = { id=5, WildIncrease=10, WildWeight=0.02},
+}

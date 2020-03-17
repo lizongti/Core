@@ -1,0 +1,45 @@
+import "Player.proto";
+import "Common.proto";
+
+//点击广告
+message Ad_Click_Request
+{
+    optional Header header = 1;
+    optional int64 ad_type = 2;//广告类型:1(Hall),2(Shop),3(Levelup),4(Slots),5(Poor)
+}
+
+message Ad_Click_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional Player player = 3;
+    optional int64 chip_get = 4;//获取的筹码
+    optional string content = 5;//[{广告类型(ad_type), 剩余次数(left_times), 剩余CD时间(left_cd_time)}]
+    optional int64 ad_type = 6;//广告类型:1(Hall),2(Shop),3(Levelup),4(Slots),5(Poor)
+    optional string item = 7;
+}
+
+//当前广告状态
+message Ad_Info_Request
+{
+    optional Header header = 1;
+}
+
+message Ad_Info_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional string content = 3;//[{广告类型(ad_type), 剩余次数(left_times), 剩余CD时间(left_cd_time)}]
+}
+
+//增加free spin次数
+message Ad_AddFreeSpin_Request
+{
+    optional Header header = 1;
+}
+
+message Ad_AddFreeSpin_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+}

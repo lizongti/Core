@@ -1,0 +1,41 @@
+import "Common.proto";
+import "Player.proto";
+
+
+message Booster_GetCashbackInfo_Request
+{
+    optional Header header = 1;
+}
+
+message Booster_GetCashbackInfo_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional int32 cashback_left_time = 3; //cashback剩余时间
+    optional int64 cashback_chips = 4; //明日cashback额度
+    optional string cashback_rate = 5; //明日cashback比例
+}
+
+message Booster_GetLevelRushInfo_Request
+{
+    optional Header header = 1;
+}
+
+message Booster_GetLevelRushInfo_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional int32 levelrush_left_time = 3; 
+}
+
+message Booster_GetBoosterBundleInfo_Request
+{
+    optional Header header = 1;
+}
+
+message Booster_GetBoosterBundleInfo_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional int32  can_first_buy = 3; //是否可以触发首次购买 
+}

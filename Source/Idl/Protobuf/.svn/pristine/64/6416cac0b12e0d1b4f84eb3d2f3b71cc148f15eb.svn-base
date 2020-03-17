@@ -1,0 +1,14 @@
+message PharaohTreasure
+{
+    optional int64 bet_amount = 1;
+    optional int64 bouts_id = 2;
+    optional string channel_id = 3;
+    optional int64 choose_times = 4;//bonus game里还剩余的选择次数,如果大于0那么进玩法就直接进bonus game
+    optional int64 bg_level = 5;//bonus game level,bonus game里的玩家所在哪一层
+    optional string history = 6;//json,在bonusgame里的选择历史,用于恢复bonus game的现场
+    optional int64 total_loss = 7;
+    optional int64 enter_chip = 8;//记录上次进入该场次的筹码数
+    optional int64 spined_times = 9;
+    optional int64 total_bonus = 10;
+    optional string json_str = 11;
+}

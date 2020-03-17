@@ -1,0 +1,6 @@
+SalesPackConfig = {
+[20006] = { id=20006, can_repeat_purchase=0, iOS=1, android=1, pop_priority=1, pop_probability=1},
+[20008] = { id=20008, can_repeat_purchase=0, iOS=1, android=1, pop_priority=1, pop_probability=0.3},
+[30006] = { id=30006, can_repeat_purchase=0, iOS=1, android=1, pop_priority=2, pop_probability=1},
+[30008] = { id=30008, can_repeat_purchase=0, iOS=1, android=1, pop_priority=2, pop_probability=0.3},
+}

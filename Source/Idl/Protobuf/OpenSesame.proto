@@ -1,0 +1,14 @@
+message OpenSesame
+{
+	optional int64 bet_amount = 1;
+    optional int64 bonus_progress = 2;
+    optional int64 free_spin_bouts = 3;
+    optional int64 bouts_id = 4;//局id,放用时间戳,服务端用于判定cd和日志
+    optional string channel_id = 5;
+    optional int64 total_loss = 6;
+    optional int64 enter_chip = 7;
+    optional int64 spined_times = 8;
+    optional int64 free_total_win = 9;
+	optional string his_bet_mount = 10;
+    optional string json_str = 11;
+}

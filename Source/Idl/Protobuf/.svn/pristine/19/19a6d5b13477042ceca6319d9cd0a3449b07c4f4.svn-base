@@ -1,0 +1,9 @@
+message Record
+{
+   optional int64 total_spin = 1;//在slots中共spin的次数
+   optional int64 spin_won = 2;//spin中中奖次数
+   optional int64 total_win = 3;//spin中奖共获得的筹码数
+   optional int64 biggest_win = 4;//最大获奖筹码数
+   optional int64 bonus_game = 5;//bonus game 次数
+   optional int64 free_spin = 6;//free spin次数
+}

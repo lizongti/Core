@@ -1,0 +1,4 @@
+RemoveAdsConfig = {
+[1] = { id=1, shop_id=120001, group_type=1},
+[2] = { id=2, shop_id=120002, group_type=2},
+}

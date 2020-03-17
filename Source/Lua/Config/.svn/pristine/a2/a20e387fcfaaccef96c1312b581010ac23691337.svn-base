@@ -1,0 +1,14 @@
+formal_android_mirror_testaHoneyFortunePayrateConfig = {
+[1] = { id=1, item_id=1, client_order=1, payrate={0,0,0}, client_dsc=""},
+[2] = { id=2, item_id=2, client_order=2, payrate={40,120,400}, client_dsc="5   400/n4   120/n3   40"},
+[3] = { id=3, item_id=3, client_order=3, payrate={35,105,350}, client_dsc="5   350/n4   105/n3   35"},
+[4] = { id=4, item_id=4, client_order=4, payrate={25,75,250}, client_dsc="5   250/n4   75/n3   25"},
+[5] = { id=5, item_id=5, client_order=5, payrate={24,72,240}, client_dsc="5   240/n4   72/n3   24"},
+[6] = { id=6, item_id=6, client_order=6, payrate={23,69,230}, client_dsc="5   230/n4   69/n3   23"},
+[7] = { id=7, item_id=7, client_order=7, payrate={22,66,220}, client_dsc="5   220/n4   66/n3   22"},
+[8] = { id=8, item_id=8, client_order=8, payrate={16,48,160}, client_dsc="5   160/n4   48/n3   16"},
+[9] = { id=9, item_id=9, client_order=9, payrate={15,45,150}, client_dsc="5   150/n4   45/n3   15"},
+[10] = { id=10, item_id=10, client_order=10, payrate={14,42,140}, client_dsc="5   140/n4   42/n3   14"},
+[11] = { id=11, item_id=11, client_order=11, payrate={13,39,130}, client_dsc="5   130/n4   39/n3   13"},
+[12] = { id=12, item_id=14, client_order=14, payrate={0,0,0}, client_dsc=""},
+}

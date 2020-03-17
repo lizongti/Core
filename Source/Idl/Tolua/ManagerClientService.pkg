@@ -1,0 +1,32 @@
+$#include "../Service/ManagerClientService.hpp"
+
+struct Packet
+{
+public:
+	unsigned short size;			// size of packet including 2 Bytes of itself
+	unsigned int check_sum;			// check sum from sequence_id to end, 4 Bytes
+	unsigned int sequence_id;		// tcp sequence id from tcp connection build to destroy, 4 Bytes
+	unsigned short module_id;		// module id to route services, 2 Bytes
+	unsigned short message_id;		// message id to locate it's handles, 2 Bytes
+	unsigned short protobuf_size;	// size of protobuf, 2 Bytes
+	unsigned short message_flag;	// message type flag, tag if it compressed, etc
+	char protobuf_content[];		// content of protobuf
+
+	static unsigned int CalculateCheckSum(Packet* packet);
+	static std::string ProtobufString(Packet* packet);
+
+	static Packet* Construct(unsigned int sequence_id, unsigned short module_id, unsigned short message_id, std::string protobuf_string);
+	static void Destroy(Packet* packet);
+};
+
+class ManagerClientService
+{
+public:
+	bool Init(const std::string& json);
+	bool Start();
+	bool Stop();
+	bool Running();
+	Packet* ReadPacket();
+	bool WritePacket(Packet* packet);
+};
+

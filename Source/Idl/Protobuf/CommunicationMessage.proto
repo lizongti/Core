@@ -1,0 +1,25 @@
+import "Common.proto";
+import "Player.proto";
+
+message Communication_Chat_Request
+{
+	optional Header header = 1;
+	required int64 type = 2;
+	required string content = 3;
+}
+
+message Communication_Chat_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message Communication_Chat_Notice
+{
+	optional Header header = 1;
+	optional int64 type = 2;
+	optional string content = 3;
+	optional Player chat_player = 4;
+	optional int64 player_identity = 5;//发送聊天的人在俱乐部的身份,仅在俱乐部里用到
+}

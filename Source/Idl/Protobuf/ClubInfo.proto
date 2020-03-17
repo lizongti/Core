@@ -1,0 +1,7 @@
+message ClubInfo
+{
+	optional int64 club_id = 1;
+	optional int64 cups_winning = 2;//为统计玩家贡献的奖杯数而加的字段,每5w加一个奖杯
+	optional int64 last_fund_timestamp = 3;
+    optional int64 joined_club = 4;//是否加入过俱乐部,0:false, 1:true
+}

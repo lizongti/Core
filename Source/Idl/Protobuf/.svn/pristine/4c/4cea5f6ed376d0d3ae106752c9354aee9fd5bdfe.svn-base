@@ -1,0 +1,6 @@
+message Button
+{
+	required string text = 1;
+	optional int64 color = 2;   // 1:green(default) 2：blue, 3: red
+	required string callback = 3;
+}           

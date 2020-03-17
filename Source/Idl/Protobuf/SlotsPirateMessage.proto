@@ -1,0 +1,79 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsPirate_Enter_Request
+{
+	optional Header header = 1;
+	optional int32 table_id = 2;
+}
+
+message SlotsPirate_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsPirate_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message SlotsPirate_Item
+{
+	repeated int64 item_ids = 1;
+	repeated Slots_PrizeItem prize_items = 2;
+	optional int64 win_chip = 3;
+}
+
+message SlotsPirate_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated int64 item_ids = 3;
+	repeated Slots_PrizeItem prize_items = 4;
+	optional int64 win_chip = 5;
+	repeated SlotsPirate_Item item_list = 6;
+	optional Player player = 7;
+	optional int64 is_multiply = 8;
+	optional int64 is_free_spin = 9;
+}
+
+message SlotsPirate_Slots_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message SlotsPirate_Slots_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 win_amount = 3; //获取的奖励
+	optional int64 free_spin_num = 4; //Free Spin次数
+	optional int64 bet_num = 5;   //total bet 倍数
+	optional int64 bet_multiple_num = 6; //翻倍
+	optional int64 step_num = 7; //步数
+	optional Player player = 8;
+}
+
+message SlotsPirate_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsPirate_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsPirate_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+}

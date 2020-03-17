@@ -1,0 +1,10 @@
+SpecialOfferConfig = {
+[1] = { id=1, shop_id=110001, group_type=1, login_time_min=0, login_time_max=24, total_charge_min=0, total_charge_max=0},
+[2] = { id=2, shop_id=110002, group_type=1, login_time_min=24, login_time_max=48, total_charge_min=0, total_charge_max=0},
+[3] = { id=3, shop_id=110003, group_type=1, login_time_min=48, login_time_max=72, total_charge_min=0, total_charge_max=0},
+[4] = { id=4, shop_id=110004, group_type=1, login_time_min=72, login_time_max=96, total_charge_min=0, total_charge_max=0},
+[5] = { id=5, shop_id=110005, group_type=1, login_time_min=96, login_time_max=9999999, total_charge_min=0, total_charge_max=0},
+[6] = { id=6, shop_id=110006, group_type=2, login_time_min=0, login_time_max=24, total_charge_min=0.01, total_charge_max=4.99},
+[7] = { id=7, shop_id=110007, group_type=2, login_time_min=24, login_time_max=48, total_charge_min=0.01, total_charge_max=4.99},
+[8] = { id=8, shop_id=110008, group_type=2, login_time_min=48, login_time_max=9999999, total_charge_min=0.01, total_charge_max=4.99},
+}

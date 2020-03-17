@@ -1,0 +1,18 @@
+formal_android_mirror_testaMagicScarabPayrateConfig = {
+[1] = { id=1, item_id=1, client_order=1, payrate = {0,0,0,0,}, client_dsc=""},
+[2] = { id=2, item_id=2, client_order=2, payrate = {5,40,120,500,}, client_dsc=""},
+[3] = { id=3, item_id=3, client_order=3, payrate = {5,40,120,500,}, client_dsc=""},
+[4] = { id=4, item_id=4, client_order=4, payrate = {25,75,250,0,}, client_dsc="5   250/n4   75/n3   25"},
+[5] = { id=5, item_id=5, client_order=5, payrate = {25,60,200,0,}, client_dsc="5   200/n4   60/n3   25"},
+[6] = { id=6, item_id=6, client_order=6, payrate = {20,50,150,0,}, client_dsc="5   150/n4   50/n3   20"},
+[7] = { id=7, item_id=7, client_order=7, payrate = {20,50,125,0,}, client_dsc="5   125/n4   50/n3   20"},
+[8] = { id=8, item_id=8, client_order=8, payrate = {15,40,100,0,}, client_dsc="5   100/n4   40/n3   15"},
+[9] = { id=9, item_id=9, client_order=9, payrate = {15,40,100,0,}, client_dsc="5   100/n4   40/n3   15"},
+[10] = { id=10, item_id=10, client_order=12, payrate = {10,25,60,0,}, client_dsc="5   60/n4   25/n3   10"},
+[11] = { id=11, item_id=11, client_order=13, payrate = {10,25,60,0,}, client_dsc="5   60/n4   25/n3   10"},
+[12] = { id=12, item_id=12, client_order=14, payrate = {10,25,60,0,}, client_dsc="5   60/n4   25/n3   10"},
+[13] = { id=13, item_id=13, client_order=10, payrate = {10,30,80,0,}, client_dsc="5   80/n4   30/n3   10"},
+[14] = { id=14, item_id=14, client_order=11, payrate = {10,30,80,0,}, client_dsc="5   80/n4   30/n3   10"},
+[15] = { id=15, item_id=15, client_order=15, payrate = {5,40,120,500,}, client_dsc=""},
+[16] = { id=16, item_id=16, client_order=16, payrate = {5,40,120,500,}, client_dsc=""},
+}

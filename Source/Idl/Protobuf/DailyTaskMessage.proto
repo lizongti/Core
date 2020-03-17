@@ -1,0 +1,39 @@
+import "Common.proto";
+import "Player.proto";
+import "DailyTask.proto";
+
+//任务显示请求
+message DailyTask_Display_Request
+{
+	optional Header header = 1;
+}
+
+message DailyTask_Display_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+	optional Player player = 3;
+}
+//任务领取请求
+message DailyTask_Obtain_Request
+{
+	optional Header header = 1;
+	optional int64 collect_daily_type = 2;//1表示领取铜任务奖励，2表示领取银任务奖励，3表示领取金任务奖励
+	optional int64 collect_week_type = 3; //3表示领取每周完成3次的任务奖励
+}
+
+message DailyTask_Obtain_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+	optional Player player = 3;
+	optional int64 chip = 4;
+	optional int64 diamond = 5;
+}
+
+message DailyTask_Complete_Notice
+{
+    optional Header header = 1;
+    repeated int64 task_ids = 2;
+    repeated int64 numerators = 3;
+}

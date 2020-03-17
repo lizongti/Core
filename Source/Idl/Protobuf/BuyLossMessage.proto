@@ -1,0 +1,23 @@
+import "Player.proto";
+import "Common.proto";
+
+message BuyLoss_Buy_Request
+{
+    optional Header header = 1;
+    optional int64 game_type = 2;
+}
+
+message BuyLoss_Buy_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+    optional Player player = 3;
+}
+
+message BuyLoss_Trigger_Notice
+{
+    optional Header header = 1;
+    optional int64 total_loss = 2;
+    optional int64 diamond = 3;
+    optional int64 goods_id = 4;
+}

@@ -1,0 +1,24 @@
+message AgentBond
+{
+	optional int64 bet_amount = 1; //下注数额
+    optional int64 free_spin_bouts = 2; //免费spin次数
+	optional int64 free_spin_num = 3;//奖励的免费次数
+    optional int64 bouts_id = 4;//局id,放用时间戳,服务端用于判定cd和日志
+    optional string channel_id = 5;
+    optional int64 total_loss = 6;
+    optional int64 enter_chip = 7;
+    optional int64 spined_times = 8;
+    optional int64 free_total_win = 9;
+    optional int64 bonus_num = 10;
+    optional string bonus_game_chip_info = 11;
+    optional string bonus_history = 12;
+    optional string bet_amount_history = 13;
+
+    //begin --> 修改bons玩法 201811291444
+    optional int64 bonus_collect_id = 14;           //触发bons需要收集的物品id
+    optional int64 bonus_collect_count_need = 15;   //触发bonsbons需要收集物品的数量
+    optional int64 bonus_collect_count_have = 16;    //触发bonsbons已经收集物品的数量
+   //end    --> 修改bons玩法 201811291444
+
+   optional string json_str = 17;
+}

@@ -1,0 +1,75 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsAgentBond_Enter_Request
+{
+	optional Header header = 1;
+	optional int32 table_id = 2;
+}
+
+message SlotsAgentBond_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsAgentBond_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message BonusGameChipInfo
+{
+	optional int64 id = 1;
+	optional int64 chip = 2;
+}
+
+message SlotsAgentBond_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated int64 item_ids = 3;
+	repeated Slots_PrizeItem prize_items = 4;
+	optional int64 win_chip = 5;
+	optional Player player = 6;
+	optional int64 is_multiply = 7;
+	optional int64 bonus_num = 8;
+	optional int64 is_free_spin = 9;
+}
+
+message SlotsAgentBond_Bonus_Request
+{
+	optional Header header = 1;
+	optional int64 pos = 2;
+}
+
+message SlotsAgentBond_Bonus_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 win_amount = 3; //获取的奖励
+	optional Player player = 4;
+	repeated BonusGameChipInfo bonus_game_chip_infos = 5;
+}
+
+message SlotsAgentBond_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsAgentBond_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsAgentBond_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+}

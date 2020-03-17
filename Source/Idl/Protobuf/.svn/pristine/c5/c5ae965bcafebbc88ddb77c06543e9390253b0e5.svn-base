@@ -1,0 +1,57 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsMonkeyKing_Enter_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsMonkeyKing_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsMonkeyKing_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message SlotsMonkeyKing_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated int64 item_ids = 3;
+	optional Player player = 4;
+	repeated Slots_PrizeItem prize_items = 5;
+    optional int64 win_chip = 6;//赢取的筹码
+    optional int64 treasure_row = 7;//第5列宝藏所在的行,nil表示没有宝藏,1,2分别表示1,2行
+    optional int64 treasure_chip = 8;//宝藏获得的筹码
+    optional int64 has_big_wild = 9;//1:true, others:false
+    optional int64 sticky_wild = 10;//sticky wild的位置,1-6分别代表第2列的1-3行和第4列的1-3行
+	optional int64 is_multiply = 11;
+	optional int64 is_free_spin = 12;
+}
+
+message SlotsMonkeyKing_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsMonkeyKing_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsMonkeyKing_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+}
+

@@ -1,0 +1,17 @@
+formal_android_mirror_testaCashRainRevealCountConfig = {
+[1] = { id=1, reveal_count=1, reveal_count_weight=5},
+[2] = { id=2, reveal_count=2, reveal_count_weight=5},
+[3] = { id=3, reveal_count=3, reveal_count_weight=20},
+[4] = { id=4, reveal_count=4, reveal_count_weight=30},
+[5] = { id=5, reveal_count=5, reveal_count_weight=20},
+[6] = { id=6, reveal_count=6, reveal_count_weight=15},
+[7] = { id=7, reveal_count=7, reveal_count_weight=10},
+[8] = { id=8, reveal_count=8, reveal_count_weight=5},
+[9] = { id=9, reveal_count=9, reveal_count_weight=5},
+[10] = { id=10, reveal_count=10, reveal_count_weight=5},
+[11] = { id=11, reveal_count=11, reveal_count_weight=1},
+[12] = { id=12, reveal_count=12, reveal_count_weight=1},
+[13] = { id=13, reveal_count=13, reveal_count_weight=1},
+[14] = { id=14, reveal_count=14, reveal_count_weight=1},
+[15] = { id=15, reveal_count=15, reveal_count_weight=1},
+}

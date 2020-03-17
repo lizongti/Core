@@ -1,0 +1,68 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsWorldCup_Enter_Request
+{
+	optional Header header = 1;
+	optional int32 table_id = 2;
+}
+
+message SlotsWorldCup_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsWorldCup_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+	optional int64 type = 3;//1:334阵型,2:343阵型,3:442阵型
+}
+
+message SlotsWorldCup_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated int64 left_item_ids = 3;
+	repeated Slots_PrizeItem left_prize_items = 4;
+	repeated int64 right_item_ids = 5;
+	repeated Slots_PrizeItem right_prize_items = 6;
+	optional int64 win_chip = 7;
+	optional Player player = 8;
+	optional int64 is_multiply = 9;
+	optional int64 is_free_spin = 10;
+}
+
+message SlotsWorldCup_Wild_Request
+{
+	optional Header header = 1;
+	optional int32 pos = 2;
+}
+
+message SlotsWorldCup_Wild_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message SlotsWorldCup_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsWorldCup_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsWorldCup_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+}

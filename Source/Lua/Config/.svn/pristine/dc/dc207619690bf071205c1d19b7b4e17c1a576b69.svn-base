@@ -1,0 +1,4 @@
+QuestFeverSeasonConfig = {
+[1] = { id=1, season_id=1, season_start_time="2019-12-31 03:00:00", season_end_time="2020-1-14 03:00:00", group_id=1, is_ranking=0, show_id=1},
+[2] = { id=2, season_id=2, season_start_time="2020-1-14 03:00:00", season_end_time="2020-1-28 03:00:00", group_id=1, is_ranking=0, show_id=2},
+}

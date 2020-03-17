@@ -1,0 +1,50 @@
+import "Common.proto";
+import "Player.proto";
+
+message Gift_SendTreats_Request
+{
+    optional Header header = 1;
+    required int64 treat_id = 2;//赠送的treat的id
+    repeated int64 to_player_id = 3;//赠送给哪些玩家
+    required int64 type = 4;//在哪个场次的房间里送的,芝麻开门玩法填4就行
+}
+
+message Gift_SendTreats_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 treat_id = 3;
+	optional Player player = 4;
+}
+
+message Gift_SendTreats_Notice
+{
+	optional Header header = 1;
+	required int64 from_player_id = 2;
+	repeated int64 to_player_id = 3;
+	required int64 treat_id = 4;
+}
+
+message Gift_SendChips_Request
+{
+    optional Header header = 1;
+    required int64 chip_id = 2;//赠送的chip的id
+    repeated int64 to_player_id = 3;//赠送给哪个玩家
+    required int64 type = 4;//在哪个场次的房间里送的,芝麻开门玩法填4就行    
+}
+
+message Gift_SendChips_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 chip_id = 3;
+	optional Player player = 4;
+}
+
+message Gift_SendChips_Notice
+{
+	optional Header header = 1;
+	required int64 from_player_id = 2;
+	repeated int64 to_player_id = 3;
+	required int64 chip_id = 4;
+}

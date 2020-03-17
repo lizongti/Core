@@ -1,0 +1,15 @@
+formal_android_mirror_testaTikiIslandPayrateConfig = {
+[1] = { id=1, item_id=1, client_order=1, payrate = {0,0,0,0,}, client_dsc=""},
+[2] = { id=2, item_id=2, client_order=2, payrate = {0,0,0,0,}, client_dsc=""},
+[3] = { id=3, item_id=3, client_order=3, payrate = {0,0,0,0,}, client_dsc=""},
+[4] = { id=4, item_id=4, client_order=4, payrate = {0,0,0,0,}, client_dsc=""},
+[5] = { id=5, item_id=5, client_order=5, payrate = {2,10,50,150,}, client_dsc="5   150/n4   50/n3   10/n2   2"},
+[6] = { id=6, item_id=6, client_order=6, payrate = {5,30,100,0,}, client_dsc="5   100/n4   30/n3   5"},
+[7] = { id=7, item_id=7, client_order=7, payrate = {5,25,100,0,}, client_dsc="5   100/n4   25/n3   5"},
+[8] = { id=8, item_id=8, client_order=8, payrate = {5,25,100,0,}, client_dsc="5   100/n4   25/n3   5"},
+[9] = { id=9, item_id=9, client_order=9, payrate = {5,20,75,0,}, client_dsc="5   75/n4   20/n3   5"},
+[10] = { id=10, item_id=10, client_order=10, payrate = {5,10,50,0,}, client_dsc="5   50/n4   10/n3   5"},
+[11] = { id=11, item_id=11, client_order=11, payrate = {5,10,50,0,}, client_dsc="5   50/n4   10/n3   5"},
+[12] = { id=12, item_id=12, client_order=12, payrate = {5,10,50,0,}, client_dsc="5   50/n4   10/n3   5"},
+[13] = { id=13, item_id=13, client_order=13, payrate = {5,10,50,0,}, client_dsc="5   50/n4   10/n3   5"},
+}

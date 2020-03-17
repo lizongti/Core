@@ -1,0 +1,14 @@
+import "Player.proto";
+import "Common.proto";
+
+message RateUs_Fetch_Request
+{
+    optional Header header = 1;
+}
+
+message RateUs_Fetch_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+	optional Player player = 3;
+}

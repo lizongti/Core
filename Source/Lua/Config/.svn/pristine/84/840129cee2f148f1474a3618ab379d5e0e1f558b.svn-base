@@ -1,0 +1,6 @@
+formal_android_mirror_testaLuckyChristmasMapInfoConfig = {
+[1] = { id=1, base_reel_weight_config="LuckyChristmasBaseReelWeightConfig", feature_reel_weight_config="LuckyChristmasFeatureReelWeightConfig"},
+[2] = { id=2, base_reel_weight_config="LuckyChristmasBaseReelWeightConfig", feature_reel_weight_config="LuckyChristmasFeatureReelWeightConfig"},
+[3] = { id=3, base_reel_weight_config="LuckyChristmasBaseReelWeightConfig", feature_reel_weight_config="LuckyChristmasFeatureReelWeightConfig"},
+[4] = { id=4, base_reel_weight_config="LuckyChristmasBaseReelWeightConfig", feature_reel_weight_config="LuckyChristmasFeatureReelWeightConfig"},
+}

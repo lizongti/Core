@@ -1,0 +1,7 @@
+formal_android_mirror_testaLuckyChristmasStarValueConfig = {
+[1] = { id=1, Star_Value=0.1, Weight=0.05},
+[2] = { id=2, Star_Value=0.2, Weight=0.2},
+[3] = { id=3, Star_Value=0.5, Weight=0.5},
+[4] = { id=4, Star_Value=1, Weight=0.2},
+[5] = { id=5, Star_Value=2, Weight=0.05},
+}

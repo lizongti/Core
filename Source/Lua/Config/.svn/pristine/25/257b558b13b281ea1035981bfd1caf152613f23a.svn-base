@@ -1,0 +1,14 @@
+formal_android_mirror_testaRTPModeUnLuckyConfig = {
+[1] = { id=1, unlucky_min=0, unlucky_max=1, stage = {1,0,0,},},
+[2] = { id=2, unlucky_min=1, unlucky_max=10, stage = {1,0,0,},},
+[3] = { id=3, unlucky_min=10, unlucky_max=50, stage = {1,0,0,},},
+[4] = { id=4, unlucky_min=50, unlucky_max=100, stage = {1,0,0,},},
+[5] = { id=5, unlucky_min=100, unlucky_max=200, stage = {1,0,0,},},
+[6] = { id=6, unlucky_min=200, unlucky_max=500, stage = {0.5,1,0,},},
+[7] = { id=7, unlucky_min=500, unlucky_max=1000, stage = {0.5,1,0,},},
+[8] = { id=8, unlucky_min=1000, unlucky_max=5000, stage = {0.5,0.75,1,},},
+[9] = { id=9, unlucky_min=5000, unlucky_max=10000, stage = {0.5,0.75,1,},},
+[10] = { id=10, unlucky_min=10000, unlucky_max=100000, stage = {0.5,0.75,1,},},
+[11] = { id=11, unlucky_min=100000, unlucky_max=1000000, stage = {0.5,0.75,1,},},
+[12] = { id=12, unlucky_min=1000000, unlucky_max=1000000000000, stage = {0.5,0.75,1,},},
+}

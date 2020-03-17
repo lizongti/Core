@@ -1,0 +1,13 @@
+formal_android_mirror_testaNewPirateBonusTypeWeight2Config = {
+[1] = { id=1, bonus_type=1, bonus_weight=100, bonus_times=20},
+[2] = { id=2, bonus_type=2, bonus_weight=5, bonus_times=20},
+[3] = { id=3, bonus_type=2, bonus_weight=5, bonus_times=25},
+[4] = { id=4, bonus_type=2, bonus_weight=20, bonus_times=30},
+[5] = { id=5, bonus_type=2, bonus_weight=35, bonus_times=32},
+[6] = { id=6, bonus_type=2, bonus_weight=35, bonus_times=35},
+[7] = { id=7, bonus_type=3, bonus_weight=20, bonus_times=6},
+[8] = { id=8, bonus_type=3, bonus_weight=20, bonus_times=8},
+[9] = { id=9, bonus_type=3, bonus_weight=20, bonus_times=10},
+[10] = { id=10, bonus_type=3, bonus_weight=20, bonus_times=12},
+[11] = { id=11, bonus_type=3, bonus_weight=20, bonus_times=15},
+}

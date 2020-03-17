@@ -1,0 +1,4 @@
+formal_android_mirror_testaPiggyJackpotSpecialSymbolTriggerConfig = {
+[1] = { id=1, group_id=1, item_id=2, trigger_count=5, show_count=5, allowed_col = {3,3,3,3,3,0,0,0,0,0,},},
+[2] = { id=2, group_id=1, item_id=3, trigger_count=-1, show_count=-1, allowed_col = {4,4,4,4,4,4,0,0,0,0,},},
+}

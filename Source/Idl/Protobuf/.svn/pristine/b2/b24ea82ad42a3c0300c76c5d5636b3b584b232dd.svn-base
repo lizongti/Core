@@ -1,0 +1,106 @@
+import "Common.proto";
+import "Player.proto";
+import "Simple.proto";
+
+message ClimbSlide_Collect_Request
+{
+	optional Header header = 1;
+}
+
+message ClimbSlide_Collect_Response
+{
+    optional Header header = 1;
+    optional ClimbSlideInfo climb_slide_info = 2;
+}
+
+message ClimbSlide_FinalCollect_Request
+{
+	optional Header header = 1;
+}
+
+message ClimbSlide_FinalCollect_Response
+{
+    optional Header header = 1;
+    optional int64 final_prize = 2;
+	optional Player player = 3;
+}
+
+message ClimbSlide_ResetMap_Request
+{
+	optional Header header = 1;
+}
+
+message ClimbSlide_ResetMap_Response
+{
+    optional Header header = 1;
+    optional ClimbSlideInfo climb_slide_info = 2;
+}
+
+message ClimbSlide_MapInfo_Request
+{
+	optional Header header = 1;
+}
+
+message ClimbSlide_MapInfo_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+	optional int64 start_pos = 3;//起始位置
+	optional int64 end_pos = 4;//终点位置
+	optional int64 level = 5;//活动等级
+	optional int64 count = 6;//剩余次数
+	optional int64 prize_pool = 7;//当前奖池金额
+	optional int64 ext_percent = 8;//奖励池额外的百分比
+}
+
+message ClimbSlide_Spin_Request
+{
+	optional Header header = 1;
+}
+
+message ClimbSlide_Spin_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+	optional int64 move_count = 3;//移动次数
+	optional int64 start_pos = 4;//起始位置
+	optional int64 end_pos = 5;//终点位置
+	optional string award_info = 6;//奖励[{pos = 1, type = (1行动次数，2金币奖励，3奖池增加,4上，5下), value = 100, end_pos = 1}]
+	optional int64 level = 7;//活动等级
+	optional int64 goal_pos = 8;//最终位置
+	optional int64 count = 9;//剩余次数
+	optional int64 prize = 10;//奖池奖励
+	optional int64 final_prize = 11;//最终奖励金额
+	optional int64 prize_pool = 12;//当前奖池金额
+	optional Player player = 13;
+}
+
+message ClimbSlide_Collect_Notice
+{
+    optional Header header = 1;
+    optional ClimbSlideInfo climb_slide_info = 2;
+}
+
+message ClimbSlide_Booster_Request
+{
+    optional Header header = 1;
+}
+
+message ClimbSlide_Booster_Response
+{
+    optional Header header = 1;
+    optional int64 status = 2;
+	optional int64 stamp_start_time = 3;
+	optional int64 stamp_end_time = 4;
+	optional int64 cutdown_time = 5;
+}
+
+message ClimbSlide_Booster_Notice
+{
+    optional Header header = 1;
+    optional int64 status = 2;
+	optional int64 stamp_start_time = 3;
+	optional int64 stamp_end_time = 4;
+	optional int64 cutdown_time = 5;
+	optional ClimbSlideInfo climb_slide_info = 6;
+}

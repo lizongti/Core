@@ -1,0 +1,16 @@
+DailyWheelConfig1 = {
+[1] = { id=1, weight=0, bonus=10000, lucky={{weight=5,value=0},{weight=5,value=10000}}},
+[2] = { id=2, weight=0.001, bonus=5000000, lucky={{weight=5,value=0},{weight=5,value=5000000}}},
+[3] = { id=3, weight=0.22, bonus=50000, lucky={{weight=5,value=0},{weight=5,value=50000}}},
+[4] = { id=4, weight=0.45, bonus=100000, lucky={{weight=5,value=0},{weight=5,value=100000}}},
+[5] = { id=5, weight=0, bonus=10000, lucky={{weight=5,value=0},{weight=5,value=10000}}},
+[6] = { id=6, weight=0.005, bonus=2000000, lucky={{weight=5,value=0},{weight=5,value=2000000}}},
+[7] = { id=7, weight=0.45, bonus=100000, lucky={{weight=5,value=0},{weight=5,value=100000}}},
+[8] = { id=8, weight=0.23, bonus=150000, lucky={{weight=5,value=0},{weight=5,value=150000}}},
+[9] = { id=9, weight=0.025, bonus=500000, lucky={{weight=5,value=0},{weight=5,value=500000}}},
+[10] = { id=10, weight=0.22, bonus=50000, lucky={{weight=5,value=0},{weight=5,value=50000}}},
+[11] = { id=11, weight=0.01275, bonus=1000000, lucky={{weight=5,value=0},{weight=5,value=1000000}}},
+[12] = { id=12, weight=0.45, bonus=100000, lucky={{weight=5,value=0},{weight=5,value=100000}}},
+[13] = { id=13, weight=0.05, bonus=300000, lucky={{weight=5,value=0},{weight=5,value=300000}}},
+[14] = { id=14, weight=0.23, bonus=150000, lucky={{weight=5,value=0},{weight=5,value=150000}}},
+}

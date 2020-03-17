@@ -1,0 +1,5 @@
+FeverCardsStarWheelConsumptionConfig = {
+[1] = { id=1, max_level=49, star_consumption={[1]=2,[2]=5,[3]=15}},
+[2] = { id=2, max_level=99, star_consumption={[1]=5,[2]=10,[3]=30}},
+[3] = { id=3, max_level=999, star_consumption={[1]=7,[2]=20,[3]=70}},
+}

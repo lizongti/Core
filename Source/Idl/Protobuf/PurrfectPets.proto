@@ -1,0 +1,13 @@
+message PurrfectPets
+{
+	optional int64 bet_amount = 1; //下注数额
+    optional int64 free_spin_bouts = 2; //免费spin次数
+    optional int64 bouts_id = 3;//局id,放用时间戳,服务端用于判定cd和日志
+    optional string channel_id = 4;
+    optional int64 total_loss = 5;
+    optional int64 enter_chip = 6;
+    optional int64 spined_times = 7;
+    optional int64 free_total_win = 8;
+	optional int64 free_item_id = 9;
+    optional string json_str = 10;
+}

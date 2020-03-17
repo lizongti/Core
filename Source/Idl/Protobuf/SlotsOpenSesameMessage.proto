@@ -1,0 +1,69 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsOpenSesame_Enter_Request
+{
+	optional Header header = 1;
+	optional int32 table_id = 2;
+}
+
+message SlotsOpenSesame_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+	repeated int64 item_ids = 4;
+}
+
+message SlotsOpenSesame_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message SlotsOpenSesame_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated int64 item_ids = 3;
+	optional Player player = 4;
+	repeated int64 wilds = 5;
+	repeated Slots_PrizeItem prize_items = 6;
+    optional int64 win_chip = 7;
+	optional int64 is_multiply = 8;
+	optional int64 is_free_spin = 9;
+}
+
+message SlotsOpenSesame_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsOpenSesame_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsOpenSesame_OpenBox_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsOpenSesame_OpenBox_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 chip_get = 3;
+	optional Player player = 4;
+}
+
+message SlotsOpenSesame_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+}
+

@@ -1,0 +1,10 @@
+message Statistics
+{
+	optional string history_games = 1;//玩家曾经玩过的玩法
+	optional int64 last_game = 2;//玩家最后一次玩的玩法
+	optional int64 bigwin_num = 3;//bigwin次数
+	optional int64 megawin_num = 4;//megawin次数
+	optional int64 epicwin_num = 5;//epicwin次数
+	optional int64 bonus_game_num = 6;//玩家进入bonus game次数
+	optional string bonus_award = 7;//玩家进入bonus返奖倍数分布（倍数及次数)
+}

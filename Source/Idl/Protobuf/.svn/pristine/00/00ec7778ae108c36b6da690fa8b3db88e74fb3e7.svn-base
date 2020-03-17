@@ -1,0 +1,27 @@
+import "Common.proto";
+
+message PushNotice_SettleTournament_Request
+{
+	optional Header header = 1;
+	optional int64 club_id = 2;
+	optional int64 rank = 3;
+}
+
+message PushNotice_SettleTournament_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message PushNotice_FinishChallenge_Request
+{
+	optional Header header = 1;
+	optional int64 club_id = 2;
+	optional int64 challenge_index = 3;	
+}
+
+message PushNotice_FinishChallenge_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}

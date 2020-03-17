@@ -1,0 +1,8 @@
+message NewHandAward
+{
+	optional int64 pay_chip = 1; //玩家购买后所携带的chips
+    optional int64 ratio_a = 2;
+    optional int64 ratio_b = 3;
+    optional int64 ratio_d = 4;
+    optional int64 remain_num = 5;//剩余次数
+}

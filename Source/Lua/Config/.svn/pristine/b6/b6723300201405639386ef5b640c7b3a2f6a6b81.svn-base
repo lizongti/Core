@@ -1,0 +1,11 @@
+FeverCardsLevelOutputConfig = {
+[1] = { id=1, player_level=15, package_type=14, is_unlock_level=1},
+[2] = { id=2, player_level=50, package_type=11, is_unlock_level=0},
+[3] = { id=3, player_level=100, package_type=11, is_unlock_level=0},
+[4] = { id=4, player_level=150, package_type=11, is_unlock_level=0},
+[5] = { id=5, player_level=200, package_type=11, is_unlock_level=0},
+[6] = { id=6, player_level=250, package_type=11, is_unlock_level=0},
+[7] = { id=7, player_level=300, package_type=11, is_unlock_level=0},
+[8] = { id=8, player_level=350, package_type=11, is_unlock_level=0},
+[9] = { id=9, player_level=400, package_type=11, is_unlock_level=0},
+}

@@ -1,0 +1,52 @@
+import "Common.proto";
+import "Simple.proto";
+
+message DailyMissions_Info_Request
+{
+	optional Header header = 1;
+}
+
+message DailyMissions_Info_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional DailyMissionsInfo daily_missions_info = 3;//任务信息
+	optional int64 finished_num = 4;//任务完成个数
+}
+
+message DailyMissions_FinalCollect_Request
+{
+	optional Header header = 1;
+	required int64 reward_type = 2;//奖励类型(1:任务一的奖励 2:任务二的奖励 3:任务三的奖励  51:进度奖励1的奖励  52:进度奖励2的奖励)
+	optional int64 has_ad = 3;//是否看了广告,0或不存在表示没有，1表示有
+}
+
+message DailyMissions_FinalCollect_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	required int64 chips = 3;//奖励的筹码
+	required int64 mission_points = 4;//奖励的Missions Points点数
+}
+
+message DailyMissions_Collect_Request
+{
+	optional Header header = 1;
+	required int64 reward_type = 2;//奖励类型(1:任务一的奖励 2:任务二的奖励 3:任务三的奖励  51:进度奖励1的奖励  52:进度奖励2的奖励)
+}
+
+message DailyMissions_Collect_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	required int64 chips = 3;//奖励的筹码
+	required int64 mission_points = 4;//奖励的Missions Points点数
+	required int64 reward_type = 5;
+}
+
+message DailyMissions_Info_Notice
+{
+	optional Header header = 1;
+	optional DailyMissionsInfo daily_missions_info = 2;//任务信息
+	optional int64 finished_num = 3;//任务完成个数
+}

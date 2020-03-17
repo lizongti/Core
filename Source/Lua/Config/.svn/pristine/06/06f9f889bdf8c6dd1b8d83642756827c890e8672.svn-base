@@ -1,0 +1,9 @@
+formal_android_mirror_testaLuckyChristmasMapInfoConfig = {
+[1] = { id=1, base_reel_weight_config="NewAliceinWonderlandBaseReelWeight2Config", feature_reel_weight_config="NewAliceinWonderlandFeatureReelWeight1Config"},
+[2] = { id=2, base_reel_weight_config="NewAliceinWonderlandBaseReelWeight3Config", feature_reel_weight_config="NewAliceinWonderlandFeatureReelWeight1Config"},
+[3] = { id=3, base_reel_weight_config="NewAliceinWonderlandBaseReelWeight4Config", feature_reel_weight_config="NewAliceinWonderlandFeatureReelWeight2Config"},
+[4] = { id=4, base_reel_weight_config="NewAliceinWonderlandBaseReelWeight1Config", feature_reel_weight_config="NewAliceinWonderlandFeatureReelWeight1Config"},
+[5] = { id=5, base_reel_weight_config="", feature_reel_weight_config=""},
+[6] = { id=6, base_reel_weight_config="", feature_reel_weight_config=""},
+[7] = { id=7, base_reel_weight_config="", feature_reel_weight_config=""},
+}

@@ -1,0 +1,6 @@
+formal_android_mirror_testaLuckyChristmasRespinTimesConfig = {
+[1] = { id=1, Respin_Times=5, Weight=0.5},
+[2] = { id=2, Respin_Times=6, Weight=0.2},
+[3] = { id=3, Respin_Times=7, Weight=0.2},
+[4] = { id=4, Respin_Times=8, Weight=0.1},
+}

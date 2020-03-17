@@ -1,0 +1,47 @@
+message Prop
+{
+	optional string normal = 1;
+}
+
+message FirstChargeInfo
+{
+	optional string charge_info = 1;
+}
+
+message TaskInfo
+{
+	optional string daily_task = 1;
+	optional string daily_missions = 2;
+	optional string panther_tracks = 3;
+}
+
+message DailyMissionsInfo
+{
+	optional int64  mission_points = 1;//已经获得的Missions Points点数
+	optional int64  total_mission_points = 2;//总Missions Points点数
+	optional int64  left_days = 3;//Missions Points距离下次刷新的剩余天数
+	optional int64  gift_box_status = 4;//进度奖励1的状态:0不能领取，1可以领取，2已经领取
+	optional int64  big_treasure_box_status = 5;//进度奖励2的状态:0不能领取，1可以领取，2已经领取
+	optional int64  left_mission_times = 6;//距离下一次刷新任务所剩余的时间，最小单位为秒
+	optional string missions = 7;//任务一的信息,json格式:[{task_des = "COLLECT 3 LOBBY BONUS", valid_value = 100, cur_value = 0, status = 0(0表示没领取，1表示领取了), is_lock = 0(0表示没有锁住，1表示锁住)}]
+}
+
+message PantherTracksInfo
+{
+	optional int64 difficulty_type = 1;//选择的难度类型(1 basic,2 normal,3 pro)
+	optional string info = 2;//任务一的信息,json格式:[{difficulty_type = 1, total_award = 0, status = 0(0没有完成,1完成), step_info = [{step_type = 1, award = 0, start_points = 20, end_points = 1000, cur_points = 0, status = 0(0没有完成，1完成), chips=0}]}]
+	optional int64 distance_start_time = 3;//距离开启时间多少秒
+	optional int64 distance_end_time = 4;//距离结束时间多少秒
+	optional int64 distance_refresh_time = 5;//距离刷新时间多少秒
+}
+
+message ClimbSlideInfo
+{
+	optional int64 collect_amount = 1;//当前收集量
+	optional int64 total_collect_amount = 2;//收集完成目标 
+	optional int64 spin_count = 3;//生行动次数
+	optional int64 sel_level = 4;//选择的条目
+	optional string activity_list = 5;//条目信息列表[{level:1,prize:25000000(奖励池金额), spin_count = 12(剩余spin次数),status=1(0没有开始，1正在进行，2已经完成),ext_percent=10(奖励池额外的百分比)}]
+	optional int64 final_prize = 6;//最终奖励金额
+	optional int64 flying_status = 7;//0沒有飞转盘,1飞转盘
+}

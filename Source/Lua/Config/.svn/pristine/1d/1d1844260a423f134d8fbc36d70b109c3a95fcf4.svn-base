@@ -1,0 +1,11 @@
+formal_android_mirror_testaTikiIslandHoldSpinShowBallCountWeightConfig = {
+[1] = { id=1, remain_ball_count=1, show_weight = {1,0,0,0,0,0,0,0,0,},},
+[2] = { id=2, remain_ball_count=2, show_weight = {9,1,0,0,0,0,0,0,0,},},
+[3] = { id=3, remain_ball_count=3, show_weight = {15,4,1,0,0,0,0,0,0,},},
+[4] = { id=4, remain_ball_count=4, show_weight = {10,6,3,0,0,0,0,0,0,},},
+[5] = { id=5, remain_ball_count=5, show_weight = {30,20,12,0,0,0,0,0,0,},},
+[6] = { id=6, remain_ball_count=6, show_weight = {25,20,12,0,0,0,0,0,0,},},
+[7] = { id=7, remain_ball_count=7, show_weight = {20,15,12,0,0,0,0,0,0,},},
+[8] = { id=8, remain_ball_count=8, show_weight = {20,15,12,0,0,0,0,0,0,},},
+[9] = { id=9, remain_ball_count=9, show_weight = {20,15,12,0,0,0,0,0,0,},},
+}

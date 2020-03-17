@@ -1,0 +1,62 @@
+import "Common.proto";
+import "Player.proto";
+import "CustomerService.proto";
+
+message CustomerService_GetCurrentPage_Request//获取当前页面信息
+{
+	optional Header header = 1;
+}
+
+message CustomerService_GetCurrentPage_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 page = 3;
+	repeated CustomerServiceItem item = 4;
+}
+
+message CustomerService_DisplayHistory_Request//获取历史页面信息
+{
+	optional Header header = 1;
+	required int64 page = 2;
+}
+
+message CustomerService_DisplayHistory_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 page = 3;
+	repeated CustomerServiceItem item = 4;
+}
+
+message CustomerService_CustomerSay_Request//发送聊天信息
+{
+	optional Header header = 1;
+	required string content = 2;
+}
+
+message CustomerService_CustomerSay_Response // just mean if it failed
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message CustomerService_PushNewItem_Request // is a Command from manager
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional CustomerServiceItem item = 4;
+}
+
+message CustomerService_PushNewItem_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message CustomerService_PushNewItem_Notice //刷新消息
+{
+	optional Header header = 1;
+	optional CustomerServiceItem item = 2;
+}

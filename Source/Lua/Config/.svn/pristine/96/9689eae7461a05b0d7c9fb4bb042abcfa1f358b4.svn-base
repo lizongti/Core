@@ -1,0 +1,4 @@
+AdExternConfig = {
+[1] = { id=1, desc="激励视频广告请求", ad_cooldown=5, ad_level_min=10, ad_limit=50, ad_register_time=12},
+[3] = { id=3, desc="插屏广告请求", ad_cooldown=180, ad_level_min=20, ad_limit=100, ad_register_time=24},
+}

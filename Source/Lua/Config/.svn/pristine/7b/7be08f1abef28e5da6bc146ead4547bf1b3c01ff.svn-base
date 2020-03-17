@@ -1,0 +1,7 @@
+ClimbSlideInitDataConfig = {
+[1] = { id=1, player_level=12, base_value_by_coefficient_of_total_chip=0.03, base_value=450000, max_base_value=2250000, collect_extra_value=5000, spin_collect_probablity=0.035, prize_coefficient_level = {1,2,2.4,3,4,5,}, final_prize_coefficient=8, gift_prize_coefficient=0.04},
+[2] = { id=2, player_level=30, base_value_by_coefficient_of_total_chip=0.03, base_value=800000, max_base_value=4000000, collect_extra_value=5000, spin_collect_probablity=0.035, prize_coefficient_level = {1,2,2.4,3,4,5,}, final_prize_coefficient=8, gift_prize_coefficient=0.04},
+[3] = { id=3, player_level=50, base_value_by_coefficient_of_total_chip=0.035, base_value=1500000, max_base_value=7500000, collect_extra_value=5000, spin_collect_probablity=0.035, prize_coefficient_level = {1,2,2.4,3,4,5,}, final_prize_coefficient=8, gift_prize_coefficient=0.05},
+[4] = { id=4, player_level=80, base_value_by_coefficient_of_total_chip=0.035, base_value=3500000, max_base_value=17500000, collect_extra_value=30000, spin_collect_probablity=0.035, prize_coefficient_level = {1,2,2.4,3,4,5,}, final_prize_coefficient=8, gift_prize_coefficient=0.05},
+[5] = { id=5, player_level=120, base_value_by_coefficient_of_total_chip=0.04, base_value=8000000, max_base_value=40000000, collect_extra_value=50000, spin_collect_probablity=0.035, prize_coefficient_level = {1,2,2.4,3,4,5,}, final_prize_coefficient=8, gift_prize_coefficient=0.06},
+}

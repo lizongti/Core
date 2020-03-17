@@ -1,0 +1,35 @@
+import "Common.proto";
+import "Simple.proto";
+
+message PantherTracks_Info_Request
+{
+  	optional Header header = 1;
+}
+
+message PantherTracks_Info_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional PantherTracksInfo panther_tracks_info = 3;//任务信息
+}
+
+message PantherTracks_Info_Notice
+{
+	optional Header header = 1;
+	optional PantherTracksInfo panther_tracks_info = 2;//任务信息
+	optional int64 	award_points = 3;
+	optional string finish_info = 4;// {[1]=1,[2]=2,[3]=3}, 
+}
+
+message PantherTracks_Select_Request
+{
+	optional Header header = 1;
+	optional int64 difficulty_type = 2;//难度类型(1 basic,2 normal,3 pro)
+}
+
+message PantherTracks_Select_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 difficulty_type = 3;
+}

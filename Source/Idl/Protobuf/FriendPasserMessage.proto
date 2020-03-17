@@ -1,0 +1,14 @@
+import "Common.proto";
+import "Player.proto";
+
+message FriendPasser_AddFriend_Request
+{
+	optional Header header = 1;
+	required int64 player_id = 2;
+}
+
+message FriendPasser_AddFriend_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}

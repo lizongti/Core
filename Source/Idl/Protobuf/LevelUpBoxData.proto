@@ -1,0 +1,13 @@
+//升级礼盒的奖励
+message LevelUpBoxAward
+{
+    optional int64 box_type = 1; //盒子的类型
+    optional int64 chip = 2;  //盒子中奖励的筹码
+}
+
+//下一个奖励礼盒的提示信息
+message NextLevelUpBoxTip
+{
+    optional int64 level = 1; //需要达到的等级
+    optional int64 box_type = 2; //盒子的类型
+}

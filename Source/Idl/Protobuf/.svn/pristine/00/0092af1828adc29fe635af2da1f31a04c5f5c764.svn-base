@@ -1,0 +1,232 @@
+import "Common.proto";
+import "Player.proto";
+import "Account.proto";
+import "Client.proto";
+import "User.proto";
+import "DailyWheelData.proto";
+import "LevelUpBoxData.proto";
+//登录请求
+message Account_Login_Request
+{
+	optional Header header = 1;
+	required string token = 2;
+	optional Account account = 3;
+	optional Client client = 4;
+	optional int64 version = 5;
+}
+
+message Account_AgentLogin_Request
+{
+	optional Header header = 1;
+	required string token = 2;
+	optional Account account = 3;
+	optional Client client = 4;
+}
+
+message Account_Login_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+    optional DailyWheelData daily_wheel = 4;//DailyWheel(登录时的那个转盘)相关的数据
+	optional string slots_level_lock_info = 5;//服务器配置文件解锁信息
+	optional int64 is_dev = 6;//0表示外网，1表示内网
+	optional string game_sort_info = 7;
+	optional string slot_level_config = 8;
+	optional int64 is_new_player = 9;//新注册的玩家，在24小时登录为新玩家，值为1，否则为0
+	optional string ui_type = 10;//json数组，{k,v}
+	optional int64 pay_award = 11;//是否已经获取支付失败奖励(0没有获取，1已经获取)
+	optional string res_version = 12;
+}
+
+message Account_AgentLogin_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+    optional DailyWheelData daily_wheel = 4;//DailyWheel(登录时的那个转盘)相关的数据
+	optional string slots_level_lock_info = 5;//服务器配置文件解锁信息
+	optional int64 is_dev = 6;//0表示外网，1表示内网
+	optional string game_sort_info = 7;
+	optional string slot_level_config = 8;
+	optional int64 is_new_player = 9;//新注册的玩家，在24小时登录为新玩家，值为1，否则为0
+	optional string ui_type = 10;//json数组，{k,v}
+	optional int64 pay_award = 11;//是否已经获取支付失败奖励(0没有获取，1已经获取)
+}
+
+message Account_Logout_Request
+{
+	optional Header header = 1;
+}
+
+message Account_Logout_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+//设置玩家个人信息请求
+message Account_SetUser_Request
+{
+	optional Header header = 1;
+	optional User user = 2;
+}
+
+message Account_SetUser_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message Account_HeartBeat_Request
+{
+	optional Header header = 1;
+}
+
+message Account_HeartBeat_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 pot_limit_time  = 3;
+	optional int64 pot_collect_time = 4;
+	optional int64 pot_points = 5;
+    optional int64 purchased_pot = 6;		
+}
+
+message Account_GetBriefInfo_Request
+{
+	optional Header header = 1;
+	required int64 player_id = 2;
+}
+
+message Account_GetBriefInfo_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional User user = 3;
+}
+
+//升级通知
+message Account_LevelUp_Notice
+{
+	optional Header header = 1;
+	optional int64 level = 2;//玩家等级
+	optional int64 experience = 3;//玩家经验
+	optional int64 chip = 4;//升级获得的筹码
+	optional LevelUpBoxAward box_award =5;//奖励的礼盒
+	optional NextLevelUpBoxTip next_box_tip =6;//下个奖励盒子的提示
+}
+
+message Account_OnSignal_Request
+{
+	optional Header header = 1;
+	optional string include_player_id = 2;
+}
+
+message Account_OnSignal_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Account_SetBackground_Request
+{
+    optional Header header = 1;
+}
+
+message Account_SetBackground_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+}
+
+message Account_ClientAction_Request
+{
+    optional Header header = 1;
+	optional string content = 2;
+}
+
+message Account_ClientAction_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+}
+
+message Account_Config_Request
+{
+	optional Header header = 1;
+	repeated string table_name = 2;
+	required int64 game_type = 3;
+}
+
+message Account_Config_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+	repeated string table_content = 3;
+}
+
+message Account_RateUs_Request
+{
+	optional Header header = 1;
+}
+
+message Account_RateUs_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+}
+
+message Account_PayFailAward_Request
+{
+	optional Header header = 1;
+}
+
+message Account_PayFailAward_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+}
+
+message Account_InWhiteList_Request
+{
+	optional Header header = 1;
+}
+
+message Account_InWhiteList_Response
+{
+    optional Header header = 1;
+	required Return ret = 2;
+	
+	optional int64  is_in = 3;
+}
+
+message Account_Ping_Request
+{
+	optional Header header = 1;
+}
+
+message Account_Ping_Response
+{
+    optional Header header = 1;
+    required Return ret = 2;
+}
+
+message Account_Cheat_Request
+{
+	optional Header header = 1;
+	optional int64 type = 2;
+	optional string arg1 = 3;
+	optional string arg2 = 4;
+}
+
+message Account_Cheat_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional int64 type = 3;
+	optional string arg1 = 4;
+	optional string arg2 = 5;
+}
+

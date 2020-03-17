@@ -1,0 +1,432 @@
+import "Common.proto";
+import "Player.proto";
+import "Prop.proto";
+import "Club.proto";
+
+message DoublePurchase
+{
+	optional int64 vip_points = 1;
+	optional int64 chip = 2;
+	optional int64 goods_id = 3;
+}
+
+message Command_Drop_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_Drop_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_Notice_Drop_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_Notice_Drop_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_FinishDrop_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+}
+
+message Command_FinishDrop_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_Expire_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_Expire_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_GetAttachments_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional string props = 4;
+}
+
+message Command_GetAttachments_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_GetAttachments_Notice
+{
+	optional Header header = 1;
+	repeated Item item = 2;
+	optional int64 attachments_type = 3;//1支付失败奖励，2广告奖励，3离线邮件
+}
+
+message Command_ResetPotInfo_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_ResetPotInfo_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_GetGoods_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional string content = 3;
+}
+
+message Command_GetGoods_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_GetGoods_Notice
+{
+	optional Header header = 1;
+	repeated Item item = 2;
+	optional int64 goods_id = 3;
+	optional int64 payment_id = 4;
+	optional string payment_type = 5;
+	optional DoublePurchase double_purchase = 6;
+	optional int64 vip_points = 7;
+}
+
+message Command_Player_Notice
+{
+	optional Header header = 1;
+	optional Player player = 2;
+	optional int64  collect_chip = 3;//增加的金币
+}
+
+message Command_AddFriend_Notice
+{
+	optional Header header = 1;
+	optional Player player = 2;
+}
+
+message Command_OptLog_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional string category = 4;
+	optional string data = 5;
+}
+
+message Command_OptLog_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_Broadcast_Request
+{
+	optional Header header = 1;
+	optional string channel_id = 2;
+	optional string player_id = 3;
+	optional string content = 4;
+}
+
+message Command_Broadcast_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_GetSendChips_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional int64 chip_count = 4;
+	optional string sender = 5;
+}
+
+message Command_GetSendChips_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_GetSendChips_Notice
+{
+	optional Header header = 1;
+	optional int64 chip_get = 2;//获得到的筹码数
+}
+
+message Command_ClubKickOut_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_ClubKickOut_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;	
+}
+
+message Command_ClubKickOut_Notice
+{
+	optional Header header = 1;
+	optional Player player = 2;
+}
+
+message Command_ClubApprove_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional int64 club_id = 4;
+}
+
+message Command_ClubApprove_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;	
+}
+
+message Command_ClubApprove_Notice
+{
+	optional Header header = 1;
+	optional Player player = 2;
+    optional int64 join_bonus = 3;
+}
+
+message Command_ClubReject_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional string club_name = 4;
+}
+
+message Command_ClubReject_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;	
+}
+
+message Command_ClubReject_Notice
+{
+	optional Header header = 1;
+	optional string club_name = 2;
+}
+
+message Command_ClubPromote_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional int64 new_identity = 4;
+}
+
+message Command_ClubPromote_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;	
+}
+
+message Command_ClubPromote_Notice
+{
+	optional Header header = 1;
+	optional Club club = 2;
+}
+
+message Command_ClubDemote_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional int64 new_identity = 4;
+}
+
+message Command_ClubDemote_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_ClubDemote_Notice
+{
+	optional Header header = 1;
+	optional Club club = 2;
+}
+
+message Command_Hotfix_Request
+{
+    optional Header header = 1;
+    optional string process_name = 2;
+	repeated string module_path = 3;
+	repeated string module_name = 4;
+}
+
+message Command_Hotfix_Response
+{
+    optional Header header = 1;
+    optional Return ret = 2;
+}
+
+message Command_Replaced_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional int64 type = 4;
+}
+
+message Command_Replaced_Response
+{
+    optional Header header = 1;
+    optional Return ret = 2;
+}
+
+message Command_Replaced_Notice
+{
+	optional Header header = 1;
+	optional int64 type = 2;//1:被替换的类型是facebook, 2:被替换的类型是googleplay
+}
+
+message Command_BindFacebook_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_BindFacebook_Response
+{
+    optional Header header = 1;
+    optional Return ret = 2;
+}
+
+message Command_BindPlayerInfo_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional string platform_head_id = 4;
+	optional string nickname = 5;
+	optional string action = 6;
+}
+
+message Command_BindPlayerInfo_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_Gm_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional string content = 4;
+}
+
+message Command_Gm_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_InviteFrd_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional Player friend = 4;
+    optional int32 frd_table_id = 5;
+}
+
+message Command_InviteFrd_Response
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+}
+
+message Command_InviteFrd_Notice
+{
+	optional Header header = 1;
+	optional Return ret = 2;
+	optional int64 player_id = 3;
+	optional Player friend = 4;
+    optional int32 frd_table_id = 5;
+}
+
+//获取好友列表请求
+message Command_FrdList_Request
+{
+    optional Header header = 1;
+	optional int64 session_id = 2;
+    optional int64 player_id = 3;
+}
+
+message Command_FrdList_Response
+{
+    optional Header header = 1;
+	required Return ret = 2;
+}
+
+message Command_FrdList_Notice
+{
+    optional Header header = 1;
+	optional Return ret = 2;
+	repeated int64 friend_list = 3;
+}
+
+message Command_ClearTriggerTimes_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+}
+
+message Command_ClearTriggerTimes_Response
+{
+    optional Header header = 1;
+    optional Return ret = 2;
+}
+
+message Command_DailyMissions_Request
+{
+	optional Header header = 1;
+	optional int64 session_id = 2;
+	optional int64 player_id = 3;
+	optional string content = 4;
+}
+
+message Command_DailyMissions_Response
+{
+    optional Header header = 1;
+    optional Return ret = 2;
+}

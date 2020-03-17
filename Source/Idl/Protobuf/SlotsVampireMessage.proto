@@ -1,0 +1,61 @@
+import "Common.proto";
+import "Player.proto";
+import "Contest.proto";
+import "Slots.proto";
+
+message SlotsVampire_Enter_Request
+{
+	optional Header header = 1;
+	optional int32 table_id = 2;
+}
+
+message SlotsVampire_Enter_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsVampire_Start_Request
+{
+	optional Header header = 1;
+	optional int64 amount = 2;
+}
+
+message SlotsVampire_Start_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+    repeated int64 item_ids = 3;//从左到右从上到下排的17个item
+    optional Player player = 4;
+    optional int64 can_merge = 5;//是否有4个吸血鬼能合并,0:false, 1:true
+    repeated int64 merge_indexes = 6;//如果能合并,合并的4个元素的index,这个index指的是在item_ids中的index
+    repeated int64 col_1_items = 7;//在触发了respin的时候,第二次转动的第1列的item
+    repeated int64 col_5_items = 8;//在触发了respin的时候,第二次转动的第5列的item
+    repeated Slots_PrizeItem prize_items = 9;
+    repeated Slots_PrizeItem respin_prize_items = 10;
+    optional int64 win_chip = 11;
+    optional int64 total_payrate = 12;
+	optional int64 respin_win_chip = 13;
+	optional int64 is_multiply = 14;
+	optional int64 is_free_spin = 15;
+}
+
+message SlotsVampire_Exit_Request
+{
+	optional Header header = 1;
+}
+
+message SlotsVampire_Exit_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Player player = 3;
+}
+
+message SlotsVampire_TableSync_Notice
+{
+	optional Header header = 1;
+	optional Table table = 2;
+}
+

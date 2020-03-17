@@ -1,0 +1,10 @@
+formal_android_mirror_testaHoneyFortuneMapInfoConfig = {
+[1] = { id=1, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight21Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight21Config"},
+[2] = { id=2, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight22Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight20Config"},
+[3] = { id=3, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight23Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight21Config"},
+[4] = { id=4, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight20Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight20Config"},
+[5] = { id=5, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight24Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight21Config"},
+[6] = { id=6, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight25Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight20Config"},
+[7] = { id=7, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight26Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight20Config"},
+[8] = { id=8, base_reel_config="HoneyFortuneBaseReelConfig", base_reel_weight_config="HoneyFortuneBaseReelWeight27Config", feature_reel_config="HoneyFortuneFeatureReelConfig", feature_reel_weight_config="HoneyFortuneFeatureReelWeight20Config"},
+}

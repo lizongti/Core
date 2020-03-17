@@ -1,0 +1,16 @@
+formal_android_mirror_testaHalloweenNightItemConfig = {
+[1] = { id=1, item_desc="杯", item_id=1},
+[2] = { id=2, item_desc="卷轴", item_id=2},
+[3] = { id=3, item_desc="盾牌", item_id=3},
+[4] = { id=4, item_desc="紧箍", item_id=4},
+[5] = { id=5, item_desc="药水", item_id=5},
+[6] = { id=6, item_desc="黑桃", item_id=6},
+[7] = { id=7, item_desc="红桃", item_id=7},
+[8] = { id=8, item_desc="梅花", item_id=8},
+[9] = { id=9, item_desc="方块", item_id=9},
+[10] = { id=10, item_desc="Sticky Wild", item_id=10},
+[11] = { id=11, item_desc="Count down Wild", item_id=11},
+[12] = { id=12, item_desc="Scatter", item_id=12},
+[13] = { id=13, item_desc="宝箱", item_id=13},
+[14] = { id=14, item_desc="Big Wild", item_id=14},
+}

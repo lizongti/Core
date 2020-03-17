@@ -1,0 +1,13 @@
+ShopExtraCoinConfig = {
+[0] = { id=0, base_extra_coins=0},
+[10] = { id=10, base_extra_coins=1},
+[20] = { id=20, base_extra_coins=2},
+[30] = { id=30, base_extra_coins=3},
+[40] = { id=40, base_extra_coins=4},
+[50] = { id=50, base_extra_coins=5},
+[60] = { id=60, base_extra_coins=7.5},
+[80] = { id=80, base_extra_coins=9},
+[100] = { id=100, base_extra_coins=10.5},
+[150] = { id=150, base_extra_coins=10.5},
+[200] = { id=200, base_extra_coins=10.5},
+}

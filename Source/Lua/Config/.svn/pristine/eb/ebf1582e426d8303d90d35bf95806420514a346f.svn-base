@@ -1,0 +1,17 @@
+formal_android_mirror_testaTestGameFeatureReelWeightConfig = {
+[1] = { id=1, reel_weight_ = {2,2,2,2,2,},},
+[2] = { id=2, reel_weight_ = {2,2,2,2,2,},},
+[3] = { id=3, reel_weight_ = {2,2,2,2,2,},},
+[4] = { id=4, reel_weight_ = {1,1,1,1,1,},},
+[5] = { id=5, reel_weight_ = {1,1,1,1,1,},},
+[6] = { id=6, reel_weight_ = {1,1,1,1,1,},},
+[7] = { id=7, reel_weight_ = {1,1,1,1,1,},},
+[8] = { id=8, reel_weight_ = {1,1,1,1,1,},},
+[9] = { id=9, reel_weight_ = {1,1,1,1,1,},},
+[10] = { id=10, reel_weight_ = {1,1,1,1,1,},},
+[11] = { id=11, reel_weight_ = {1,1,1,1,1,},},
+[12] = { id=12, reel_weight_ = {1,1,1,1,1,},},
+[13] = { id=13, reel_weight_ = {1,1,1,1,1,},},
+[14] = { id=14, reel_weight_ = {1,1,1,1,1,},},
+[15] = { id=15, reel_weight_ = {1,1,1,1,1,},},
+}

@@ -1,0 +1,64 @@
+import "Common.proto";
+import "Prop.proto";
+import "Player.proto";
+import "Simple.proto";
+
+message Prop_Purchase_Request
+{
+	optional Header header = 1;
+	required Item item = 2;
+}
+
+message Prop_Purchase_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	repeated Item item = 3;
+	optional Prop prop = 4;
+	optional Player player = 5;
+}
+
+message Prop_Use_Request
+{
+	optional Header header = 1;
+	required Item item = 2;
+}
+
+message Prop_Use_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Item item = 3;
+	optional Prop prop = 4;
+	repeated Item obtain_items = 5;
+	optional int64 is_jackpot = 6;
+	optional Player player = 7;
+}
+
+message Prop_Present_Request
+{
+	optional Header header = 1;
+	required Item item = 2;
+	required int64 des_id = 3;
+}
+
+message Prop_Present_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Prop prop = 3;
+}
+
+message Prop_PurchasePresent_Request
+{
+	optional Header header = 1;
+	required Item item = 2;
+	required int64 des_id = 3;
+}
+
+message Prop_PurchasePresent_Response
+{
+	optional Header header = 1;
+	required Return ret = 2;
+	optional Prop prop = 3;
+}
