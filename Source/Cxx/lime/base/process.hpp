@@ -2,6 +2,7 @@
 #define PROCESS_HPP
 
 #include <iostream>
+#include <thread>
 #include <boost/program_options.hpp>
 #include "lime/base/singleton.hpp"
 
@@ -10,7 +11,7 @@ namespace lime
 struct configuration
 {
 	uint16_t thread;
-	std::string service;
+	std::string bootstrap;
 };
 
 class process
@@ -21,9 +22,9 @@ public:
 	{
 		boost::program_options::variables_map variables_map;
 		boost::program_options::options_description option_description("options");
-		option_description.add_options()("help,h", "describe arguments")("thread,t", boost::program_options::value<uint16_t>(), "thread")("service,s", boost::program_options::value<std::string>(), "service");
+		option_description.add_options()("help,h", "describe arguments")("thread,t", boost::program_options::value<uint16_t>(), "thread")("bootstrap,s", boost::program_options::value<std::string>(), "bootstrap");
 		boost::program_options::positional_options_description positional_options_description;
-		positional_options_description.add("service", -1);
+		positional_options_description.add("bootstrap", -1);
 
 		try
 		{
@@ -34,24 +35,29 @@ public:
 		{
 			std::cerr << "Incorrect command line syntax." << std::endl;
 			std::cerr << "Use '--help' for a list of options." << std::endl;
-			exit(-1);
+			exit(1);
 		}
 
-		if (variables_map.count("thread"))
-			config.thread = variables_map["thread"].as<uint16_t>();
-		if (variables_map.count("service"))
-			config.service = variables_map["service"].as<std::string>();
+		config.thread = variables_map.count("thread") ? variables_map["thread"].as<uint16_t>() : std::thread::hardware_concurrency();
+		config.bootstrap = variables_map.count("bootstrap") ? variables_map["bootstrap"].as<std::string>() : "bootstrap";
 
 		return *this;
 	}
 
 	process &run()
 	{
+		for (index = 0; index < config.thread; ++index)
+		{
+			threads.push_back(new std::thread([](){
+				
+			});
+		}
 		return *this;
 	}
 
 protected:
 	configuration config;
+	std::vector<std::thread *> threads;
 };
 };	 // namespace lime
 #endif // !PROCESS_HPP
