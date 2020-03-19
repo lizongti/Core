@@ -5,6 +5,7 @@
 #include <thread>
 #include <algorithm>
 #include <vector>
+#include <thread>
 #include <boost/program_options.hpp>
 
 #include "singleton.hpp"

@@ -1,4 +1,5 @@
 {
+    "terminal.integrated.shell.windows": "C:/Windows/System32/CMD.exe",
     "files.associations": {
         "*.lua.txt": "lua",
         "**/*.javascript": "js",
@@ -66,6 +67,7 @@
         "xthread": "cpp",
         "xmemory0": "cpp",
         "hash_set": "cpp",
-        "xfunctional": "cpp"
+        "xfunctional": "cpp",
+        "concepts": "cpp"
     }
 }

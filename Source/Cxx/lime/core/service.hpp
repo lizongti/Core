@@ -3,6 +3,7 @@
 
 #include "queue.hpp"
 #include "message.hpp"
+#include "module.hpp"
 
 namespace lime
 {
@@ -25,10 +26,10 @@ public:
 
     void work()
     {
-        message *m;
-        while (m = q.pop())
+        message *msg;
+        while (msg = q.pop())
         {
-            // handle(m);
+            m.handle(msg);
         }
     }
 
@@ -38,6 +39,7 @@ public:
 
 protected:
     queue<message> q;
+    module m;
 };
 }; // namespace core
 }; // namespace lime

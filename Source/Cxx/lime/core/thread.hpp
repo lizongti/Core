@@ -1,6 +1,7 @@
 #ifndef THREAD_HPP
 #define THREAD_HPP
 
+#include <thread>
 #include "singleton.hpp"
 #include "queue.hpp"
 #include "service.hpp"
@@ -15,19 +16,6 @@ class thread
 public:
     thread()
     {
-        start();
-    }
-    virtual ~thread(){};
-
-public:
-    void join()
-    {
-        t->join();
-    }
-
-protected:
-    void start()
-    {
         t = std::shared_ptr<std::thread>(new std::thread([]() {
             while (true)
             {
@@ -38,6 +26,13 @@ protected:
                     std::this_thread::sleep_for(std::chrono::milliseconds(1));
             }
         }));
+    }
+    virtual ~thread(){};
+
+public:
+    void join()
+    {
+        t->join();
     }
 
 protected:
