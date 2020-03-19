@@ -12,24 +12,9 @@ enum message_type
     MSG_TYPE_JSON = 2,
     MSG_TYPE_PACKET = 3,
 };
-
-class message_queue
-{
+class message{
 public:
-    message_queue(){};
-    virtual ~message_queue(){};
 
-public:
-};
-
-class global_message_queue
-    : public singleton<global_message_queue>
-{
-public:
-    global_message_queue(){};
-    virtual ~global_message_queue(){};
-
-private:
 };
 }; // namespace lime
 

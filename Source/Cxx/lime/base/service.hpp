@@ -1,21 +1,32 @@
 #ifndef SERVICE_HPP
 #define SERVICE_HPP
 
-#include "lime/base/service.hpp"
+#include <boost/lockfree/queue.hpp>
+#include "lime/base/message.hpp"
 
 namespace lime
 {
 class service
 {
 public:
-    virtual ~service() = 0;
+    service()
+    {
+    }
+    virtual ~service()
+    {
+    }
 
 public:
-    virtual bool init(const std::string &json) = 0;
+    void work()
+    {
+        message *m;
+        while (queue.pop(m))
+        {
+        }
+    }
 
-    virtual bool handle(const std::string &sender, MessageType type, void *data) = 0;
-
-    virtual bool release() = 0;
+protected:
+    boost::lockfree::queue<message *> queue;
 };
 
 }; // namespace lime
