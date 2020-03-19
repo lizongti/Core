@@ -1,3 +1,5 @@
+docker stop Core
+docker rm Core
 cd ..
 docker pull registry.cn-hangzhou.aliyuncs.com/vr-cat/slots-game:latest
 docker run -e PRO_SPEC_T=docker-local --privileged=true ^

@@ -10,6 +10,7 @@
 #include "singleton.hpp"
 #include "service.hpp"
 #include "queue.hpp"
+#include "thread.hpp"
 
 namespace lime
 {
@@ -55,30 +56,35 @@ public:
 
 	process &run()
 	{
-		singleton<queue<service>>::instance().reserve(config.service_limit);
-		for (auto i = 0; i < config.thread; ++i)
-		{
-			threads.push_back(new std::thread([]() {
-				while (true)
-				{
-					auto s = singleton<queue<service>>::instance().pop();
-					if (s)
-						s->work();
-					else
-						std::this_thread::sleep_for(std::chrono::milliseconds(1));
-				}
-			}));
-		}
-		for (auto thread : threads)
-		{
-			thread->join();
-		}
+		init_service_queue();
+		init_threads();
+		join_threads();
 		return *this;
 	}
 
 protected:
+	void init_service_queue()
+	{
+		singleton<queue<service>>::instance().reserve(config.service_limit);
+	}
+	void init_threads()
+	{
+		for (auto i = 0; i < config.thread; ++i)
+		{
+			threads.push_back(std::shared_ptr<thread>(new thread()));
+		}
+	}
+	void join_threads()
+	{
+		for (auto thread : threads)
+		{
+			thread->join();
+		}
+	}
+
+protected:
 	configuration config;
-	std::vector<std::thread *> threads;
+	std::vector<std::shared_ptr<thread>> threads;
 };
 };	   // namespace core
 };	   // namespace lime

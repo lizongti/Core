@@ -65,6 +65,7 @@
         "xutility": "cpp",
         "xthread": "cpp",
         "xmemory0": "cpp",
-        "hash_set": "cpp"
+        "hash_set": "cpp",
+        "xfunctional": "cpp"
     }
 }
