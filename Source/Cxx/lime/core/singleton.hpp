@@ -3,8 +3,10 @@
 
 namespace lime
 {
+namespace core
+{
 template <typename T>
-class singelton
+class singleton
 {
 public:
 	static T &instance()
@@ -13,6 +15,7 @@ public:
 		return t;
 	}
 };
+}; // namespace core
 }; // namespace lime
 
 #endif // !SINGLETON_HPP

@@ -7,10 +7,13 @@
 #include <vector>
 #include <boost/program_options.hpp>
 
-#include "lime/base/singleton.hpp"
-#include "lime/base/service_queue.hpp"
+#include "singleton.hpp"
+#include "service.hpp"
+#include "queue.hpp"
 
 namespace lime
+{
+namespace core
 {
 struct configuration
 {
@@ -52,23 +55,19 @@ public:
 
 	process &run()
 	{
-		service_queue::instance().reserve(config.service_limit);
+		singleton<queue<service>>::instance().reserve(config.service_limit);
 		for (auto i = 0; i < config.thread; ++i)
 		{
-			threads.push_back(std::shared_ptr<std::thread>(new std::thread([]() {
+			threads.push_back(new std::thread([]() {
 				while (true)
 				{
-					auto service = service_queue::instance().pop();
-					if (service)
-					{
-						service->work();
-					}
+					auto s = singleton<queue<service>>::instance().pop();
+					if (s)
+						s->work();
 					else
-					{
 						std::this_thread::sleep_for(std::chrono::milliseconds(1));
-					}
 				}
-			})));
+			}));
 		}
 		for (auto thread : threads)
 		{
@@ -79,7 +78,8 @@ public:
 
 protected:
 	configuration config;
-	std::vector<std::shared_ptr<std::thread>> threads;
+	std::vector<std::thread *> threads;
 };
-};	 // namespace lime
+};	   // namespace core
+};	   // namespace lime
 #endif // !PROCESS_HPP

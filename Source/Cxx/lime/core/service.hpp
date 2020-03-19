@@ -1,10 +1,12 @@
 #ifndef SERVICE_HPP
 #define SERVICE_HPP
 
-#include <boost/lockfree/queue.hpp>
-#include "lime/base/message.hpp"
+#include "queue.hpp"
+#include "message.hpp"
 
 namespace lime
+{
+namespace core
 {
 class service
 {
@@ -17,18 +19,27 @@ public:
     }
 
 public:
+    void load(const std::string &path)
+    {
+    }
+
     void work()
     {
         message *m;
-        while (queue.pop(m))
+        while (m = q.pop())
         {
+            // handle(m);
         }
     }
 
-protected:
-    boost::lockfree::queue<message *> queue;
-};
+    void free()
+    {
+    }
 
+protected:
+    queue<message> q;
+};
+}; // namespace core
 }; // namespace lime
 
 #endif // !SERVICE_HPP

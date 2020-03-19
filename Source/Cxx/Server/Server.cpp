@@ -1,8 +1,8 @@
-#include "lime/base/process.hpp"
+#include "lime/core/headers.h"
 
 int main(int argc, char *argv[])
 {
-	lime::process::instance().options(argc, argv).run();
+	lime::core::process::instance().options(argc, argv).run();
 
 	return 0;
 }
