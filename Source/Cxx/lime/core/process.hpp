@@ -70,7 +70,7 @@ protected:
 	}
 	void init_threads()
 	{
-		for (auto i = 0; i < config.thread; ++i)
+		for (uint32_t i = 0; i < config.thread; ++i)
 		{
 			threads.push_back(std::shared_ptr<thread>(new thread()));
 		}

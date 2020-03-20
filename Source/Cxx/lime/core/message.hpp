@@ -1,7 +1,7 @@
 #ifndef MESSAGE_HPP
 #define MESSAGE_HPP
 
-#include <stdlib.h>
+#include "stdlib.h"
 #include "singleton.hpp"
 
 namespace lime
