@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.10)
 project(Server)
 message("project source dir: ${PROJECT_SOURCE_DIR}")
 
-
 set(CMAKE_TOOLCHAIN_FILE "C:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
@@ -36,11 +35,11 @@ foreach(CompilerFlag ${CompilerFlags})
     string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
 endforeach()
 
-set(Boost_INCLUDE_DIR "C:/Program Files/vcpkg/installed/x64-windows/include")
-find_package(Boost REQUIRED COMPONENTS program_options)
+set(Boost_INCLUDE_DIR "C:/Program Files/vcpkg/installed/x64-windows-static/include")
+find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 include_directories(${PROJECT_SOURCE_DIR} ${Boost_INCLUDE_DIR})
 add_executable(Server server/server.cpp)
-target_link_libraries(Server ${Boost_LIBRARIES})
+target_link_libraries(Server PUBLIC Boost::program_options Boost::filesystem)
 
 message(STATUS "CMAKE_C_FLAGS = " ${CMAKE_C_FLAGS})
 message(STATUS "CMAKE_C_FLAGS_DEBUG = " ${CMAKE_C_FLAGS_DEBUG})
