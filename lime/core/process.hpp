@@ -20,7 +20,7 @@ namespace core
 struct configuration
 {
 	uint32_t thread;
-	uint32_t service_limit;
+	uint32_t service;
 	std::string bootstrap;
 };
 
@@ -31,14 +31,14 @@ public:
 	process &options(int argc, char *argv[])
 	{
 		boost::program_options::variables_map variables_map;
-		boost::program_options::options_description option_description("options");
-		option_description.add_options()("help,h", "describe arguments")("thread,t", boost::program_options::value<uint32_t>(), "thread")("service_limit,sl", boost::program_options::value<uint32_t>(), "service_limit")("bootstrap,s", boost::program_options::value<std::string>(), "bootstrap");
+		// boost::program_options::options_description option_description("Options");
+		// option_description.add_options()("help,h", "describe arguments")("thread,t", boost::program_options::value<uint32_t>(), "thread")("service,sl", boost::program_options::value<uint32_t>(), "service")("bootstrap,s", boost::program_options::value<std::string>(), "bootstrap");
 		boost::program_options::positional_options_description positional_options_description;
 		positional_options_description.add("bootstrap", -1);
 
 		try
 		{
-			boost::program_options::store(boost::program_options::command_line_parser(argc, argv).options(option_description).positional(positional_options_description).run(), variables_map);
+			// boost::program_options::store(boost::program_options::command_line_parser(argc, argv).options(option_description).positional(positional_options_description).run(), variables_map);
 			boost::program_options::notify(variables_map);
 		}
 		catch (std::exception const &)
@@ -49,8 +49,12 @@ public:
 		}
 
 		config.thread = variables_map.count("thread") ? std::min(variables_map["thread"].as<uint32_t>(), std::thread::hardware_concurrency()) : std::thread::hardware_concurrency();
-		config.service_limit = variables_map.count("service_limit") ? variables_map["service_limit"].as<uint32_t>() : 65536;
+		config.service = variables_map.count("service") ? std::min(variables_map["service"].as<uint32_t>(), uint32_t(65534)) : 65534;
 		config.bootstrap = variables_map.count("bootstrap") ? variables_map["bootstrap"].as<std::string>() : "bootstrap";
+
+		std::cout << "Configuration thread is " << config.thread << std::endl;
+		std::cout << "Configuration service is " << config.service << std::endl;
+		std::cout << "Configuration bootstrap is " << config.bootstrap << std::endl;
 
 		return *this;
 	}
@@ -66,13 +70,13 @@ public:
 protected:
 	void init_service_queue()
 	{
-		singleton<queue<service>>::instance().reserve(config.service_limit);
+		singleton<queue<service>>::instance().malloc(config.service);
 	}
 	void init_threads()
 	{
 		for (uint32_t i = 0; i < config.thread; ++i)
 		{
-			threads.push_back(std::shared_ptr<thread>(new thread()));
+			threads.push_back(new thread());
 		}
 	}
 	void join_threads()
@@ -85,7 +89,7 @@ protected:
 
 protected:
 	configuration config;
-	std::vector<std::shared_ptr<thread>> threads;
+	std::vector<thread *> threads;
 };
 };	   // namespace core
 };	   // namespace lime

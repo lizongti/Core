@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.10)
 project(Server)
 message("project source dir: ${PROJECT_SOURCE_DIR}")
 
+
+set(CMAKE_TOOLCHAIN_FILE "C:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -18,10 +20,27 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /D__MINSIZEREL")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /D__RELWITHDEBINFO")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /D__RELEASE")
 
-include_directories(${PROJECT_SOURCE_DIR} "C:/Program Files/vcpkg/installed/x64-windows/include")
-link_directories("C:/Program Files/vcpkg/installed/x64-windows/lib")
+set(CompilerFlags
+    CMAKE_C_FLAGS
+    CMAKE_C_FLAGS_DEBUG
+    CMAKE_C_FLAGS_MINSIZEREL
+    CMAKE_C_FLAGS_RELWITHDEBINFO
+    CMAKE_C_FLAGS_RELEASE
+    CMAKE_CXX_FLAGS
+    CMAKE_CXX_FLAGS_DEBUG
+    CMAKE_CXX_FLAGS_MINSIZEREL
+    CMAKE_CXX_FLAGS_RELWITHDEBINFO
+    CMAKE_CXX_FLAGS_RELEASE
+)
+foreach(CompilerFlag ${CompilerFlags})
+    string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+endforeach()
+
+set(Boost_INCLUDE_DIR "C:/Program Files/vcpkg/installed/x64-windows/include")
+find_package(Boost REQUIRED COMPONENTS program_options)
+include_directories(${PROJECT_SOURCE_DIR} ${Boost_INCLUDE_DIR})
 add_executable(Server server/server.cpp)
-target_link_libraries(Server boost_program_options-vc140-mt boost_system-vc140-mt)
+target_link_libraries(Server ${Boost_LIBRARIES})
 
 message(STATUS "CMAKE_C_FLAGS = " ${CMAKE_C_FLAGS})
 message(STATUS "CMAKE_C_FLAGS_DEBUG = " ${CMAKE_C_FLAGS_DEBUG})

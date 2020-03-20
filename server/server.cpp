@@ -4,10 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-	// lime::core::process::instance().options(argc, argv).run();
-	std::cout << "test" << std::endl;
-	int a;
-	std::cin >> a;
+	lime::core::process::instance().options(argc, argv).run();
 
 	return 0;
 }

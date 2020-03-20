@@ -11,26 +11,29 @@ template <typename T>
 class queue
 {
 public:
+    typedef boost::lockfree::queue<T *, boost::lockfree::fixed_sized<true>> queue_type;
+
+public:
     queue(){};
     virtual ~queue(){};
 
 public:
-    void reserve(size_t n)
+    void malloc(size_t n)
     {
-        q.reserve(n);
+        q = new queue_type(n);
     }
     T *pop()
     {
         T *s;
-        return q.pop(s) ? s : nullptr;
+        return q->pop(s) ? s : nullptr;
     }
     bool push(T *s)
     {
-        return q.bounded_push(s);
+        return q->bounded_push(s);
     }
 
 protected:
-    boost::lockfree::queue<T *> q;
+    queue_type *q;
 };
 }; // namespace core
 } // namespace lime
