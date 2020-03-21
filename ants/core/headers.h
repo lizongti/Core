@@ -1,5 +1,5 @@
-#ifndef LIME_CORE_HEADERS_H
-#define LIME_CORE_HEADERS_H
+#ifndef ANTS_CORE_HEADERS_H
+#define ANTS_CORE_HEADERS_H
 #include "message.hpp"
 #include "module.hpp"
 #include "process.hpp"
@@ -7,4 +7,4 @@
 #include "service.hpp"
 #include "singleton.hpp"
 #include "thread.hpp"
-#endif // !LIME_CORE_HEADERS_H
+#endif // ANTS_CORE_HEADERS_H

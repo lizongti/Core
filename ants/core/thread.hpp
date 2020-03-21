@@ -1,12 +1,12 @@
-#ifndef THREAD_HPP
-#define THREAD_HPP
+#ifndef ANTS_CORE_THREAD_HPP
+#define ANTS_CORE_THREAD_HPP
 
 #include <thread>
 #include "singleton.hpp"
 #include "queue.hpp"
 #include "service.hpp"
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -40,5 +40,5 @@ protected:
     std::thread *t;
 };
 }; // namespace core
-} // namespace lime
-#endif // !THREAD_HPP
+} // namespace ants
+#endif // ANTS_CORE_THREAD_HPP

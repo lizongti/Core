@@ -1,5 +1,5 @@
-#ifndef PROCESS_HPP
-#define PROCESS_HPP
+#ifndef ANTS_CORE_PROCESS_HPP
+#define ANTS_CORE_PROCESS_HPP
 
 #include <iostream>
 #include <thread>
@@ -14,7 +14,7 @@
 #include "queue.hpp"
 #include "thread.hpp"
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -95,5 +95,5 @@ protected:
 	std::vector<thread *> threads;
 };
 };	   // namespace core
-};	   // namespace lime
-#endif // !PROCESS_HPP
+};	   // namespace ants
+#endif // ANTS_CORE_PROCESS_HPP

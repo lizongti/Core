@@ -1,9 +1,9 @@
-#ifndef QUEUE_HPP
-#define QUEUE_HPP
+#ifndef ANTS_CORE_QUEUE_HPP
+#define ANTS_CORE_QUEUE_HPP
 
 #include <boost/lockfree/queue.hpp>
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -36,5 +36,5 @@ protected:
     queue_type *q;
 };
 }; // namespace core
-} // namespace lime
-#endif // ! QUEUE_HPP
+} // namespace ants
+#endif // ANTS_CORE_QUEUE_HPP

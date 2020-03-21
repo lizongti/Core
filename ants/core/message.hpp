@@ -1,10 +1,10 @@
-#ifndef MESSAGE_HPP
-#define MESSAGE_HPP
+#ifndef ANTS_CORE_MESSAGE_HPP
+#define ANTS_CORE_MESSAGE_HPP
 
 #include "stdlib.h"
 #include "singleton.hpp"
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -22,6 +22,6 @@ struct message
     size_t len;
 };
 }; // namespace core
-}; // namespace lime
+}; // namespace ants
 
-#endif // ! MESSAGE_HPP
+#endif // ANTS_CORE_MESSAGE_HPP

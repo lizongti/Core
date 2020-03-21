@@ -1,11 +1,11 @@
-#ifndef SERVICE_HPP
-#define SERVICE_HPP
+#ifndef ANTS_CORE_SERVICE_HPP
+#define ANTS_CORE_SERVICE_HPP
 
 #include "queue.hpp"
 #include "message.hpp"
 #include "module.hpp"
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -42,6 +42,6 @@ protected:
     module m;
 };
 }; // namespace core
-}; // namespace lime
+}; // namespace ants
 
-#endif // !SERVICE_HPP
+#endif // ANTS_CORE_SERVICE_HPP

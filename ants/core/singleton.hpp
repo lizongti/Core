@@ -1,7 +1,7 @@
-#ifndef SINGLETON_HPP
-#define SINGLETON_HPP
+#ifndef ANTS_CORE_SINGLETON_HPP
+#define ANTS_CORE_SINGLETON_HPP
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -16,6 +16,6 @@ public:
 	}
 };
 }; // namespace core
-}; // namespace lime
+}; // namespace ants
 
-#endif // !SINGLETON_HPP
+#endif // ANTS_CORE_SINGLETON_HPP

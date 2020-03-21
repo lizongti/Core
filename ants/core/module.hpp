@@ -1,11 +1,11 @@
-#ifndef MODULE_HPP
-#define MODULE_HPP
+#ifndef ANTS_CORE_MODULE_HPP
+#define ANTS_CORE_MODULE_HPP
 
 #include <iostream>
 #include <functional>
 #include <boost/dll/shared_library.hpp>
 
-namespace lime
+namespace ants
 {
 namespace core
 {
@@ -73,5 +73,5 @@ public:
     std::function<void(void *)> handle;
 };     // namespace core
 };     // namespace core
-};     // namespace lime
-#endif // !SERVICE_HPP
+};     // namespace ants
+#endif // ANTS_CORE_SERVICE_HPP
