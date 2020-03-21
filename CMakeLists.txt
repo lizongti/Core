@@ -3,9 +3,15 @@ cmake_minimum_required(VERSION 3.10)
 project(Server)
 message("project source dir: ${PROJECT_SOURCE_DIR}")
 
-set(CMAKE_TOOLCHAIN_FILE "C:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(MSVC_LINK MD)
+set(VCPKG_TRIPLET x64-windows)
+set(VCPKG_ROOT "C:/Program Files/vcpkg")
+set(Boost_INCLUDE_DIR "${VCPKG_ROOT}/installed/${VCPKG_TRIPLET}/include")
+set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
+
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /D__DEBUG")
@@ -19,6 +25,7 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /D__MINSIZEREL")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /D__RELWITHDEBINFO")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /D__RELEASE")
 
+if (${MSVC_LINK} STREQUAL "MT" )
 set(CompilerFlags
     CMAKE_C_FLAGS
     CMAKE_C_FLAGS_DEBUG
@@ -34,12 +41,13 @@ set(CompilerFlags
 foreach(CompilerFlag ${CompilerFlags})
     string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
 endforeach()
+endif()
 
-set(Boost_INCLUDE_DIR "C:/Program Files/vcpkg/installed/x64-windows-static/include")
+aux_source_directory(${PROJECT_SOURCE_DIR}/server SOURCE_LIST)
 find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 include_directories(${PROJECT_SOURCE_DIR} ${Boost_INCLUDE_DIR})
-add_executable(Server server/server.cpp)
-target_link_libraries(Server PUBLIC Boost::program_options Boost::filesystem)
+add_executable(Server ${SOURCE_LIST})
+target_link_libraries(Server ${Boost_LIBRARIES})
 
 message(STATUS "CMAKE_C_FLAGS = " ${CMAKE_C_FLAGS})
 message(STATUS "CMAKE_C_FLAGS_DEBUG = " ${CMAKE_C_FLAGS_DEBUG})
