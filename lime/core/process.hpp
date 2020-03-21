@@ -47,6 +47,7 @@ public:
 			std::cerr << e.what() << std::endl;
 			std::cerr << "Incorrect command line syntax." << std::endl;
 			std::cerr << "Use '--help' for a list of options." << std::endl;
+
 			exit(1);
 		}
 

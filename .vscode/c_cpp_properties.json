@@ -1,18 +1,17 @@
 {
     "configurations": [
         {
-            "name": "MinGW",
-            "intelliSenseMode": "clang-x64",
-            "compilerPath": "C:/MinGW/bin/gcc.exe",
+            "name": "Visual Studio 2019",
+            "intelliSenseMode": "msvc-x64",
             "includePath": [
-                ".",
-                "C:/Program Files/vcpkg/installed/x86-windows/include"
+                "${workspaceRoot}",
+                "C:/Program Files/vcpkg/installed/x64-windows-static/include"
             ],
             "defines": [],
             "browse": {
                 "path": [
-                    ".",
-                    "C:/Program Files/vcpkg/installed/x86-windows/include"
+                    "${workspaceRoot}",
+                    "C:/Program Files/vcpkg/installed/x64-windows-static/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
