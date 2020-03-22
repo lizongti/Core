@@ -17,16 +17,16 @@ class thread
 public:
     thread()
     {
-        t = new std::thread([]() {
+        t = std::shared_ptr<std::thread>(new std::thread([]() {
             while (true)
             {
-                // auto s = singleton<queue<service>>::instance().pop();
-                // if (s)
-                //     s->work();
-                // else
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                auto s = singleton<queue<service>>::instance().pop();
+                if (s)
+                    s->work();
+                else
+                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
             }
-        });
+        }));
     }
     virtual ~thread(){};
 
@@ -37,7 +37,7 @@ public:
     }
 
 protected:
-    std::thread *t;
+    std::shared_ptr<std::thread> t;
 };
 }; // namespace core
 } // namespace ants

@@ -20,7 +20,7 @@ public:
 public:
     void malloc(size_t n)
     {
-        q = new queue_type(n);
+        q = std::shared_ptr<queue_type>(new queue_type(n));
     }
     T *pop()
     {
@@ -33,7 +33,7 @@ public:
     }
 
 protected:
-    queue_type *q;
+    std::shared_ptr<queue_type> q;
 };
 }; // namespace core
 } // namespace ants

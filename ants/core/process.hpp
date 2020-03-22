@@ -79,7 +79,7 @@ protected:
 	{
 		for (uint32_t i = 0; i < config.thread; ++i)
 		{
-			threads.push_back(new thread());
+			threads.push_back(std::shared_ptr<thread>(new thread()));
 		}
 	}
 	void join_threads()
@@ -92,7 +92,7 @@ protected:
 
 protected:
 	configuration config;
-	std::vector<thread *> threads;
+	std::vector<std::shared_ptr<thread>> threads;
 };
 };	   // namespace core
 };	   // namespace ants

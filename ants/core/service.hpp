@@ -26,7 +26,7 @@ public:
 
     void work()
     {
-        message *msg;
+        message* msg;
         while (msg = q.pop())
         {
             m.handle(msg);

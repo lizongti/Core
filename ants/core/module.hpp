@@ -70,7 +70,7 @@ public:
 public:
     std::function<void()> init;
     std::function<void()> free;
-    std::function<void(void *)> handle;
+    std::function<void(message*)> handle;
 };     // namespace core
 };     // namespace core
 };     // namespace ants
