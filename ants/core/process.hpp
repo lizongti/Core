@@ -31,7 +31,7 @@ class process
 public:
 	process &options(int argc, char *argv[])
 	{
-		std::cout << boost::filesystem::initial_path<boost::filesystem::path>().string() << std::endl;
+		std::cout << "Working directory is " << boost::filesystem::initial_path<boost::filesystem::path>().string() << std::endl;
 		boost::program_options::variables_map variables_map;
 		boost::program_options::options_description option_description("Allowed options");
 		option_description.add_options()("help,h", "describe arguments")("thread,t", boost::program_options::value<uint32_t>(), "thread")("service,sl", boost::program_options::value<uint32_t>(), "service")("bootstrap,s", boost::program_options::value<std::string>(), "bootstrap");

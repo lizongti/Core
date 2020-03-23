@@ -2,7 +2,6 @@
 #define ANTS_CORE_SERVICE_HPP
 
 #include "queue.hpp"
-#include "message.hpp"
 #include "module.hpp"
 
 namespace ants
@@ -26,7 +25,7 @@ public:
 
     void work()
     {
-        message* msg;
+        void *msg;
         while (msg = q.pop())
         {
             m.handle(msg);
@@ -38,7 +37,7 @@ public:
     }
 
 protected:
-    queue<message> q;
+    queue<void *> q;
     module m;
 };
 }; // namespace core
