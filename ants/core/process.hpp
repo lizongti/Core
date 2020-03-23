@@ -23,6 +23,7 @@ struct configuration
 	uint32_t thread;
 	uint32_t service;
 	std::string bootstrap;
+	std::string path;
 };
 
 class process
@@ -34,7 +35,11 @@ public:
 		std::cout << "Working directory is " << boost::filesystem::initial_path<boost::filesystem::path>().string() << std::endl;
 		boost::program_options::variables_map variables_map;
 		boost::program_options::options_description option_description("Allowed options");
-		option_description.add_options()("help,h", "describe arguments")("thread,t", boost::program_options::value<uint32_t>(), "thread")("service,sl", boost::program_options::value<uint32_t>(), "service")("bootstrap,s", boost::program_options::value<std::string>(), "bootstrap");
+		option_description.add_options()("help,h", "describe arguments");
+		option_description.add_options()("thread,t", boost::program_options::value<uint32_t>(), "The number of threads that current process would run. It can be no more than the number of processors.");
+		option_description.add_options()("service,s", boost::program_options::value<uint32_t>(), "The limit of service that the process could run. It can be no more than 65534.");
+		option_description.add_options()("bootstrap,", boost::program_options::value<std::string>(), "The first service which would init from `bootstrap` module.");
+		// option_description.add_options()("path,p", boost::program_options::value<std::vector<std::string>>(), "path");
 		boost::program_options::positional_options_description positional_options_description;
 		positional_options_description.add("bootstrap", -1);
 		try
