@@ -37,7 +37,7 @@ public:
     }
 
 protected:
-    queue<void *> q;
+    queue<void> q;
     module m;
 };
 }; // namespace core
