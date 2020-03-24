@@ -16,12 +16,12 @@ public:
     }
     virtual ~service()
     {
-    }
+        }
 
 public:
     void load(const std::string &path)
     {
-        // get file name    
+        // get file name
     }
 
     void work()

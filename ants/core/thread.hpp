@@ -6,11 +6,12 @@
 #include "queue.hpp"
 #include "service.hpp"
 
+#include <boost/lockfree/queue.hpp>
+
 namespace ants
 {
 namespace core
 {
-#include <boost/lockfree/queue.hpp>
 
 class thread
 {
