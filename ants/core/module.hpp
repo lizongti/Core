@@ -71,7 +71,7 @@ public:
     std::function<void()> init;
     std::function<void()> free;
     std::function<void(void*)> handle;
-};     // namespace core
+};
 };     // namespace core
 };     // namespace ants
 #endif // ANTS_CORE_SERVICE_HPP

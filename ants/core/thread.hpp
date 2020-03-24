@@ -2,12 +2,10 @@
 #define ANTS_CORE_THREAD_HPP
 
 #include <thread>
+#include <boost/lockfree/queue.hpp>
 #include "singleton.hpp"
 #include "queue.hpp"
 #include "service.hpp"
-
-#include <boost/lockfree/queue.hpp>
-
 namespace ants
 {
 namespace core

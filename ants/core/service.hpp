@@ -16,7 +16,7 @@ public:
     }
     virtual ~service()
     {
-        }
+    }
 
 public:
     void load(const std::string &path)
