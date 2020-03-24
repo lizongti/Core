@@ -7,7 +7,7 @@
             "options": {
                 "cwd": "${workspaceRoot}/build"
             },
-            "command": "ninja -v",
+            "command": "ninja",
             "group": {
                 "kind": "build",
                 "isDefault": true
