@@ -4,6 +4,7 @@
 #include <iostream>
 #include <functional>
 #include <boost/dll/shared_library.hpp>
+#include <ants/core/singleton.hpp>
 
 namespace ants
 {
@@ -16,7 +17,7 @@ public:
     virtual ~module(){};
 
 public:
-    static bool load(std::string const &name)
+    bool load(std::string const &name)
     {
         boost::dll::shared_library lib;
         try
@@ -27,46 +28,57 @@ public:
         {
             std::cerr << "Insufficient memory when loading shared memory:" << name << std::endl;
         }
+
         if (!lib.is_loaded())
         {
             std::cerr << "Failed loading shared library:" << name << std::endl;
             return false;
         }
+
         try
         {
-            // init = lib.get<void __stdcall()>("init");
+            init = lib.get<void __cdecl(void)>("init");
+            // std::cout << reinterpret_cast<void *>(init) << std::endl;
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function `init` in shared library:" << name << std::endl;
+            std::cerr << "Leak function 'init' in shared library:" << name << std::endl;
             return false;
         }
+
         try
         {
-            // free = lib.get<void __stdcall()>("free");
+            work = lib.get<void __cdecl(void *)>("work");
+            // std::cout << reinterpret_cast<void *>(work) << std::endl;
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function `free` in shared library:" << name << std::endl;
+            std::cerr << "Leak function 'work' in shared library:" << name << std::endl;
             return false;
         }
+
         try
         {
-            // handle = lib.get<void __stdcall()>("handle");
+            fini = lib.get<void __cdecl(void)>("fini");
+            // std::cout << reinterpret_cast<void *>(fini) << std::endl;
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function `handle` in shared library:" << name << std::endl;
+            std::cerr << "Leak function 'fini' in shared library:" << name << std::endl;
             return false;
         }
 
         return true;
     }
 
+    bool unload(std::string const &name)
+    {
+    }
+
 public:
-    std::function<void()> init;
-    std::function<void()> free;
-    std::function<void(void *)> handle;
+    std::function<void __cdecl(void)> init;
+    std::function<void __cdecl(void *)> work;
+    std::function<void __cdecl(void)> fini;
 };
 };     // namespace core
 };     // namespace ants
