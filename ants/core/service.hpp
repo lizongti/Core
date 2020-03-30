@@ -27,10 +27,10 @@ public:
 
     void work()
     {
-        void *msg;
-        while (msg = q.pop())
+        void *message;
+        while (message = queue.pop())
         {
-            m.work(msg);
+            module.work(message);
         }
     }
 
@@ -40,8 +40,8 @@ public:
     }
 
 protected:
-    queue<void> q;
-    module m;
+    queue<void> queue;
+    module module;
 };
 }; // namespace core
 }; // namespace ants

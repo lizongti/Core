@@ -20,20 +20,20 @@ public:
 public:
     void malloc(size_t n)
     {
-        q = std::shared_ptr<queue_type>(new queue_type(n));
+        queue_ = std::shared_ptr<queue_type>(new queue_type(n));
     }
     T *pop()
     {
-        T *s;
-        return q->pop(s) ? s : nullptr;
+        T *t;
+        return queue_->pop(t) ? t : nullptr;
     }
-    bool push(T *s)
+    bool push(T *t)
     {
-        return q->bounded_push(s);
+        return queue_->bounded_push(t);
     }
 
 protected:
-    std::shared_ptr<queue_type> q;
+    std::shared_ptr<queue_type> queue_;
 };
 }; // namespace core
 } // namespace ants

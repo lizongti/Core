@@ -26,7 +26,7 @@ class config_initializer
 {
 public:
     static void init_thread(boost::program_options::variables_map const &variables_map,
-                            boost::property_tree::ptree const &config_tree,
+                            boost::property_tree::ptree const &ptree,
                             uint32_t &thread)
     {
         uint32_t max_value = std::thread::hardware_concurrency();
@@ -37,9 +37,9 @@ public:
             uint32_t variables_map_value = variables_map["thread"].as<uint32_t>();
             thread = std::min(std::max(variables_map_value, min_value), max_value);
         }
-        else if (config_tree.count("system") > 0 && config_tree.get_child("system").count("thread") > 0)
+        else if (ptree.count("system") > 0 && ptree.get_child("system").count("thread") > 0)
         {
-            uint32_t config_value = config_tree.get_child("system").get<uint32_t>("thread");
+            uint32_t config_value = ptree.get_child("system").get<uint32_t>("thread");
             thread = std::min(std::max(config_value, min_value), max_value);
         }
         else
@@ -49,7 +49,7 @@ public:
         std::cout << "[Configuration] thread value is " << thread << std::endl;
     };
     static void init_service(boost::program_options::variables_map const &variables_map,
-                             boost::property_tree::ptree const &config_tree,
+                             boost::property_tree::ptree const &ptree,
                              uint32_t &service)
     {
         uint32_t max_value = 65534;
@@ -60,9 +60,9 @@ public:
             uint32_t variables_map_value = variables_map["thread"].as<uint32_t>();
             service = std::min(std::max(variables_map_value, min_value), max_value);
         }
-        else if (config_tree.count("system") > 0 && config_tree.get_child("system").count("service") > 0)
+        else if (ptree.count("system") > 0 && ptree.get_child("system").count("service") > 0)
         {
-            uint32_t config_value = config_tree.get_child("system").get<uint32_t>("service");
+            uint32_t config_value = ptree.get_child("system").get<uint32_t>("service");
             service = std::min(std::max(config_value, min_value), max_value);
         }
         else
@@ -72,7 +72,7 @@ public:
         std::cout << "[Configuration] service value is " << service << std::endl;
     };
     static void init_path(boost::program_options::variables_map const &variables_map,
-                          boost::property_tree::ptree const &config_tree,
+                          boost::property_tree::ptree const &ptree,
                           std::vector<std::string> &path)
     {
         path.push_back(boost::filesystem::initial_path<boost::filesystem::path>().string());
@@ -84,10 +84,10 @@ public:
                 path.push_back(p);
             }
         }
-        if (config_tree.count("system") > 0 && config_tree.get_child("system").count("bootstrap") > 0)
+        if (ptree.count("system") > 0 && ptree.get_child("system").count("bootstrap") > 0)
         {
             std::vector<std::string> config_value;
-            boost::split(config_value, config_tree.get_child("system").get<std::string>("bootstrap"), boost::is_any_of(";"), boost::token_compress_on);
+            boost::split(config_value, ptree.get_child("system").get<std::string>("bootstrap"), boost::is_any_of(";"), boost::token_compress_on);
             for (auto p : config_value)
             {
                 path.push_back(p);
@@ -96,7 +96,7 @@ public:
         std::cout << "[Configuration] path value is " << boost::algorithm::join(path, ";") << std::endl;
     };
     static void init_bootstrap(boost::program_options::variables_map const &variables_map,
-                               boost::property_tree::ptree const &config_tree,
+                               boost::property_tree::ptree const &ptree,
                                std::string &bootstrap)
     {
 
@@ -115,9 +115,9 @@ public:
                 exit(1);
             }
         }
-        if (config_tree.count("system") > 0 && config_tree.get_child("system").count("bootstrap") > 0)
+        if (ptree.count("system") > 0 && ptree.get_child("system").count("bootstrap") > 0)
         {
-            std::string config_value = config_tree.get_child("system").get<std::string>("bootstrap");
+            std::string config_value = ptree.get_child("system").get<std::string>("bootstrap");
             if (boost::filesystem::exists(config_value))
             {
                 bootstrap = config_value;
@@ -167,7 +167,7 @@ public:
 
     config &get()
     {
-        return c;
+        return config;
     }
 
 protected:
@@ -175,7 +175,7 @@ protected:
     {
         auto init = options_description.add_options();
         init("help,h", "Display this help and exit.");
-        init("config,c", boost::program_options::value<std::string>(),
+        init("config,config", boost::program_options::value<std::string>(),
              "Set the path of the config file.");
         init("thread,t", boost::program_options::value<uint32_t>(),
              "Set the number of threads, which cannot be over default value(units of processors).");
@@ -252,7 +252,7 @@ protected:
 
         try
         {
-            boost::property_tree::ini_parser::read_ini(path, config_tree);
+            boost::property_tree::ini_parser::read_ini(path, ptree);
         }
         catch (std::exception const &e)
         {
@@ -263,19 +263,19 @@ protected:
 
     void init_config()
     {
-        config_initializer::init_thread(variables_map, config_tree, c.thread);
-        config_initializer::init_service(variables_map, config_tree, c.service);
-        config_initializer::init_path(variables_map, config_tree, c.path);
-        config_initializer::init_bootstrap(variables_map, config_tree, c.bootstrap);
+        config_initializer::init_thread(variables_map, ptree, config.thread);
+        config_initializer::init_service(variables_map, ptree, config.service);
+        config_initializer::init_path(variables_map, ptree, config.path);
+        config_initializer::init_bootstrap(variables_map, ptree, config.bootstrap);
     }
 
 protected:
     boost::program_options::options_description options_description;
     boost::program_options::positional_options_description positional_options_description;
     boost::program_options::variables_map variables_map;
-    boost::property_tree::ptree config_tree;
+    boost::property_tree::ptree ptree;
 
-    config c;
+    config config;
 };
 
 };     // namespace core

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <functional>
+#include <mutex>
 #include <boost/dll/shared_library.hpp>
 #include <ants/core/singleton.hpp>
 
@@ -19,17 +20,17 @@ public:
 public:
     bool load(std::string const &name)
     {
-        boost::dll::shared_library lib;
+        std::lock_guard<std::mutex> lock_guard(mutex);
         try
         {
-            lib.load(name);
+            shared_library.load(name);
         }
         catch (std::exception const &)
         {
             std::cerr << "Insufficient memory when loading shared memory:" << name << std::endl;
         }
 
-        if (!lib.is_loaded())
+        if (!shared_library.is_loaded())
         {
             std::cerr << "Failed loading shared library:" << name << std::endl;
             return false;
@@ -37,7 +38,7 @@ public:
 
         try
         {
-            init = lib.get<void __cdecl(void)>("init");
+            init = shared_library.get<void __cdecl(void)>("init");
             // std::cout << reinterpret_cast<void *>(init) << std::endl;
         }
         catch (std::exception const &)
@@ -48,7 +49,7 @@ public:
 
         try
         {
-            work = lib.get<void __cdecl(void *)>("work");
+            work = shared_library.get<void __cdecl(void *)>("work");
             // std::cout << reinterpret_cast<void *>(work) << std::endl;
         }
         catch (std::exception const &)
@@ -59,7 +60,7 @@ public:
 
         try
         {
-            fini = lib.get<void __cdecl(void)>("fini");
+            fini = shared_library.get<void __cdecl(void)>("fini");
             // std::cout << reinterpret_cast<void *>(fini) << std::endl;
         }
         catch (std::exception const &)
@@ -73,9 +74,13 @@ public:
 
     bool unload(std::string const &name)
     {
+        std::lock_guard<std::mutex> lock_guard(mutex);
+        shared_library.unload();
     }
 
 public:
+    std::mutex mutex;
+    boost::dll::shared_library shared_library;
     std::function<void __cdecl(void)> init;
     std::function<void __cdecl(void *)> work;
     std::function<void __cdecl(void)> fini;

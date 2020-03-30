@@ -16,7 +16,7 @@ class thread
 public:
     thread()
     {
-        t = std::shared_ptr<std::thread>(new std::thread(work));
+        thread_ = std::shared_ptr<std::thread>(new std::thread(work));
     }
     virtual ~thread(){};
 
@@ -25,9 +25,9 @@ public:
     {
         while (true)
         {
-            auto s = singleton<queue<service>>::instance().pop();
-            if (s)
-                s->work();
+            auto service = singleton<queue<ants::core::service>>::instance().pop();
+            if (service)
+                service->work();
             else
                 std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
@@ -35,11 +35,11 @@ public:
 
     std::thread::id get_id()
     {
-        return t->get_id();
+        return thread_->get_id();
     }
 
 protected:
-    std::shared_ptr<std::thread> t;
+    std::shared_ptr<std::thread> thread_;
 };
 }; // namespace core
 } // namespace ants
