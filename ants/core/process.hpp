@@ -8,11 +8,11 @@
 #include <thread>
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
-#include "singleton.hpp"
-#include "service.hpp"
-#include "queue.hpp"
-#include "thread.hpp"
-#include "configuration.hpp"
+#include <ants/core/singleton.hpp>
+#include <ants/core/service.hpp>
+#include <ants/core/queue.hpp>
+#include <ants/core/thread.hpp>
+#include <ants/core/configuration.hpp>
 
 namespace ants
 {

@@ -1,8 +1,8 @@
 #ifndef ANTS_CORE_SERVICE_HPP
 #define ANTS_CORE_SERVICE_HPP
 
-#include "queue.hpp"
-#include "module.hpp"
+#include <ants/core/queue.hpp>
+#include <ants/core/module.hpp>
 
 namespace ants
 {
@@ -19,7 +19,7 @@ public:
     }
 
 public:
-    void load(const std::string &name)
+    void init(const std::string &name)
     {
         //thread_safe
         // get file name
@@ -27,15 +27,14 @@ public:
 
     void work()
     {
-        //thread_safe
         void *msg;
         while (msg = q.pop())
         {
-            m.handle(msg);
+            m.work(msg);
         }
     }
 
-    void unload()
+    void fini()
     {
         //thread_safe
     }

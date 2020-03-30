@@ -3,9 +3,9 @@
 
 #include <thread>
 #include <boost/lockfree/queue.hpp>
-#include "singleton.hpp"
-#include "queue.hpp"
-#include "service.hpp"
+#include <ants/core/singleton.hpp>
+#include <ants/core/queue.hpp>
+#include <ants/core/service.hpp>
 namespace ants
 {
 namespace core
