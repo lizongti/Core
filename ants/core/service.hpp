@@ -19,13 +19,15 @@ public:
     }
 
 public:
-    void load(const std::string &path)
+    void load(const std::string &name)
     {
+        //thread_safe
         // get file name
     }
 
     void work()
     {
+        //thread_safe
         void *msg;
         while (msg = q.pop())
         {
@@ -33,8 +35,9 @@ public:
         }
     }
 
-    void free()
+    void unload()
     {
+        //thread_safe
     }
 
 protected:

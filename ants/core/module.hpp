@@ -16,10 +16,6 @@ public:
     virtual ~module(){};
 
 public:
-    void parse(std::string const &path)
-    {
-    }
-
     static bool load(std::string const &name)
     {
         boost::dll::shared_library lib;
@@ -70,7 +66,7 @@ public:
 public:
     std::function<void()> init;
     std::function<void()> free;
-    std::function<void(void*)> handle;
+    std::function<void(void *)> handle;
 };
 };     // namespace core
 };     // namespace ants

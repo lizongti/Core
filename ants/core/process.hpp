@@ -33,7 +33,6 @@ public:
 	{
 		init_service_queue();
 		init_threads();
-		join_threads();
 		return *this;
 	}
 
@@ -49,22 +48,17 @@ protected:
 	}
 	void init_threads()
 	{
+		thread_ids.push_back(std::this_thread::get_id());
 		auto config = singleton<configuration>::instance().get();
-		for (uint32_t i = 0; i < config.thread; ++i)
+		for (uint32_t i = 1; i < config.thread; ++i)
 		{
-			threads.push_back(std::shared_ptr<thread>(new thread()));
+			thread_ids.push_back((new thread())->get_id());
 		}
-	}
-	void join_threads()
-	{
-		for (auto thread : threads)
-		{
-			thread->join();
-		}
+		thread::work();
 	}
 
 protected:
-	std::vector<std::shared_ptr<thread>> threads;
+	std::vector<std::thread::id> thread_ids;
 };
 };	   // namespace core
 };	   // namespace ants

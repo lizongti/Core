@@ -8,7 +8,7 @@
                 "${default}"
             ],
             "defines": [],
-            "compileCommands": "${default}",
+            "compileCommands": "",
             "intelliSenseMode": "${default}",
             "macFrameworkPath": [
                 "${default}"
