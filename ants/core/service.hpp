@@ -3,6 +3,7 @@
 
 #include <ants/core/queue.hpp>
 #include <ants/core/module.hpp>
+#include <ants/core/singleton.hpp>
 
 namespace ants
 {
@@ -11,17 +12,10 @@ namespace core
 class service
 {
 public:
-    service()
+    void init(std::string const &service_name, std::string const &module_name)
     {
-    }
-    virtual ~service()
-    {
-    }
-
-public:
-    void init(const std::string &name)
-    {
-        //thread_safe
+        // singleton<module_loader>::instance().load()
+        //check service name, check module name
         // get file name
     }
 
@@ -43,6 +37,7 @@ protected:
     queue<void> queue;
     module module;
 };
+
 }; // namespace core
 }; // namespace ants
 

@@ -4,9 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-	ants::core::process::instance()
-		.options(argc, argv)
-		.run();
+	ants::core::process::instance().options(argc, argv).run();
 
 	return 0;
 }

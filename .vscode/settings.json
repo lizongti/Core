@@ -80,6 +80,7 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "*.ipp": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "hash_map": "cpp"
     }
 }

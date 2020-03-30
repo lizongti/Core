@@ -39,18 +39,16 @@ public:
 protected:
 	void init_options(int argc, char *argv[])
 	{
-		singleton<configuration>::instance().options(argc, argv);
+		configuration_loader::load(argc, argv);
 	}
 	void init_service_queue()
 	{
-		auto config = singleton<configuration>::instance().get();
-		singleton<queue<service>>::instance().malloc(config.service);
+		unique_queue<service>::malloc(configuration::service());
 	}
 	void init_threads()
 	{
 		thread_ids.push_back(std::this_thread::get_id());
-		auto config = singleton<configuration>::instance().get();
-		for (uint32_t i = 1; i < config.thread; ++i)
+		for (uint32_t i = 1; i < configuration::thread(); ++i)
 		{
 			thread_ids.push_back((new thread())->get_id());
 		}

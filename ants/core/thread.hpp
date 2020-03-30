@@ -25,7 +25,7 @@ public:
     {
         while (true)
         {
-            auto service = singleton<queue<ants::core::service>>::instance().pop();
+            auto service = unique_queue<ants::core::service>::pop();
             if (service)
                 service->work();
             else
