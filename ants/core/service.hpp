@@ -15,30 +15,39 @@ class service
     friend class service_loader;
 
 public:
-    void start(std::string const &service_name){
-
-        // module->init()(service_name);
-        //check service name, check module name
-        // get file name
-    };
-
     void work()
     {
         void *message;
         while (message = queue.pop())
         {
-            // module.work(message);
+            module->handle()(context, message);
         }
-    }
-
-    void stop()
-    {
-        //thread_safe
     }
 
 protected:
     queue<void> queue;
     std::shared_ptr<module> module;
+    void *context;
+};
+
+class service_function
+{
+public:
+    static bool __cdecl start(void *context, std::string const &service_name, std::string const &module_name)
+    {
+        return true;
+    }
+
+    static bool __cdecl send(void *context, std::string const &source_service_name, std::string const &destination_service_name, void *message)
+    {
+
+        return true;
+    }
+
+    static bool __cdecl stop(void *context, std::string const &service_name)
+    {
+        return true;
+    }
 };
 
 class service_loader
@@ -56,20 +65,25 @@ public:
         service_unordered_map[service_name] = service;
 
         service->module = module_loader::load(module_name);
-        service->module->init()();
+        service->context = service->module->create()(&service_function::start, &service_function::send, &service_function::stop);
+    }
+
+    static bool unload(std::string const &service_name)
+    {
+        std::lock_guard<std::mutex> lock_guard(instance().mutex);
+        auto &service_unordered_map = instance().service_unordered_map;
+        if (service_unordered_map.find(service_name) == service_unordered_map.end())
+            return true;
+
+        auto service = service_unordered_map[service_name];
+        service->module->destroy()(service->context);
+
+        return true;
     }
 
 protected:
     std::unordered_map<std::string, std::shared_ptr<service>> service_unordered_map;
     std::mutex mutex;
-};
-
-class service_function
-{
-public:
-    static bool send(service *service, uint32_t base_id, uint32_t service_id, void *message)
-    {
-    }
 };
 
 }; // namespace core

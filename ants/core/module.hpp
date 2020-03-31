@@ -18,98 +18,121 @@ class module
     friend class module_loader;
 
 public:
-    const std::string &name() { return name_; };
-    const std::string &path() { return path_; };
-    boost::dll::shared_library &shared_library() { return shared_library_; };
-    std::function<void __cdecl(void)> &init() { return init_; };
-    std::function<void __cdecl(void *)> &work() { return work_; };
-    std::function<void __cdecl(void)> &fini() { return fini_; };
+    typedef void *(__cdecl create_function)(void *start_function, void *send_function, void *stop_fucnction);
+    typedef void(__cdecl handle_function)(void *context, void *message);
+    typedef void(__cdecl destroy_function)(void *context);
+
+public:
+    const std::string &module_name()
+    {
+        return name_;
+    };
+    const std::string &path()
+    {
+        return path_;
+    };
+    boost::dll::shared_library &shared_library()
+    {
+        return shared_library_;
+    };
+    std::function<create_function> &create()
+    {
+        return create_;
+    };
+    std::function<handle_function> &handle()
+    {
+        return handle_;
+    };
+    std::function<destroy_function> &destroy()
+    {
+        return destroy_;
+    };
 
 private:
     std::string name_;
     std::string path_;
     boost::dll::shared_library shared_library_;
-    std::function<void __cdecl(void)> init_;
-    std::function<void __cdecl(void *)> work_;
-    std::function<void __cdecl(void)> fini_;
+    std::function<create_function> create_;
+    std::function<handle_function> handle_;
+    std::function<destroy_function> destroy_;
 };
 
 class module_loader
     : public singleton<module_loader>
 {
 public:
-    static std::shared_ptr<module> load(std::string const &name)
+    static std::shared_ptr<module> load(std::string const &module_name)
     {
         std::lock_guard<std::mutex> lock_guard(instance().mutex);
         auto &module_unordered_map = instance().module_unordered_map;
-        if (module_unordered_map.find(name) != module_unordered_map.end())
-            return module_unordered_map[name];
+        if (module_unordered_map.find(module_name) != module_unordered_map.end())
+            return module_unordered_map[module_name];
 
         auto module = std::shared_ptr<ants::core::module>(new ants::core::module());
-        module_unordered_map[name] = module;
+        module_unordered_map[module_name] = module;
         try
         {
-            module->shared_library_.load(name);
+            module->shared_library_.load(module_name);
         }
         catch (std::exception const &)
         {
-            std::cerr << "Insufficient memory when loading shared memory:" << name << std::endl;
+            std::cerr << "Insufficient memory when loading shared memory:" << module_name << std::endl;
         }
 
         if (!module->shared_library_.is_loaded())
         {
-            std::cerr << "Failed loading shared library:" << name << std::endl;
+            std::cerr << "Failed loading shared library:" << module_name << std::endl;
             return nullptr;
         }
 
         try
         {
-            module->init_ = module->shared_library_.get<void __cdecl(void)>("init");
+            module->create_ = module->shared_library_.get<module::create_function>("create");
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function 'init' in shared library:" << name << std::endl;
+            std::cerr << "Leak function 'create' in shared library:" << module_name << std::endl;
             return nullptr;
         }
 
         try
         {
-            module->work_ = module->shared_library_.get<void __cdecl(void *)>("work");
+            module->handle_ = module->shared_library_.get<module::handle_function>("handle");
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function 'work' in shared library:" << name << std::endl;
+            std::cerr << "Leak function 'handle' in shared library:" << module_name << std::endl;
             return nullptr;
         }
 
         try
         {
-            module->fini_ = module->shared_library_.get<void __cdecl(void)>("fini");
+            module->destroy_ = module->shared_library_.get<module::destroy_function>("destroy");
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function 'fini' in shared library:" << name << std::endl;
+            std::cerr << "Leak function 'destroy' in shared library:" << module_name << std::endl;
             return nullptr;
         }
 
-        return module_unordered_map[name];
+        return module;
     }
 
-    static bool unload(std::string const &name)
+    static bool unload(std::string const &module_name)
     {
         std::lock_guard<std::mutex> lock_guard(instance().mutex);
         auto &module_unordered_map = instance().module_unordered_map;
-        if (module_unordered_map.find(name) == module_unordered_map.end())
+        if (module_unordered_map.find(module_name) == module_unordered_map.end())
             return true;
-
+        auto module = module_unordered_map[module_name];
         try
         {
-            module_unordered_map[name]->shared_library_.unload();
-            module_unordered_map.erase(name);
+            module->shared_library_.unload();
+            module_unordered_map.erase(module_name);
         }
         catch (std::exception const &)
         {
-            std::cerr << "Shared library unload failed:" << name << std::endl;
+            std::cerr << "Shared library unload failed:" << module_name << std::endl;
             return false;
         }
     }
