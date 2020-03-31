@@ -12,11 +12,12 @@ namespace core
 
 class service
 {
+    friend class service_loader;
+
 public:
-    void start(std::string const &service_name, std::string const &module_name)
-    {
-        module = module_loader::load(module_name);
-        module->init()(service_name);
+    void start(std::string const &service_name){
+
+        // module->init()(service_name);
         //check service name, check module name
         // get file name
     };
@@ -44,8 +45,18 @@ class service_loader
     : public singleton<service_loader>
 {
 public:
-    static std::shared_ptr<service> load(std::string const &service_name)
+    static std::shared_ptr<service> load(std::string const &service_name, std::string const &module_name)
     {
+        std::lock_guard<std::mutex> lock_guard(instance().mutex);
+        auto &service_unordered_map = instance().service_unordered_map;
+        if (service_unordered_map.find(service_name) != service_unordered_map.end())
+            return service_unordered_map[service_name];
+
+        auto service = std::shared_ptr<ants::core::service>(new ants::core::service());
+        service_unordered_map[service_name] = service;
+
+        service->module = module_loader::load(module_name);
+        service->module->init()();
     }
 
 protected:
