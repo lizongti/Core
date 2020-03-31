@@ -20,7 +20,8 @@ namespace core
 {
 
 class process
-	: public singleton<process>
+	: public singleton<process>,
+	  private boost::noncopyable
 {
 public:
 	process &options(int argc, char *argv[])

@@ -15,10 +15,9 @@ namespace ants
 namespace core
 {
 class configuration
-    : public singleton<configuration>
+    : public singleton<configuration>,
+      private boost::noncopyable
 {
-    friend class configuration_initializer;
-
 public:
     static uint32_t thread() { return instance().thread_; };
     static uint32_t service() { return instance().service_; };
@@ -30,10 +29,7 @@ private:
     uint32_t service_;
     std::vector<std::string> path_;
     std::string bootstrap_;
-};
 
-class configuration_initializer
-{
 public:
     static void init_thread(boost::program_options::variables_map const &variables_map,
                             boost::property_tree::ptree const &ptree,
@@ -270,10 +266,10 @@ protected:
 
     void init_configuration(configuration &configuration)
     {
-        configuration_initializer::init_thread(variables_map, ptree, configuration);
-        configuration_initializer::init_service(variables_map, ptree, configuration);
-        configuration_initializer::init_path(variables_map, ptree, configuration);
-        configuration_initializer::init_bootstrap(variables_map, ptree, configuration);
+        configuration::init_thread(variables_map, ptree, configuration);
+        configuration::init_service(variables_map, ptree, configuration);
+        configuration::init_path(variables_map, ptree, configuration);
+        configuration::init_bootstrap(variables_map, ptree, configuration);
     }
 
 protected:
