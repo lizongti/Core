@@ -13,88 +13,99 @@ namespace ants
 namespace core
 {
 
-struct module
+class module
 {
-    std::string name;
-    std::string path;
-    boost::dll::shared_library shared_library;
-    std::function<void __cdecl(void)> init;
-    std::function<void __cdecl(void *)> work;
-    std::function<void __cdecl(void)> fini;
+    friend class module_loader;
+
+public:
+    const std::string &name() { return name_; };
+    const std::string &path() { return path_; };
+    boost::dll::shared_library &shared_library() { return shared_library_; };
+    std::function<void __cdecl(void)> &init() { return init_; };
+    std::function<void __cdecl(void *)> &work() { return work_; };
+    std::function<void __cdecl(void)> &fini() { return fini_; };
+
+private:
+    std::string name_;
+    std::string path_;
+    boost::dll::shared_library shared_library_;
+    std::function<void __cdecl(void)> init_;
+    std::function<void __cdecl(void *)> work_;
+    std::function<void __cdecl(void)> fini_;
 };
 
 class module_loader
     : public singleton<module_loader>
 {
 public:
-    bool load(std::string const &name)
+    static std::shared_ptr<module> load(std::string const &name)
     {
         std::lock_guard<std::mutex> lock_guard(instance().mutex);
-        auto &module_hash_map = instance().module_hash_map;
-        if (module_hash_map.find(name) != module_hash_map.end())
-            return true;
+        auto &module_unordered_map = instance().module_unordered_map;
+        if (module_unordered_map.find(name) != module_unordered_map.end())
+            return module_unordered_map[name];
 
         auto module = std::shared_ptr<ants::core::module>(new ants::core::module());
-        module_hash_map[name] = module;
+        module_unordered_map[name] = module;
         try
         {
-            module->shared_library.load(name);
+            module->shared_library_.load(name);
         }
         catch (std::exception const &)
         {
             std::cerr << "Insufficient memory when loading shared memory:" << name << std::endl;
         }
 
-        if (!module->shared_library.is_loaded())
+        if (!module->shared_library_.is_loaded())
         {
             std::cerr << "Failed loading shared library:" << name << std::endl;
-            return false;
+            return nullptr;
         }
 
         try
         {
-            module->init = module->shared_library.get<void __cdecl(void)>("init");
+            module->init_ = module->shared_library_.get<void __cdecl(void)>("init");
         }
         catch (std::exception const &)
         {
             std::cerr << "Leak function 'init' in shared library:" << name << std::endl;
-            return false;
+            return nullptr;
         }
 
         try
         {
-            module->work = module->shared_library.get<void __cdecl(void *)>("work");
+            module->work_ = module->shared_library_.get<void __cdecl(void *)>("work");
         }
         catch (std::exception const &)
         {
             std::cerr << "Leak function 'work' in shared library:" << name << std::endl;
-            return false;
+            return nullptr;
         }
 
         try
         {
-            module->fini = module->shared_library.get<void __cdecl(void)>("fini");
+            module->fini_ = module->shared_library_.get<void __cdecl(void)>("fini");
         }
         catch (std::exception const &)
         {
             std::cerr << "Leak function 'fini' in shared library:" << name << std::endl;
-            return false;
+            return nullptr;
         }
 
-        return true;
+        return module_unordered_map[name];
     }
 
     static bool unload(std::string const &name)
     {
         std::lock_guard<std::mutex> lock_guard(instance().mutex);
-        auto &module_hash_map = instance().module_hash_map;
-        if (module_hash_map.find(name) == module_hash_map.end())
+        auto &module_unordered_map = instance().module_unordered_map;
+        if (module_unordered_map.find(name) == module_unordered_map.end())
             return true;
 
         try
         {
-            module_hash_map[name]->shared_library.unload();
-            module_hash_map.erase(name);
+            module_unordered_map[name]->shared_library_.unload();
+            module_unordered_map.erase(name);
         }
         catch (std::exception const &)
         {
@@ -104,7 +115,7 @@ public:
     }
 
 protected:
-    std::unordered_map<std::string, std::shared_ptr<module>> module_hash_map;
+    std::unordered_map<std::string, std::shared_ptr<module>> module_unordered_map;
     std::mutex mutex;
 };
 

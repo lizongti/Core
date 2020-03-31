@@ -34,7 +34,6 @@ protected:
 
 template <typename T>
 class unique_queue
-    : public singleton<unique_queue<T>>
 {
 public:
     static void malloc(size_t n)
