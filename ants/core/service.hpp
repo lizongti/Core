@@ -16,10 +16,10 @@ namespace core
 class service
 {
 public:
-    bool create(std::string const &service_name, std::string const &module_name, void *function_array[])
+    bool create(std::string const &module_name, std::string const &service_name, void *function_array[])
     {
         module = module_loader::load(module_name);
-        context = module->create()(service_name.c_str(), module_name.c_str(), function_array);
+        context = module->create()(service_name.c_str(), function_array);
         return true;
     }
 
@@ -101,7 +101,7 @@ public:
                                   &service_function::send,
                                   &service_function::stop};
 
-        service->create(service_name, module_name, function_array);
+        service->create(module_name, service_name, function_array);
 
         return service;
     }

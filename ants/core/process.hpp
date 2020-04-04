@@ -53,6 +53,7 @@ protected:
 		{
 			thread_ids.push_back((new thread())->get_id());
 		}
+		service_loader::load("bootstrap", configuration::bootstrap());
 		thread::work();
 	}
 

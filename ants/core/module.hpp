@@ -17,7 +17,7 @@ namespace core
 class module
 {
 public:
-    typedef void *(__cdecl create_function)(const char *service_name, const char *module_name, void *function_array[]);
+    typedef void *(__cdecl create_function)(const char *service_name, void *function_array[]);
     typedef void(__cdecl handle_function)(void *context, void *message);
     typedef void(__cdecl destroy_function)(void *context);
 

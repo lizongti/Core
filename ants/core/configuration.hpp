@@ -138,7 +138,7 @@ public:
         }
         else
         {
-            std::string default_value = "bootstrap";
+            std::string default_value = "bootstrap.dll";
             if (boost::filesystem::exists(default_value))
             {
                 configuration.bootstrap_ = default_value;
