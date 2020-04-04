@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.10.0)
 project(subdirectories VERSION 0.1.0)
 
 set(PROJECT_ROOT_PATH ${PROJECT_SOURCE_DIR})
@@ -10,7 +10,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_ROOT_PATH}/bin)
 include(CTest)
 include(CPack)
 include(os)
-include(compiler)
+include(compile)
 include(status)
 
 file(GLOB children RELATIVE ${PROJECT_ROOT_PATH}/src ${PROJECT_ROOT_PATH}/src/*)

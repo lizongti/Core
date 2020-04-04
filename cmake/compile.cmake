@@ -39,3 +39,7 @@ macro (msvc_link LINK_TYPE)
         endif()
     endforeach()
 endmacro()
+
+macro (msvc_export_symbols)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS YES CACHE BOOL "Export all symbols")
+endmacro()
