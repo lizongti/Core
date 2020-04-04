@@ -136,9 +136,7 @@ public:
         auto module = std::shared_ptr<ants::core::module>(new ants::core::module());
         module_unordered_map[module_name] = module;
 
-        module->load(module_name);
-
-        return module;
+        return module->load(module_name) ? module : nullptr;
     }
 
     static bool unload(std::string const &module_name)

@@ -19,6 +19,8 @@ public:
     bool create(std::string const &module_name, std::string const &service_name, void *function_array[])
     {
         module = module_loader::load(module_name);
+        if (!module)
+            return false;
         context = module->create()(service_name.c_str(), function_array);
         return true;
     }
@@ -62,8 +64,7 @@ class service_loader
                                   const char *destination_service_name,
                                   const char *destination_module_name)
         {
-            auto service = service_loader::load(destination_service_name, destination_module_name);
-            return true;
+            return service_loader::load(destination_service_name, destination_module_name) != nullptr;
         }
 
         static bool __cdecl send(const char *source_service_name,
@@ -101,9 +102,7 @@ public:
                                   &service_function::send,
                                   &service_function::stop};
 
-        service->create(module_name, service_name, function_array);
-
-        return service;
+        return service->create(module_name, service_name, function_array) ? service : nullptr;
     }
 
     static std::shared_ptr<service> find(std::string const &service_name)

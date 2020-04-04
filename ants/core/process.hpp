@@ -53,7 +53,12 @@ protected:
 		{
 			thread_ids.push_back((new thread())->get_id());
 		}
-		service_loader::load("bootstrap", configuration::bootstrap());
+		auto service = service_loader::load("bootstrap", configuration::bootstrap());
+		if (!service)
+		{
+			std::cerr << "Bootstrap service load failed." << std::endl;
+			exit(1);
+		}
 		thread::work();
 	}
 
