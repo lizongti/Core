@@ -81,6 +81,7 @@
         "xutility": "cpp",
         "*.ipp": "cpp",
         "thread": "cpp",
-        "hash_map": "cpp"
+        "hash_map": "cpp",
+        "functions.h": "c"
     }
 }

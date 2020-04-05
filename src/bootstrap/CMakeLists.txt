@@ -10,6 +10,7 @@ endif()
 use_c_standard(99)
 use_cxx_standard(17)
 
+include_directories(${PROJECT_ROOT_PATH})
 aux_source_directory(${PROJECT_SOURCE_DIR} SOURCE_LIST)
 add_library(bootstrap SHARED ${SOURCE_LIST})
 message_all_status()
