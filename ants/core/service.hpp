@@ -23,11 +23,12 @@ class service
 {
 public:
     bool load(const std::string &module_name,
-              const std::string &service_name) //, void *function_array[])
+              const std::string &service_name,
+              void *function_array[])
     {
         module = module_loader::load(module_name);
         context = std::shared_ptr<void>(
-            module->create(service_name.c_str()),
+            module->create(service_name.c_str(), function_array),
             [this](void *context) {
                 this->module->destroy(context);
             });
@@ -55,7 +56,7 @@ public:
             {
                 module->handle(static_cast<void *>(context.get()),
                                static_cast<int>(message->event()),
-                               const_cast<char*>(message->source().c_str()),
+                               message->source().c_str(),
                                message->data());
             }
         }
@@ -105,29 +106,32 @@ class service_loader
     : public singleton<service_loader>,
       private boost::noncopyable
 {
+    class export_function
+    {
+    public:
+        static int __cdecl start(const char *module_name,
+                                 const char *service_name)
+        {
+            return service_loader::load(module_name, service_name) != nullptr ? 1 : 0;
+        }
+
+        static int __cdecl send(void *context,
+                                const char *source,
+                                const char *destination,
+                                void *data)
+        {
+            auto message = new ants::core::message{ants::def::Event::Send, source, destination, data};
+            auto service_name = destination; // need parse
+            return service_loader::push(destination, message) != nullptr ? 1 : 0;
+        }
+
+        static bool __cdecl stop(const char *service_name)
+        {
+            return service_loader::unload(service_name) != nullptr ? 1 : 0;
+        }
+    };
 
 public:
-    static bool __cdecl start(const char *module_name,
-                              const char *service_name)
-    {
-        return service_loader::load(module_name, service_name) != nullptr;
-    }
-
-    static bool __cdecl send(void *context,
-                             const char *source,
-                             const char *destination,
-                             void *data)
-    {
-        auto message = new ants::core::message{ants::def::Event::Send, source, destination, data};
-        auto service_name = destination; // need parse
-        return service_loader::push(destination, message) != nullptr;
-    }
-
-    static bool __cdecl stop(const char *service_name)
-    {
-        return service_loader::unload(service_name) != nullptr;
-    }
-
     static std::shared_ptr<service> load(std::string const &module_name,
                                          std::string const &service_name)
     {
@@ -140,7 +144,13 @@ public:
         auto service = std::shared_ptr<ants::core::service>(new ants::core::service());
         service_unordered_map[service_name] = service;
 
-        return service->load(module_name, service_name) ? service : nullptr;
+        void *function_array[] = {
+            export_function::start,
+            export_function::send,
+            export_function::stop,
+        };
+
+        return service->load(module_name, service_name, function_array) ? service : nullptr;
     }
 
     static std::shared_ptr<service> push(std::string const &service_name,

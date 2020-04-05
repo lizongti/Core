@@ -18,7 +18,8 @@ class module
     : public std::enable_shared_from_this<module>
 {
 public:
-    typedef void *(__cdecl create_function)(const char *service_name); //, void *function_array[]);
+    typedef void *(__cdecl create_function)(const char *service_name,
+                                            void *function_array[]);
     typedef void(__cdecl handle_function)(void *context,
                                           int event,
                                           const char *source,

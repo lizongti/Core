@@ -58,6 +58,6 @@ protected:
 protected:
     std::vector<std::thread::id> thread_ids;
 };
-};	   // namespace core
-};	   // namespace ants
+};     // namespace core
+};     // namespace ants
 #endif // ANTS_CORE_PROCESS_HPP
