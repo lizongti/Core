@@ -6,7 +6,7 @@ static int(__cdecl *send)(void *context,
                           void *data);
 static int(__cdecl *stop)(const char *service_name);
 
-void init_functions(void *function_array[])
+void init_functions_array(void *function_array[])
 {
     start = function_array[0];
     send = function_array[1];

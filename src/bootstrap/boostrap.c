@@ -11,7 +11,7 @@ struct bootstrap_context
 
 void *__cdecl create(const char *service_name, void *function_array[])
 {
-    init_functions(function_array);
+    init_functions_array(function_array);
     struct bootstrap_context *context = malloc(sizeof(struct bootstrap_context));
     context->id = 0;
     return context;
