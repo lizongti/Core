@@ -9,11 +9,11 @@ template <typename T>
 class singleton
 {
 public:
-	static T &instance()
-	{
-		static T t;
-		return t;
-	}
+    static T &instance()
+    {
+        static T t;
+        return t;
+    }
 };
 }; // namespace core
 }; // namespace ants

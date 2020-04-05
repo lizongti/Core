@@ -2,8 +2,6 @@
 #define ANTS_CORE_THREAD_HPP
 
 #include <thread>
-#include <boost/lockfree/queue.hpp>
-#include <ants/core/singleton.hpp>
 #include <ants/core/queue.hpp>
 #include <ants/core/service.hpp>
 namespace ants
@@ -25,11 +23,13 @@ public:
     {
         while (true)
         {
-            auto service = unique_queue<ants::core::service>::pop();
-            if (service)
-                service->work();
-            else
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            auto service = static_shared_queue<ants::core::service>::pop(true);
+            if (!service)
+            {
+                std::cerr << "Get empty service when working." << std::endl;
+                exit(1);
+            }
+            service->work();
         }
     }
 

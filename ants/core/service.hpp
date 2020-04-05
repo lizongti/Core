@@ -2,7 +2,11 @@
 #define ANTS_CORE_SERVICE_HPP
 
 #include <array>
+#include <atomic>
+#include <mutex>
 #include <unordered_map>
+#include <shared_mutex>
+#include <boost/noncopyable.hpp>
 #include <ants/core/queue.hpp>
 #include <ants/core/module.hpp>
 #include <ants/core/singleton.hpp>
@@ -14,82 +18,103 @@ namespace core
 {
 
 class service
+    : public std::enable_shared_from_this<service>
 {
 public:
-    bool create(std::string const &module_name, std::string const &service_name, void *function_array[])
+    void create(const std::string &module_name,
+                const std::string &service_name) //, void *function_array[])
     {
         module = module_loader::load(module_name);
-        if (!module)
-            return false;
-        context = module->create()(service_name.c_str(), function_array);
-        return true;
+        context = std::shared_ptr<void>(
+            module->create()(service_name.c_str()),
+            [this](void *context) {
+                this->module->destroy()(context);
+            });
     }
 
     void work()
     {
-        void *message;
-        while (message = queue.pop())
+        decltype(shared_queue.size()) size;
         {
-            module->handle()(context, message);
+            std::lock_guard<std::mutex> lock(mutex);
+            outside = true;
+            working = true;
+            size = shared_queue.size();
+        }
+
+        while (size--)
+        {
+            std::shared_ptr<void> message;
+            while (message = shared_queue.pop())
+            {
+                module->handle()(static_cast<void *>(context.get()),
+                                 static_cast<void *>(message.get()));
+            }
+        }
+
+        std::lock_guard<std::mutex> lock(mutex);
+        working = false;
+        if (!working && outside && !shared_queue.empty())
+        {
+            static_shared_queue<ants::core::service>::push(shared_from_this());
+            outside = false;
         }
     }
 
-    bool push(void *message)
+    void push(void *message)
     {
-        return queue.push(message);
+        shared_queue.push(std::shared_ptr<void>(message, [](void *message) {
+            free(message);
+        }));
+
+        std::lock_guard<std::mutex> lock(mutex);
+        if (!working && outside && !shared_queue.empty())
+        {
+            static_shared_queue<ants::core::service>::push(shared_from_this());
+            outside = false;
+        }
     }
 
-    bool destroy()
-    {
-        module->destroy()(context);
-        return true;
-    }
+    void destroy() {}
 
-protected:
+private:
     std::string name;
-    void *context;
-
-    queue<void> queue;
+    std::shared_ptr<void> context;
     std::shared_ptr<module> module;
+
+    shared_queue<void> shared_queue;
+    bool outside = false;
+    bool working = false;
+    mutable std::mutex mutex;
 };
 
 class service_loader
     : public singleton<service_loader>,
       private boost::noncopyable
 {
-    class service_function
-    {
-    public:
-        static bool __cdecl start(const char *source_service_name,
-                                  const char *destination_service_name,
-                                  const char *destination_module_name)
-        {
-            return service_loader::load(destination_service_name, destination_module_name) != nullptr;
-        }
-
-        static bool __cdecl send(const char *source_service_name,
-                                 const char *destination_service_name,
-                                 void *message)
-        {
-            auto service = service_loader::find(destination_service_name);
-            if (!service)
-                return false;
-            return service->push(message);
-        }
-
-        static bool __cdecl stop(const char *source_service_name,
-                                 const char *destination_service_name)
-        {
-            service_loader::unload(destination_service_name);
-            return true;
-        }
-    };
 
 public:
-    static std::shared_ptr<service> load(std::string const &service_name,
-                                         std::string const &module_name)
+    static bool __cdecl start(const char *module_name,
+                              const char *service_name)
     {
-        std::lock_guard<std::shared_mutex> _(instance().shared_mutex);
+        return service_loader::load(module_name, service_name) != nullptr;
+    }
+
+    static bool __cdecl send(const char *service_name,
+                             void *message)
+    {
+        return service_loader::push(service_name, message) != nullptr;
+    }
+
+    static bool __cdecl stop(const char *service_name)
+    {
+        return service_loader::unload(service_name) != nullptr;
+    }
+
+    static std::shared_ptr<service> load(std::string const &module_name,
+                                         std::string const &service_name)
+    {
+        std::lock_guard<std::shared_mutex> lock(instance().shared_mutex);
 
         auto &service_unordered_map = instance().service_unordered_map;
         if (service_unordered_map.find(service_name) != service_unordered_map.end())
@@ -98,39 +123,41 @@ public:
         auto service = std::shared_ptr<ants::core::service>(new ants::core::service());
         service_unordered_map[service_name] = service;
 
-        void *function_array[] = {&service_function::start,
-                                  &service_function::send,
-                                  &service_function::stop};
+        service->create(module_name, service_name);
 
-        return service->create(module_name, service_name, function_array) ? service : nullptr;
+        return service;
     }
 
-    static std::shared_ptr<service> find(std::string const &service_name)
+    static std::shared_ptr<service> push(std::string const &service_name,
+                                         void *message)
     {
-        std::shared_lock<std::shared_mutex> _(instance().shared_mutex);
-
-        auto &service_unordered_map = instance().service_unordered_map;
-        if (service_unordered_map.find(service_name) != service_unordered_map.end())
-            return service_unordered_map[service_name];
-
-        return nullptr;
-    }
-
-    static bool unload(std::string const &service_name)
-    {
-        std::lock_guard<std::shared_mutex> _(instance().shared_mutex);
+        std::shared_lock<std::shared_mutex> lock(instance().shared_mutex);
 
         auto &service_unordered_map = instance().service_unordered_map;
         if (service_unordered_map.find(service_name) == service_unordered_map.end())
-            return true;
+            return nullptr;
 
         auto service = service_unordered_map[service_name];
 
-        service->destroy();
+        service->push(message);
 
+        return service;
+    }
+
+    static std::shared_ptr<service> unload(std::string const &service_name)
+    {
+        std::lock_guard<std::shared_mutex> lock(instance().shared_mutex);
+
+        auto &service_unordered_map = instance().service_unordered_map;
+        if (service_unordered_map.find(service_name) == service_unordered_map.end())
+            return nullptr;
+
+        auto service = service_unordered_map[service_name];
         service_unordered_map.erase(service_name);
 
-        return true;
+        service->destroy();
+
+        return service;
     }
 
 protected:
