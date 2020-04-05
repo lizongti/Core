@@ -21,13 +21,11 @@ class configuration
 {
 public:
     static uint32_t thread() { return instance().thread_; };
-    static uint32_t service() { return instance().service_; };
     static std::vector<std::string> &path() { return instance().path_; };
     static std::string bootstrap() { return instance().bootstrap_; };
 
 private:
     uint32_t thread_;
-    uint32_t service_;
     std::vector<std::string> path_;
     std::string bootstrap_;
 
@@ -54,29 +52,6 @@ public:
             configuration.thread_ = default_value;
         }
         std::cout << "[Configuration] thread value is " << configuration.thread_ << std::endl;
-    };
-    static void init_service(boost::program_options::variables_map const &variables_map,
-                             boost::property_tree::ptree const &ptree,
-                             configuration &configuration)
-    {
-        uint32_t max_value = 65534;
-        uint32_t min_value = 1;
-        uint32_t default_value = 65534;
-        if (variables_map.count("service"))
-        {
-            uint32_t variables_map_value = variables_map["thread"].as<uint32_t>();
-            configuration.service_ = std::min(std::max(variables_map_value, min_value), max_value);
-        }
-        else if (ptree.count("system") > 0 && ptree.get_child("system").count("service") > 0)
-        {
-            uint32_t ptree_value = ptree.get_child("system").get<uint32_t>("service");
-            configuration.service_ = std::min(std::max(ptree_value, min_value), max_value);
-        }
-        else
-        {
-            configuration.service_ = default_value;
-        }
-        std::cout << "[Configuration] service value is " << configuration.service_ << std::endl;
     };
     static void init_path(boost::program_options::variables_map const &variables_map,
                           boost::property_tree::ptree const &ptree,
@@ -183,8 +158,6 @@ protected:
              "Set the path of the configuration file.");
         init("thread,t", boost::program_options::value<uint32_t>(),
              "Set the number of threads, which cannot be over default value(units of processors).");
-        init("service,s", boost::program_options::value<uint32_t>(),
-             "Set the max of service, which cannot be over default value(65534).");
         init("bootstrap,b", boost::program_options::value<std::string>(),
              "Set the module name of the boostrap service.");
         init("path,p", boost::program_options::value<std::vector<std::string>>(),
@@ -268,7 +241,6 @@ protected:
     void init_configuration(configuration &configuration)
     {
         configuration::init_thread(variables_map, ptree, configuration);
-        configuration::init_service(variables_map, ptree, configuration);
         configuration::init_path(variables_map, ptree, configuration);
         configuration::init_bootstrap(variables_map, ptree, configuration);
     }

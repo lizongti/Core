@@ -16,10 +16,7 @@ void *__cdecl create(const char *service_name, void *function_array[])
     context->id = 0;
     return context;
 }
-void __cdecl handle(void *context,
-                    int event,
-                    const char *source,
-                    void *data)
+void __cdecl handle(void *context, int event, const char *source, void *data)
 {
     int id = ((struct bootstrap_context *)context)->id;
     start("bootstrap.dll", "bootstrap2");
