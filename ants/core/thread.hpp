@@ -29,7 +29,11 @@ public:
                 std::cerr << "Get empty service when working." << std::endl;
                 exit(1);
             }
-            service->work();
+            if (!service->work())
+            {
+                std::cerr << "Service work failed." << std::endl;
+                exit(1);
+            }
         }
     }
 

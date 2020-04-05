@@ -19,7 +19,10 @@ class module
 {
 public:
     typedef void *(__cdecl create_function)(const char *service_name); //, void *function_array[]);
-    typedef void(__cdecl handle_function)(void *context, void *message);
+    typedef void(__cdecl handle_function)(void *context,
+                                          int event,
+                                          const char *source,
+                                          void *data);
     typedef void(__cdecl destroy_function)(void *context);
 
 public:
@@ -43,7 +46,7 @@ public:
 
         try
         {
-            create_ = shared_library_.get<create_function>("create");
+            create = shared_library_.get<create_function>("create");
         }
         catch (std::exception const &)
         {
@@ -53,7 +56,7 @@ public:
 
         try
         {
-            handle_ = shared_library_.get<handle_function>("handle");
+            handle = shared_library_.get<handle_function>("handle");
         }
         catch (std::exception const &)
         {
@@ -63,7 +66,7 @@ public:
 
         try
         {
-            destroy_ = shared_library_.get<destroy_function>("destroy");
+            destroy = shared_library_.get<destroy_function>("destroy");
         }
         catch (std::exception const &)
         {
@@ -100,26 +103,16 @@ public:
     {
         return shared_library_;
     };
-    std::function<create_function> &create()
-    {
-        return create_;
-    };
-    std::function<handle_function> &handle()
-    {
-        return handle_;
-    };
-    std::function<destroy_function> &destroy()
-    {
-        return destroy_;
-    };
+
+public:
+    std::function<create_function> create;
+    std::function<handle_function> handle;
+    std::function<destroy_function> destroy;
 
 private:
     std::string name_;
     std::string path_;
     boost::dll::shared_library shared_library_;
-    std::function<create_function> create_;
-    std::function<handle_function> handle_;
-    std::function<destroy_function> destroy_;
 };
 
 class module_loader
