@@ -22,16 +22,10 @@ class process
       private boost::noncopyable
 {
 public:
-    process &options(int argc, char *argv[])
+    void run(int argc, char *argv[])
     {
         init_options(argc, argv);
-        return *this;
-    }
-
-    process &run()
-    {
         init_threads();
-        return *this;
     }
 
 protected:
@@ -42,10 +36,10 @@ protected:
     void init_threads()
     {
         thread_ids.push_back(std::this_thread::get_id());
+
         for (uint32_t i = 1; i < configuration::thread(); ++i)
-        {
             thread_ids.push_back((new thread())->get_id());
-        }
+
         auto service = service_loader::load(configuration::bootstrap(), "bootstrap");
         if (!service)
         {

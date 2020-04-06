@@ -101,7 +101,7 @@ public:
 };
 
 template <typename T>
-class static_shared_queue
+class unique_shared_queue
 {
 public:
     static void push(std::shared_ptr<T> value)
@@ -111,6 +111,10 @@ public:
     static std::shared_ptr<T> pop(bool wait = false)
     {
         return singleton<shared_queue<T>>::instance().pop(wait);
+    };
+    static auto size() -> decltype(singleton<shared_queue<T>>::instance().size())
+    {
+        return singleton<shared_queue<T>>::instance().size();
     }
 };
 

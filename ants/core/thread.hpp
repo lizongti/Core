@@ -23,7 +23,7 @@ public:
     {
         while (true)
         {
-            auto service = static_shared_queue<ants::core::service>::pop(true);
+            auto service = unique_shared_queue<ants::core::service>::pop(true);
             if (!service)
             {
                 std::cerr << "Get empty service when working." << std::endl;

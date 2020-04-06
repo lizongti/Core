@@ -36,6 +36,7 @@ public:
         push(std::shared_ptr<message>(new message{
             ants::def::Event::Init, service_name, service_name, nullptr}));
 
+        std::cout << "Service " << service_name << " load ok" << std::endl;
         return true;
     }
 
@@ -65,7 +66,7 @@ public:
         working = false;
         if (!working && outside && !shared_queue.empty())
         {
-            static_shared_queue<service>::push(shared_from_this());
+            unique_shared_queue<service>::push(shared_from_this());
             outside = false;
         }
 
@@ -79,7 +80,7 @@ public:
         std::lock_guard<std::mutex> lock(mutex);
         if (!working && outside && !shared_queue.empty())
         {
-            static_shared_queue<service>::push(shared_from_this());
+            unique_shared_queue<service>::push(shared_from_this());
             outside = false;
         }
 
@@ -120,12 +121,15 @@ class service_loader
                                 const char *destination,
                                 void *data)
         {
-            auto message = new ants::core::message{ants::def::Event::Send, source, destination, data};
+            auto message = std::shared_ptr<ants::core::message>(
+                new ants::core::message{
+                    ants::def::Event::Call, source, destination, data});
+
             auto service_name = destination; // need parse
-            return service_loader::push(destination, message) != nullptr ? 1 : 0;
+            return service_loader::push(service_name, message) != nullptr ? 1 : 0;
         }
 
-        static bool __cdecl stop(const char *service_name)
+        static int __cdecl stop(const char *service_name)
         {
             return service_loader::unload(service_name) != nullptr ? 1 : 0;
         }
@@ -154,7 +158,7 @@ public:
     }
 
     static std::shared_ptr<service> push(std::string const &service_name,
-                                         ants::core::message *message)
+                                         std::shared_ptr<ants::core::message> message)
     {
         std::shared_lock<std::shared_mutex> lock(instance().shared_mutex);
 
@@ -164,9 +168,7 @@ public:
 
         auto service = service_unordered_map[service_name];
 
-        return service->push(std::shared_ptr<ants::core::message>(message))
-                   ? service
-                   : nullptr;
+        return service->push(message) ? service : nullptr;
     }
 
     static std::shared_ptr<service> unload(std::string const &service_name)
