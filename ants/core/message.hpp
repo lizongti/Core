@@ -8,8 +8,6 @@ namespace ants
 namespace core
 {
 
-static std::atomic_int new_count = {0};
-static std::atomic_int delete_count = {0};
 class message
 {
 public:
