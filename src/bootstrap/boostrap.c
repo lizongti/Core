@@ -37,7 +37,7 @@ void __cdecl handle(struct context *context, int event, const char *source, void
             {
                 char service_name[100];
                 sprintf_s(service_name, 100, "bootstrap%d", i);
-                for (int j = 0; i < 1000; j++)
+                for (int j = 0; j < 1000; j++)
                     send(context, "", service_name, NULL);
             }
         }
@@ -49,7 +49,7 @@ void __cdecl handle(struct context *context, int event, const char *source, void
             exit(1);
         }
         char service_name[100];
-        sprintf_s(service_name, 1000, "bootstrap%d", rand() % (service_count - 1));
+        sprintf_s(service_name, 1000, "bootstrap%d", rand() % service_count);
         send(context, "", service_name, NULL);
         break;
     }
