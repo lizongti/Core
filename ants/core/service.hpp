@@ -13,7 +13,7 @@
 #include <ants/core/message.hpp>
 #include <ants/def/event.h>
 #include <ants/def/context.h>
-#include <ants/def/functions.h>
+#include <ants/def/import_helper.h>
 
 namespace ants
 {

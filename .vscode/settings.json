@@ -84,6 +84,7 @@
         "hash_map": "cpp",
         "functions.h": "c",
         "export.h": "c",
-        "context.h": "c"
+        "context.h": "c",
+        "export_helper.h": "c"
     }
 }

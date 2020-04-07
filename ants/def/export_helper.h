@@ -1,28 +1,11 @@
-#ifndef ANTS_DEF_FUNCTIONS_H
-#define ANTS_DEF_FUNCTIONS_H
+#ifndef ANTS_DEF_EXPORT_HELPER_H
+#define ANTS_DEF_EXPORT_HELPER_H
 #include <ants/def/context.h>
 #ifdef __cplusplus
 namespace ants
 {
 namespace def
 {
-#endif
-
-#ifdef __cplusplus
-inline void construct(struct context *context)
-{
-    (*context->construct)(context);
-};
-
-inline void handle(struct context *context, int event, const char *source, void *data)
-{
-    (*context->handle)(context, event, source, data);
-};
-
-inline void destory(struct context *context)
-{
-    (*context->destroy)(context);
-};
 #endif
 
 inline int start(struct context *context, const char *module_name, const char *service_name)
@@ -44,4 +27,4 @@ inline int stop(struct context *context, const char *service_name)
 }; // namespace ants
 #endif
 
-#endif // ANTS_DEF_FUNCTIONS_H
+#endif // ANTS_DEF_EXPORT_HELPER_H

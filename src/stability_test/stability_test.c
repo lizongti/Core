@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <ants/def/functions.h>
+#include <ants/def/export_helper.h>
 #include <ants/def/event.h>
 
 static int id_increase = 0;
