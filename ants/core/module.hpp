@@ -7,7 +7,12 @@
 #include <unordered_map>
 #include <boost/dll/shared_library.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/version.hpp>
+#include <boost/config.hpp>
 #include <ants/core/singleton.hpp>
+#include <ants/core/Util.hpp>
+#include <ants/def/context.h>
+#include <ants/def/import.h>
 
 namespace ants
 {
@@ -18,62 +23,54 @@ class module
     : public std::enable_shared_from_this<module>
 {
 public:
-    typedef void *(__cdecl create_function)(const char *service_name,
-                                            void *function_array[]);
-    typedef void(__cdecl handle_function)(void *context,
-                                          int event,
-                                          const char *source,
-                                          void *data);
-    typedef void(__cdecl destroy_function)(void *context);
-
-public:
     bool load(std::string const &module_name)
     {
-        name_ = module_name;
+        name = module_name;
         try
         {
-            shared_library_.load(name_);
+            shared_library.load(name + Util::shared_library_suffix());
         }
         catch (std::exception const &)
         {
-            std::cerr << "Insufficient memory when loading shared memory:" << name_ << std::endl;
+            std::cerr << "Insufficient memory when loading shared memory:" << name << std::endl;
         }
 
-        if (!shared_library_.is_loaded())
+        if (!shared_library.is_loaded())
         {
-            std::cerr << "Failed loading shared library:" << name_ << std::endl;
+            std::cerr << "Failed loading shared library:" << name << std::endl;
             return false;
         }
 
         try
         {
-            create = shared_library_.get<create_function>("create");
+            construct = &shared_library.get<ants::def::import_construct_function>("construct");
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function 'create' in shared library:" << name_ << std::endl;
+            std::cerr << "Leak function 'construct' in shared library:" << name << std::endl;
             return false;
         }
 
         try
         {
-            handle = shared_library_.get<handle_function>("handle");
+            handle = &shared_library.get<ants::def::import_handle_function>("handle");
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function 'handle' in shared library:" << name_ << std::endl;
+            std::cerr << "Leak function 'handle' in shared library:" << name << std::endl;
             return false;
         }
 
         try
         {
-            destroy = shared_library_.get<destroy_function>("destroy");
+            destroy = &shared_library.get<ants::def::import_destroy_function>("destroy");
         }
         catch (std::exception const &)
         {
-            std::cerr << "Leak function 'destroy' in shared library:" << name_ << std::endl;
+            std::cerr << "Leak function 'destroy' in shared library:" << name << std::endl;
             return false;
         }
+
         return true;
     }
 
@@ -81,39 +78,25 @@ public:
     {
         try
         {
-            shared_library_.unload();
+            shared_library.unload();
         }
         catch (std::exception const &)
         {
-            std::cerr << "Shared library unload failed:" << name_ << std::endl;
+            std::cerr << "Shared library unload failed:" << name << std::endl;
             return false;
         }
         return true;
     }
 
 public:
-    const std::string &module_name()
-    {
-        return name_;
-    };
-    const std::string &path()
-    {
-        return path_;
-    };
-    boost::dll::shared_library &shared_library()
-    {
-        return shared_library_;
-    };
-
-public:
-    std::function<create_function> create;
-    std::function<handle_function> handle;
-    std::function<destroy_function> destroy;
+    ants::def::import_construct_function *construct;
+    ants::def::import_handle_function *handle;
+    ants::def::import_destroy_function *destroy;
 
 private:
-    std::string name_;
-    std::string path_;
-    boost::dll::shared_library shared_library_;
+    std::string name;
+    std::string path;
+    boost::dll::shared_library shared_library;
 };
 
 class module_loader

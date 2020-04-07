@@ -5,10 +5,9 @@ include(compiler-template-1)
 
 message_project_name()
 include_directories(${PROJECT_ROOT_PATH} ${VCPKG_INCLUDE})
+link_directories(${VCPKG_LIB} ${VCPKG_BIN})
 aux_source_directory(${PROJECT_SOURCE_DIR} SOURCE_LIST)
 add_executable(${PROJECT_NAME} ${SOURCE_LIST})
-
-link_directories(${VCPKG_LIB} ${VCPKG_BIN})
 find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} jemalloc)
 message_all_status()

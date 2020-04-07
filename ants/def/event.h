@@ -9,8 +9,9 @@ namespace def
 #endif
 enum Event
 {
-    Init = 1,
+    Start = 1,
     Call = 2,
+    Stop = 3,
 };
 #ifdef __cplusplus
 }; // namespace def

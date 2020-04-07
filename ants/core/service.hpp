@@ -12,30 +12,49 @@
 #include <ants/core/singleton.hpp>
 #include <ants/core/message.hpp>
 #include <ants/def/event.h>
+#include <ants/def/context.h>
+#include <ants/def/functions.h>
 
 namespace ants
 {
 namespace core
 {
 
+class export_function
+{
+public:
+    static int start(struct ants::def::context *context, const char *module_name,
+                     const char *service_name);
+    static int send(struct ants::def::context *context, const char *source,
+                    const char *destination, void *data);
+    static int stop(struct ants::def::context *context, const char *service_name);
+};
+
 class service
     : public std::enable_shared_from_this<service>
 {
 public:
     bool load(const std::string &module_name,
-              const std::string &service_name,
-              void *function_array[])
+              const std::string &service_name)
     {
         name = service_name;
         module = module_loader::load(module_name);
-        context = std::shared_ptr<void>(
-            module->create(service_name.c_str(), function_array),
-            [this](void *context) {
-                this->module->destroy(context);
-            });
+        if (!module)
+        {
+            std::cerr << "Module " << module_name << " load failed!" << std::endl;
+            return false;
+        }
+        context = std::shared_ptr<ants::def::context>(new ants::def::context{
+            nullptr, nullptr, 0,
+            module->construct, module->handle, module->destroy,
+            export_function::start, export_function::send, export_function::stop});
+        ants::def::construct(context.get());
+        instance = std::shared_ptr<void>(context->instance, [&](void *instance) {
+            (*context->destroy)(context.get());
+        });
 
         push(std::shared_ptr<message>(new message{
-            ants::def::Event::Init, service_name, service_name, nullptr}));
+            ants::def::Event::Start, service_name, service_name, nullptr}));
 
         std::cout << "Service " << service_name << " load ok" << std::endl;
         return true;
@@ -59,10 +78,10 @@ public:
             std::shared_ptr<ants::core::message> message;
             while (message = shared_queue.pop())
             {
-                module->handle(static_cast<void *>(context.get()),
-                               static_cast<int>(message->event()),
-                               message->source().c_str(),
-                               message->data());
+                ants::def::handle(context.get(),
+                                  message->event(),
+                                  message->source().c_str(),
+                                  message->data());
             }
         }
 
@@ -92,7 +111,7 @@ public:
         //     static uint64_t count = 0;
         //     if (++count % 10000000 == 0)
         //     {
-        //         std::cout << count / 10000000 << " " << time(0) << " " 
+        //         std::cout << count / 10000000 << " " << time(0) << " "
         //         << unique_shared_queue<service>::size() << std::endl;
         //     }
         // }
@@ -107,8 +126,9 @@ public:
 
 private:
     std::string name;
-    std::shared_ptr<void> context;
-    std::shared_ptr<module> module;
+    std::shared_ptr<ants::core::module> module;
+    std::shared_ptr<ants::def::context> context;
+    std::shared_ptr<void> instance;
 
     shared_queue<message> shared_queue;
     bool outside = true;
@@ -120,34 +140,6 @@ class service_loader
     : public singleton<service_loader>,
       private boost::noncopyable
 {
-    class export_function
-    {
-    public:
-        static int __cdecl start(const char *module_name,
-                                 const char *service_name)
-        {
-            return service_loader::load(module_name, service_name) != nullptr ? 1 : 0;
-        }
-
-        static int __cdecl send(void *context,
-                                const char *source,
-                                const char *destination,
-                                void *data)
-        {
-            auto message = std::shared_ptr<ants::core::message>(
-                new ants::core::message{
-                    ants::def::Event::Call, source, destination, data});
-
-            auto service_name = destination; // need parse
-            return service_loader::push(service_name, message) != nullptr ? 1 : 0;
-        }
-
-        static int __cdecl stop(const char *service_name)
-        {
-            return service_loader::unload(service_name) != nullptr ? 1 : 0;
-        }
-    };
-
 public:
     static std::shared_ptr<service> load(std::string const &module_name,
                                          std::string const &service_name)
@@ -161,13 +153,7 @@ public:
         auto service = std::shared_ptr<ants::core::service>(new ants::core::service());
         service_unordered_map[service_name] = service;
 
-        void *function_array[] = {
-            export_function::start,
-            export_function::send,
-            export_function::stop,
-        };
-
-        return service->load(module_name, service_name, function_array) ? service : nullptr;
+        return service->load(module_name, service_name) ? service : nullptr;
     }
 
     static std::shared_ptr<service> push(std::string const &service_name,
@@ -202,6 +188,27 @@ protected:
     std::unordered_map<std::string, std::shared_ptr<service>> service_unordered_map;
     mutable std::shared_mutex shared_mutex;
 };
+
+int export_function::start(struct ants::def::context *context, const char *module_name,
+                           const char *service_name)
+{
+    return service_loader::load(module_name, service_name) != nullptr ? 1 : 0;
+}
+
+int export_function::send(struct ants::def::context *context, const char *source,
+                          const char *destination, void *data)
+{
+    auto message = std::shared_ptr<ants::core::message>(new ants::core::message{
+        ants::def::Event::Call, source, destination, data});
+
+    auto service_name = destination; // need parse
+    return service_loader::push(service_name, message) != nullptr ? 1 : 0;
+}
+
+int export_function::stop(struct ants::def::context *context, const char *service_name)
+{
+    return service_loader::unload(service_name) != nullptr ? 1 : 0;
+}
 
 }; // namespace core
 }; // namespace ants

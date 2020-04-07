@@ -9,7 +9,9 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/Server.exe",
-            "args": [],
+            "args": [
+                "stability_test"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/bin",
             "environment": [],
