@@ -10,7 +10,6 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_ROOT_PATH}/bin)
 include(CTest)
 include(CPack)
 include(os)
-include(compile)
 include(status)
 include(vcpkg)
 

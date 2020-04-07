@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(bootstrap VERSION 0.1.0)
+project(stability_test VERSION 0.1.0)
 include(compiler-template-1)
 
 message_project_name()
