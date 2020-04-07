@@ -50,7 +50,7 @@ public:
             export_function::start, export_function::send, export_function::stop});
         ants::def::construct(context.get());
         instance = std::shared_ptr<void>(context->instance, [&](void *instance) {
-            (*context->destroy)(context.get());
+            ants::def::destroy(context.get());
         });
 
         push(std::shared_ptr<message>(new message{

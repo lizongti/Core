@@ -18,7 +18,7 @@ inline void handle(struct context *context, int event, const char *source, void 
     (*context->handle)(context, event, source, data);
 };
 
-inline void destory(struct context *context)
+inline void destroy(struct context *context)
 {
     (*context->destroy)(context);
 };
