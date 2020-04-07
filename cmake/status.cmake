@@ -38,3 +38,7 @@ function (message_all_status)
     message(STATUS "CMAKE_STATIC_LINKER_FLAGS_RELEASE = " ${CMAKE_STATIC_LINKER_FLAGS_RELEASE})
     message(STATUS "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO = " ${CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO})
 endfunction()
+
+function(message_project_name)
+message("Running CMake for project [" ${PROJECT_NAME} "]")
+endfunction()

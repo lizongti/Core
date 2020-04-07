@@ -12,6 +12,7 @@ include(CPack)
 include(os)
 include(compile)
 include(status)
+include(vcpkg)
 
 file(GLOB children RELATIVE ${PROJECT_ROOT_PATH}/src ${PROJECT_ROOT_PATH}/src/*)
 foreach(child ${children})

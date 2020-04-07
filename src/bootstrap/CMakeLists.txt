@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(bootstrap VERSION 0.1.0)
-message("Running CMake for project [" ${PROJECT_NAME} "]")
+message_project_name()
 
 if(WINDOWS)
     msvc_export_symbols()
