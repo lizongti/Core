@@ -1,12 +1,12 @@
-#ifndef ANTS_CORE_THREAD_HPP
-#define ANTS_CORE_THREAD_HPP
+#ifndef ANTS_KERNEL_THREAD_HPP
+#define ANTS_KERNEL_THREAD_HPP
 
 #include <thread>
-#include <ants/core/queue.hpp>
-#include <ants/core/service.hpp>
+#include <ants/kernel/queue.hpp>
+#include <ants/kernel/service.hpp>
 namespace ants
 {
-namespace core
+namespace kernel
 {
 
 class thread
@@ -23,7 +23,7 @@ public:
     {
         while (true)
         {
-            auto service = unique_shared_queue<ants::core::service>::pop(true);
+            auto service = unique_shared_queue<ants::kernel::service>::pop(true);
             if (!service)
             {
                 std::cerr << "Get empty service when working." << std::endl;
@@ -45,6 +45,6 @@ public:
 protected:
     std::shared_ptr<std::thread> thread_;
 };
-}; // namespace core
+}; // namespace kernel
 } // namespace ants
-#endif // ANTS_CORE_THREAD_HPP
+#endif // ANTS_KERNEL_THREAD_HPP

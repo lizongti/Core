@@ -1,5 +1,5 @@
-#ifndef ANTS_CORE_MODULE_HPP
-#define ANTS_CORE_MODULE_HPP
+#ifndef ANTS_KERNEL_MODULE_HPP
+#define ANTS_KERNEL_MODULE_HPP
 
 #include <iostream>
 #include <functional>
@@ -9,14 +9,14 @@
 #include <boost/noncopyable.hpp>
 #include <boost/version.hpp>
 #include <boost/config.hpp>
-#include <ants/core/singleton.hpp>
-#include <ants/core/Util.hpp>
-#include <ants/def/context.h>
-#include <ants/def/import.h>
+#include <ants/detail/singleton.hpp>
+#include <ants/detail/utility.hpp>
+#include <ants/interface/context.h>
+#include <ants/interface/import.h>
 
 namespace ants
 {
-namespace core
+namespace kernel
 {
 
 class module
@@ -28,7 +28,7 @@ public:
         name = module_name;
         try
         {
-            shared_library.load(name + Util::shared_library_suffix());
+            shared_library.load(name + detail::utility::shared_library_suffix());
         }
         catch (std::exception const &)
         {
@@ -43,7 +43,7 @@ public:
 
         try
         {
-            construct = &shared_library.get<ants::def::import_construct_function>("construct");
+            construct = &shared_library.get<interface::import_construct_function>("construct");
         }
         catch (std::exception const &)
         {
@@ -53,7 +53,7 @@ public:
 
         try
         {
-            handle = &shared_library.get<ants::def::import_handle_function>("handle");
+            handle = &shared_library.get<interface::import_handle_function>("handle");
         }
         catch (std::exception const &)
         {
@@ -63,7 +63,7 @@ public:
 
         try
         {
-            destroy = &shared_library.get<ants::def::import_destroy_function>("destroy");
+            destroy = &shared_library.get<interface::import_destroy_function>("destroy");
         }
         catch (std::exception const &)
         {
@@ -89,9 +89,9 @@ public:
     }
 
 public:
-    ants::def::import_construct_function *construct;
-    ants::def::import_handle_function *handle;
-    ants::def::import_destroy_function *destroy;
+    interface::import_construct_function *construct;
+    interface::import_handle_function *handle;
+    interface::import_destroy_function *destroy;
 
 private:
     std::string name;
@@ -100,7 +100,7 @@ private:
 };
 
 class module_loader
-    : public singleton<module_loader>,
+    : public detail::singleton<module_loader>,
       private boost::noncopyable
 {
 public:
@@ -112,7 +112,7 @@ public:
         if (module_unordered_map.find(module_name) != module_unordered_map.end())
             return module_unordered_map[module_name];
 
-        auto module = std::shared_ptr<ants::core::module>(new ants::core::module());
+        auto module = std::shared_ptr<ants::kernel::module>(new ants::kernel::module());
         module_unordered_map[module_name] = module;
 
         return module->load(module_name) ? module : nullptr;
@@ -137,6 +137,6 @@ protected:
     mutable std::mutex mutex;
 };
 
-};     // namespace core
+};     // namespace kernel
 };     // namespace ants
-#endif // ANTS_CORE_SERVICE_HPP
+#endif // ANTS_KERNEL_SERVICE_HPP

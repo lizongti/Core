@@ -1,9 +1,9 @@
-#ifndef ANTS_CORE_SINGLETON_HPP
-#define ANTS_CORE_SINGLETON_HPP
+#ifndef ANTS_DETAIL_SINGLETON_HPP
+#define ANTS_DETAIL_SINGLETON_HPP
 
 namespace ants
 {
-namespace core
+namespace detail
 {
 template <typename T>
 class singleton
@@ -15,7 +15,7 @@ public:
         return t;
     }
 };
-}; // namespace core
+}; // namespace detail
 }; // namespace ants
 
-#endif // ANTS_CORE_SINGLETON_HPP
+#endif // ANTS_DETAIL_SINGLETON_HPP

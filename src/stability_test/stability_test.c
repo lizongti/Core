@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <ants/def/export_helper.h>
-#include <ants/def/event.h>
+#include <ants/shared_library.h>
 
 static int id_increase = 0;
 static int service_count = 1000;
@@ -23,12 +22,13 @@ void construct(struct context *context)
 }
 
 void handle(struct context *context,
-            int event, const char *source, void *data)
+            struct message *message)
 {
-    switch (event)
+    switch (message->event)
     {
-    case Start:
-        fprintf(stdout, "service stability_test_%d Start.", ((struct instance *)context->instance)->id);
+    case start_event:
+        fprintf(stdout, "service stability_test_%d start event.\n",
+                ((struct instance *)context->instance)->id);
         if (!((struct instance *)context->instance)->id)
         {
             for (int i = 0; i < service_count; i++)
@@ -42,19 +42,19 @@ void handle(struct context *context,
                 char service_name[100];
                 sprintf_s(service_name, 100, "%s_%d", module_name, i);
                 for (int j = 0; j < msg_count; j++)
-                    call(context, "", service_name, NULL);
+                    call(context, 0, service_name, 0);
             }
         }
 
         break;
-    case Call:
+    case call_event:
         if (((struct instance *)context->instance)->id == 0)
         {
             exit(1);
         }
         char service_name[100];
         sprintf_s(service_name, 1000, "%s_%d", module_name, rand() % service_count);
-        call(context, "", service_name, NULL);
+        call(context, 0, service_name, 0);
         break;
     }
 }

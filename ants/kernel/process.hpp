@@ -1,5 +1,5 @@
-#ifndef ANTS_CORE_PROCESS_HPP
-#define ANTS_CORE_PROCESS_HPP
+#ifndef ANTS_KERNEL_PROCESS_HPP
+#define ANTS_KERNEL_PROCESS_HPP
 
 #include <iostream>
 #include <thread>
@@ -7,18 +7,18 @@
 #include <vector>
 #include <thread>
 #include <boost/noncopyable.hpp>
-#include <ants/core/singleton.hpp>
-#include <ants/core/service.hpp>
-#include <ants/core/thread.hpp>
-#include <ants/core/configuration.hpp>
+#include <ants/detail/singleton.hpp>
+#include <ants/kernel/service.hpp>
+#include <ants/kernel/thread.hpp>
+#include <ants/kernel/configuration.hpp>
 
 namespace ants
 {
-namespace core
+namespace kernel
 {
 
 class process
-    : public singleton<process>,
+    : public detail::singleton<process>,
       private boost::noncopyable
 {
 public:
@@ -33,25 +33,29 @@ protected:
     {
         configuration_loader::load(argc, argv);
     }
-    void init_threads()
+
+    void init_bootstrap()
     {
-        thread_ids.push_back(std::this_thread::get_id());
-
-        for (uint32_t i = 1; i < configuration::thread(); ++i)
-            thread_ids.push_back((new thread())->get_id());
-
         auto service = service_loader::load(configuration::bootstrap(), "bootstrap");
         if (!service)
         {
             std::cerr << "Bootstrap service load failed." << std::endl;
             exit(1);
         }
+    }
+    void init_threads()
+    {
+        thread_ids.push_back(std::this_thread::get_id());
+        for (uint32_t i = 1; i < configuration::thread(); ++i)
+            thread_ids.push_back((new thread())->get_id());
+
+        init_bootstrap();
         thread::work();
     }
 
 protected:
     std::vector<std::thread::id> thread_ids;
 };
-};     // namespace core
+};     // namespace kernel
 };     // namespace ants
-#endif // ANTS_CORE_PROCESS_HPP
+#endif // ANTS_KERNEL_PROCESS_HPP

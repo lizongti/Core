@@ -1,9 +1,9 @@
-#ifndef ANTS_DEF_ERROR_H
-#define ANTS_DEF_ERROR_H
+#ifndef ANTS_INTERFACE_ERROR_H
+#define ANTS_INTERFACE_ERROR_H
 #ifdef __cplusplus
 namespace ants
 {
-namespace def
+namespace interface
 {
 #endif
 
@@ -14,7 +14,7 @@ enum error
 };
 
 #ifdef __cplusplus
-}; // namespace def
+}; // namespace interface
 }; // namespace ants
 #endif
-#endif // ANTS_DEF_ERROR_H
+#endif // ANTS_INTERFACE_ERROR_H

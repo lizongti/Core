@@ -1,5 +1,5 @@
-#ifndef ANTS_CORE_CONFIGURATION_HPP
-#define ANTS_CORE_CONFIGURATION_HPP
+#ifndef ANTS_KERNEL_CONFIGURATION_HPP
+#define ANTS_KERNEL_CONFIGURATION_HPP
 
 #include <iostream>
 #include <vector>
@@ -10,15 +10,15 @@
 #include <boost/property_tree/ini_parser.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/noncopyable.hpp>
-#include <ants/core/Util.hpp>
-#include <ants/core/singleton.hpp>
+#include <ants/detail/utility.hpp>
+#include <ants/detail/singleton.hpp>
 
 namespace ants
 {
-namespace core
+namespace kernel
 {
 class configuration
-    : public singleton<configuration>,
+    : public detail::singleton<configuration>,
       private boost::noncopyable
 {
 public:
@@ -87,7 +87,7 @@ public:
         if (variables_map.count("bootstrap"))
         {
             std::string variables_map_value = variables_map["bootstrap"].as<std::string>();
-            if (boost::filesystem::exists(variables_map_value + Util::shared_library_suffix()))
+            if (boost::filesystem::exists(variables_map_value + detail::utility::shared_library_suffix()))
             {
                 configuration.bootstrap_ = variables_map_value;
                 std::cout << "[Configuration] bootstrap value is " << configuration.bootstrap_ << std::endl;
@@ -102,7 +102,7 @@ public:
         if (ptree.count("system") > 0 && ptree.get_child("system").count("bootstrap") > 0)
         {
             std::string ptree_value = ptree.get_child("system").get<std::string>("bootstrap");
-            if (boost::filesystem::exists(ptree_value + Util::shared_library_suffix()))
+            if (boost::filesystem::exists(ptree_value + detail::utility::shared_library_suffix()))
             {
                 configuration.bootstrap_ = ptree_value;
                 std::cout << "[Configuration] bootstrap value is " << configuration.bootstrap_ << std::endl;
@@ -117,7 +117,7 @@ public:
         else
         {
             std::string default_value = "bootstrap";
-            if (boost::filesystem::exists(default_value + Util::shared_library_suffix()))
+            if (boost::filesystem::exists(default_value + detail::utility::shared_library_suffix()))
             {
                 configuration.bootstrap_ = default_value;
                 std::cout << "[Configuration] bootstrap value is " << configuration.bootstrap_ << std::endl;
@@ -133,7 +133,7 @@ public:
 };
 
 class configuration_loader
-    : public singleton<configuration_loader>
+    : public detail::singleton<configuration_loader>
 {
 public:
     static void load(int argc, char *argv[])
@@ -254,6 +254,6 @@ protected:
     boost::property_tree::ptree ptree;
 };
 
-};     // namespace core
+};     // namespace kernel
 };     // namespace ants
-#endif // ANTS_CORE_CONFIGURATION_HPP
+#endif // ANTS_KERNEL_CONFIGURATION_HPP

@@ -1,5 +1,5 @@
-#ifndef ANTS_CORE_QUEUE_HPP
-#define ANTS_CORE_QUEUE_HPP
+#ifndef ANTS_KERNEL_QUEUE_HPP
+#define ANTS_KERNEL_QUEUE_HPP
 
 #include <queue>
 #include <mutex>
@@ -9,7 +9,7 @@
 
 namespace ants
 {
-namespace core
+namespace kernel
 {
 
 template <typename T>
@@ -106,18 +106,18 @@ class unique_shared_queue
 public:
     static void push(std::shared_ptr<T> value)
     {
-        singleton<shared_queue<T>>::instance().push(value);
+        detail::singleton<shared_queue<T>>::instance().push(value);
     };
     static std::shared_ptr<T> pop(bool wait = false)
     {
-        return singleton<shared_queue<T>>::instance().pop(wait);
+        return detail::singleton<shared_queue<T>>::instance().pop(wait);
     };
-    static auto size() -> decltype(singleton<shared_queue<T>>::instance().size())
+    static auto size() -> decltype(detail::singleton<shared_queue<T>>::instance().size())
     {
-        return singleton<shared_queue<T>>::instance().size();
+        return detail::singleton<shared_queue<T>>::instance().size();
     }
 };
 
-}; // namespace core
+}; // namespace kernel
 } // namespace ants
-#endif // ANTS_CORE_QUEUE_HPP
+#endif // ANTS_KERNEL_QUEUE_HPP

@@ -1,7 +1,10 @@
-#ifndef ANTS_CORE_UTIL_HPP
-#define ANTS_CORE_UTIL_HPP
-
-class Util
+#ifndef ANTS_DETAIL_UTIL_HPP
+#define ANTS_DETAIL_UTIL_HPP
+namespace ants
+{
+namespace detail
+{
+class utility
 {
 public:
     static std::string shared_library_suffix()
@@ -24,5 +27,6 @@ public:
         }
     }
 };
-
-#endif // ANTS_CORE_UTIL_HPP
+};     // namespace detail
+};     // namespace ants
+#endif // ANTS_DETAIL_UTIL_HPP

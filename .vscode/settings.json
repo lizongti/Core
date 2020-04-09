@@ -1,4 +1,10 @@
 {
+    "editor.rulers": [
+        80
+    ],
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
     "files.associations": {
         "iostream": "cpp",
         "ostream": "cpp",
@@ -85,6 +91,7 @@
         "functions.h": "c",
         "export.h": "c",
         "context.h": "c",
-        "export_helper.h": "c"
+        "export_helper.h": "c",
+        "shared_library.h": "c"
     }
 }

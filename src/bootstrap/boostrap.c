@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <ants/def/export_helper.h>
-#include <ants/def/event.h>
+#include <ants/shared_library.h>
 
 struct instance
 {
@@ -19,7 +18,7 @@ void construct(struct context *context)
 }
 
 void handle(struct context *context,
-            int event, const char *source, void *data)
+            struct message *message)
 {
 }
 
