@@ -53,7 +53,8 @@ void handle(struct context *context,
             exit(1);
         }
         char service_name[100];
-        sprintf_s(service_name, 1000, "%s_%d", module_name, rand() % service_count);
+        sprintf_s(service_name, 1000, "%s_%d", module_name,
+                  rand() % service_count);
         call(context, 0, service_name, 0);
         break;
     }

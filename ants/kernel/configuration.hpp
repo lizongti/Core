@@ -32,100 +32,147 @@ private:
     std::string bootstrap_;
 
 public:
-    static void init_thread(boost::program_options::variables_map const &variables_map,
-                            boost::property_tree::ptree const &ptree,
-                            configuration &configuration)
+    static void init_thread(
+        boost::program_options::variables_map const &variables_map,
+        boost::property_tree::ptree const &ptree,
+        configuration &configuration)
     {
         uint32_t max_value = std::thread::hardware_concurrency();
         uint32_t min_value = 1;
         uint32_t default_value = std::thread::hardware_concurrency();
         if (variables_map.count("thread"))
         {
-            uint32_t variables_map_value = variables_map["thread"].as<uint32_t>();
-            configuration.thread_ = std::min(std::max(variables_map_value, min_value), max_value);
+            uint32_t variables_map_value =
+                variables_map["thread"].as<uint32_t>();
+            configuration.thread_ = std::min(
+                std::max(variables_map_value, min_value),
+                max_value);
         }
-        else if (ptree.count("system") > 0 && ptree.get_child("system").count("thread") > 0)
+        else if (ptree.count("system") > 0 &&
+                 ptree.get_child("system").count("thread") > 0)
         {
-            uint32_t ptree_value = ptree.get_child("system").get<uint32_t>("thread");
-            configuration.thread_ = std::min(std::max(ptree_value, min_value), max_value);
+            uint32_t ptree_value =
+                ptree.get_child("system").get<uint32_t>("thread");
+            configuration.thread_ =
+                std::min(std::max(ptree_value, min_value), max_value);
         }
         else
         {
             configuration.thread_ = default_value;
         }
-        std::cout << "[Configuration] thread value is " << configuration.thread_ << std::endl;
+        std::cout << "[Configuration] thread value is "
+                  << configuration.thread_
+                  << std::endl;
     };
-    static void init_path(boost::program_options::variables_map const &variables_map,
-                          boost::property_tree::ptree const &ptree,
-                          configuration &configuration)
+    static void init_path(
+        boost::program_options::variables_map const &variables_map,
+        boost::property_tree::ptree const &ptree,
+        configuration &configuration)
     {
-        configuration.path_.push_back(boost::filesystem::initial_path<boost::filesystem::path>().string());
+        configuration.path_.push_back(
+            boost::filesystem::initial_path<
+                boost::filesystem::path>()
+                .string());
         if (variables_map.count("path"))
         {
-            std::vector<std::string> variables_map_value = variables_map["path"].as<std::vector<std::string>>();
+            std::vector<std::string> variables_map_value =
+                variables_map["path"].as<std::vector<std::string>>();
             for (auto p : variables_map_value)
             {
                 configuration.path_.push_back(p);
             }
         }
-        if (ptree.count("system") > 0 && ptree.get_child("system").count("bootstrap") > 0)
+        if (ptree.count("system") > 0 &&
+            ptree.get_child("system").count("bootstrap") > 0)
         {
             std::vector<std::string> ptree_value;
-            boost::split(ptree_value, ptree.get_child("system").get<std::string>("bootstrap"), boost::is_any_of(";"), boost::token_compress_on);
+            boost::split(
+                ptree_value,
+                ptree.get_child("system").get<std::string>("bootstrap"),
+                boost::is_any_of(";"),
+                boost::token_compress_on);
+
             for (auto p : ptree_value)
             {
                 configuration.path_.push_back(p);
             }
         }
-        std::cout << "[Configuration] path value is " << boost::algorithm::join(configuration.path_, ";") << std::endl;
+        std::cout << "[Configuration] path value is "
+                  << boost::algorithm::join(configuration.path_, ";")
+                  << std::endl;
     };
-    static void init_bootstrap(boost::program_options::variables_map const &variables_map,
-                               boost::property_tree::ptree const &ptree,
-                               configuration &configuration)
+    static void init_bootstrap(
+        boost::program_options::variables_map const &variables_map,
+        boost::property_tree::ptree const &ptree,
+        configuration &configuration)
     {
 
         if (variables_map.count("bootstrap"))
         {
-            std::string variables_map_value = variables_map["bootstrap"].as<std::string>();
-            if (boost::filesystem::exists(variables_map_value + detail::utility::shared_library_suffix()))
+            std::string variables_map_value =
+                variables_map["bootstrap"].as<std::string>();
+            if (boost::filesystem::exists(
+                    variables_map_value +
+                    detail::utility::shared_library_suffix()))
             {
                 configuration.bootstrap_ = variables_map_value;
-                std::cout << "[Configuration] bootstrap value is " << configuration.bootstrap_ << std::endl;
+                std::cout << "[Configuration] bootstrap value is "
+                          << configuration.bootstrap_
+                          << std::endl;
                 return;
             }
             else
             {
-                std::cerr << "[Configuration] bootstrap file" << variables_map_value << " not found!" << std::endl;
+                std::cerr << "[Configuration] bootstrap file"
+                          << variables_map_value
+                          << " not found!"
+                          << std::endl;
                 exit(1);
             }
         }
-        if (ptree.count("system") > 0 && ptree.get_child("system").count("bootstrap") > 0)
+        if (ptree.count("system") > 0 &&
+            ptree.get_child("system").count("bootstrap") > 0)
         {
-            std::string ptree_value = ptree.get_child("system").get<std::string>("bootstrap");
-            if (boost::filesystem::exists(ptree_value + detail::utility::shared_library_suffix()))
+            std::string ptree_value =
+                ptree.get_child("system").get<std::string>("bootstrap");
+            if (boost::filesystem::exists(
+                    ptree_value +
+                    detail::utility::shared_library_suffix()))
             {
                 configuration.bootstrap_ = ptree_value;
-                std::cout << "[Configuration] bootstrap value is " << configuration.bootstrap_ << std::endl;
+                std::cout << "[Configuration] bootstrap value is "
+                          << configuration.bootstrap_
+                          << std::endl;
                 return;
             }
             else
             {
-                std::cerr << "[Configuration] bootstrap file " << ptree_value << " not found!" << std::endl;
+                std::cerr << "[Configuration] bootstrap file "
+                          << ptree_value
+                          << " not found!"
+                          << std::endl;
                 exit(1);
             }
         }
         else
         {
             std::string default_value = "bootstrap";
-            if (boost::filesystem::exists(default_value + detail::utility::shared_library_suffix()))
+            if (boost::filesystem::exists(
+                    default_value +
+                    detail::utility::shared_library_suffix()))
             {
                 configuration.bootstrap_ = default_value;
-                std::cout << "[Configuration] bootstrap value is " << configuration.bootstrap_ << std::endl;
+                std::cout << "[Configuration] bootstrap value is "
+                          << configuration.bootstrap_
+                          << std::endl;
                 return;
             }
             else
             {
-                std::cerr << "[Configuration] bootstrap file " << default_value << " not found!" << std::endl;
+                std::cerr << "[Configuration] bootstrap file "
+                          << default_value
+                          << " not found!"
+                          << std::endl;
                 exit(1);
             }
         }
@@ -155,14 +202,24 @@ protected:
     void prepare_option_description()
     {
         auto init = options_description.add_options();
-        init("help,h", "Display this help and exit.");
-        init("configuration,configuration", boost::program_options::value<std::string>(),
+        init("help,h",
+             "Display this help and exit.");
+
+        init("configuration,configuration",
+             boost::program_options::value<std::string>(),
              "Set the path of the configuration file.");
-        init("thread,t", boost::program_options::value<uint32_t>(),
-             "Set the number of threads, which cannot be over default value(units of processors).");
-        init("bootstrap,b", boost::program_options::value<std::string>(),
+
+        init("thread,t",
+             boost::program_options::value<uint32_t>(),
+             "Set the number of threads, "
+             "which cannot be over default value(units of processors).");
+
+        init("bootstrap,b",
+             boost::program_options::value<std::string>(),
              "Set the module name of the boostrap service.");
-        init("path,p", boost::program_options::value<std::vector<std::string>>(),
+
+        init("path,p",
+             boost::program_options::value<std::vector<std::string>>(),
              "Set a list of paths for searching module.");
     }
 
@@ -185,9 +242,12 @@ protected:
         }
         catch (std::exception const &e)
         {
-            std::cerr << e.what() << std::endl;
-            std::cerr << "Incorrect command line syntax." << std::endl;
-            std::cerr << "Use '--help' for a list of options." << std::endl;
+            std::cerr << e.what()
+                      << std::endl;
+            std::cerr << "Incorrect command line syntax."
+                      << std::endl;
+            std::cerr << "Use '--help' for a list of options."
+                      << std::endl;
 
             exit(1);
         }
@@ -197,9 +257,11 @@ protected:
     {
         if (variables_map.count("help"))
         {
-            std::cout << "Usage: server [OPTIONS]... [boostrap]" << std::endl
+            std::cout << "Usage: server [OPTIONS]... [boostrap]"
                       << std::endl
-                      << options_description << std::endl;
+                      << std::endl
+                      << options_description
+                      << std::endl;
             exit(0);
         }
     }
@@ -214,7 +276,8 @@ protected:
             if (!boost::filesystem::exists(path))
             {
                 std::cerr << "Config file not found in path: "
-                          << path << std::endl;
+                          << path
+                          << std::endl;
                 exit(1);
             }
         }
@@ -227,7 +290,9 @@ protected:
             }
         }
 
-        std::cout << "Parsing configuration " << path << std::endl;
+        std::cout << "Parsing configuration "
+                  << path
+                  << std::endl;
 
         try
         {
@@ -235,8 +300,12 @@ protected:
         }
         catch (std::exception const &e)
         {
-            std::cerr << e.what() << std::endl;
-            std::cerr << "Parsing configuration " << path << " error" << std::endl;
+            std::cerr << e.what()
+                      << std::endl;
+            std::cerr << "Parsing configuration "
+                      << path
+                      << " error"
+                      << std::endl;
         }
     }
 
@@ -249,7 +318,8 @@ protected:
 
 protected:
     boost::program_options::options_description options_description;
-    boost::program_options::positional_options_description positional_options_description;
+    boost::program_options::positional_options_description
+        positional_options_description;
     boost::program_options::variables_map variables_map;
     boost::property_tree::ptree ptree;
 };

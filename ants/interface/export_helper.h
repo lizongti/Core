@@ -9,31 +9,22 @@ namespace interface
 #endif
 
 #ifdef __export
-inline int start(struct context *context,
-                 const char *service_name,
+inline int start(struct context *context, const char *service_name,
                  const char *module_name)
 {
-    return (*context->export_data.start)(context,
-                                         service_name,
-                                         module_name);
+    return (*context->export_data.start)(context, service_name, module_name);
 };
 
-inline int call(struct context *context,
-                const char *cluster_name,
-                const char *service_name,
-                void *data)
+inline int call(struct context *context, const char *cluster_name,
+                const char *service_name, void *data)
 {
-    return (*context->export_data.call)(context,
-                                        cluster_name,
-                                        service_name,
-                                        data);
+    return (*context->export_data.call)(context, cluster_name,
+                                        service_name, data);
 };
 
-inline int stop(struct context *context,
-                const char *service_name)
+inline int stop(struct context *context, const char *service_name)
 {
-    return (*context->export_data.stop)(context,
-                                        service_name);
+    return (*context->export_data.stop)(context, service_name);
 };
 #endif
 

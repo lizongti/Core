@@ -109,10 +109,11 @@ public:
         std::lock_guard<std::mutex> lock(instance().mutex);
 
         auto &module_unordered_map = instance().module_unordered_map;
-        if (module_unordered_map.find(module_name) != module_unordered_map.end())
+        if (module_unordered_map.find(module_name) !=
+            module_unordered_map.end())
             return module_unordered_map[module_name];
 
-        auto module = std::shared_ptr<ants::kernel::module>(new ants::kernel::module());
+        auto module = std::shared_ptr<kernel::module>(new kernel::module());
         module_unordered_map[module_name] = module;
 
         return module->load(module_name) ? module : nullptr;
@@ -123,7 +124,8 @@ public:
         std::lock_guard<std::mutex> lock(instance().mutex);
 
         auto &module_unordered_map = instance().module_unordered_map;
-        if (module_unordered_map.find(module_name) == module_unordered_map.end())
+        if (module_unordered_map.find(module_name) ==
+            module_unordered_map.end())
             return nullptr;
 
         auto module = module_unordered_map[module_name];
@@ -133,7 +135,8 @@ public:
     }
 
 protected:
-    std::unordered_map<std::string, std::shared_ptr<module>> module_unordered_map;
+    std::unordered_map<std::string, std::shared_ptr<module>>
+        module_unordered_map;
     mutable std::mutex mutex;
 };
 

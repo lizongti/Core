@@ -36,7 +36,8 @@ protected:
 
     void init_bootstrap()
     {
-        auto service = service_loader::load(configuration::bootstrap(), "bootstrap");
+        auto service = service_loader::load(configuration::bootstrap(),
+                                            "bootstrap");
         if (!service)
         {
             std::cerr << "Bootstrap service load failed." << std::endl;

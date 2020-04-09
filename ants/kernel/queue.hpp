@@ -112,7 +112,8 @@ public:
     {
         return detail::singleton<shared_queue<T>>::instance().pop(wait);
     };
-    static auto size() -> decltype(detail::singleton<shared_queue<T>>::instance().size())
+    static auto size() -> decltype(
+        detail::singleton<shared_queue<T>>::instance().size())
     {
         return detail::singleton<shared_queue<T>>::instance().size();
     }

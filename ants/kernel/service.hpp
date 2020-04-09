@@ -107,7 +107,7 @@ public:
 
         while (size--)
         {
-            std::shared_ptr<ants::interface::message> message;
+            std::shared_ptr<interface::message> message;
             while (message = shared_queue.pop())
             {
                 interface::handle(context.get(), message.get());
@@ -155,7 +155,7 @@ public:
 
 private:
     std::string name;
-    std::shared_ptr<ants::kernel::module> module;
+    std::shared_ptr<kernel::module> module;
     std::shared_ptr<interface::context> context;
     std::shared_ptr<void> instance;
 
@@ -180,7 +180,7 @@ public:
             service_unordered_map.end())
             return service_unordered_map[service_name];
 
-        auto service = std::shared_ptr<ants::kernel::service>(new ants::kernel::service());
+        auto service = std::shared_ptr<kernel::service>(new kernel::service());
         service_unordered_map[service_name] = service;
 
         return service->load(module_name, service_name) ? service : nullptr;
