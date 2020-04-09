@@ -11,6 +11,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/noncopyable.hpp>
 #include <ants/core/Util.hpp>
+#include <ants/core/singleton.hpp>
 
 namespace ants
 {

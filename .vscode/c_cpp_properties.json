@@ -3,9 +3,8 @@
         {
             "name": "${default}",
             "includePath": [
-                "${workspaceRoot}",
                 "C:/Program Files/vcpkg/installed/x64-windows/include",
-                "${default}"
+                "${workspaceRoot}"
             ],
             "defines": [],
             "compileCommands": "",
@@ -21,8 +20,7 @@
                 "databaseFilename": "${default}",
                 "path": [
                     "${workspaceRoot}",
-                    "C:/Program Files/vcpkg/installed/x64-windows/include",
-                    "${default}"
+                    "C:/Program Files/vcpkg/installed/x64-windows/include"
                 ]
             },
             "configurationProvider": "vector-of-bool.cmake-tools"
