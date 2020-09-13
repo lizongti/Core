@@ -1,4 +1,4 @@
-# Install develop environment
+# Install developing environment
 
 ## Windows
 
