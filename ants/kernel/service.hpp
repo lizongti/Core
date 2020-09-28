@@ -100,9 +100,6 @@ public:
             outside = true;
             working = true;
             size = shared_queue.size();
-            if (size > 65536)
-                std::cerr << "Queue size is larger than 65536 in service "
-                          << name << std::endl;
         }
 
         while (size--)
@@ -135,15 +132,6 @@ public:
             unique_shared_queue<service>::push(shared_from_this());
             outside = false;
         }
-
-        // {
-        //     static uint64_t count = 0;
-        //     if (++count % 10000000 == 0)
-        //     {
-        //         std::cout << count / 10000000 << " " << time(0) << " "
-        //         << unique_shared_queue<service>::size() << std::endl;
-        //     }
-        // }
 
         return true;
     }
