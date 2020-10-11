@@ -40,5 +40,5 @@ function (message_all_status)
 endfunction()
 
 function(message_project_name)
-message("Running CMake for project [" ${PROJECT_NAME} "]")
+    message("Running CMake for project [" ${PROJECT_NAME} "]")
 endfunction()

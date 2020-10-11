@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.10.0)
 project(Server VERSION 0.2.0)
-include(compiler-template-1)
+include(build)
 
 message_project_name()
 include_directories(${PROJECT_ROOT_PATH} ${VCPKG_INCLUDE})
