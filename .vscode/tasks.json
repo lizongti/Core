@@ -5,13 +5,9 @@
             "label": "(Windows) Make",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceRoot}/build"
+                "cwd": "${workspaceRoot}"
             },
-            "command": "ninja",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "command": "cmake --build build",
         }
     ]
 }
