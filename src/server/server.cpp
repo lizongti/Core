@@ -1,11 +1,10 @@
 
-#include "ants/executable.hpp"
-
 #include <iostream>
 
-int main(int argc, char *argv[])
-{
-    ants::kernel::process::instance().run(argc, argv);
+#include "ants/executable.hpp"
 
-    return 0;
+int main(int argc, char *argv[]) {
+  ants::kernel::process::instance().run(argc, argv);
+
+  return 0;
 }

@@ -11,4 +11,4 @@
 
 #include <ants/kernel/process.hpp>
 
-#endif // ANTS_EXECUTABLE_H
+#endif  // ANTS_EXECUTABLE_H

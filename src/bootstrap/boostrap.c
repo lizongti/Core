@@ -1,28 +1,20 @@
 
-#include <stdlib.h>
-#include <stdio.h>
-
 #include <ants/shared_library.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct instance
-{
-    int id;
+
+struct instance {
+  int id;
 };
 
-void construct(struct context *context)
-{
-    struct instance *instance = malloc(sizeof(struct instance));
-    instance->id = 0;
+void construct(struct context *context) {
+  struct instance *instance = malloc(sizeof(struct instance));
+  instance->id = 0;
 
-    context->instance = instance;
+  context->instance = instance;
 }
 
-void handle(struct context *context,
-            struct message *message)
-{
-}
+void handle(struct context *context, struct message *message) {}
 
-void destroy(struct context *context)
-{
-    free(context->instance);
-}
+void destroy(struct context *context) { free(context->instance); }
