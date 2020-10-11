@@ -81,46 +81,26 @@ class configuration : public detail::singleton<configuration>,
     if (variables_map.count("bootstrap")) {
       std::string variables_map_value =
           variables_map["bootstrap"].as<std::string>();
-      if (boost::filesystem::exists(variables_map_value +
-                                    detail::utility::shared_library_suffix())) {
-        configuration.bootstrap_ = variables_map_value;
-        std::cout << "[Configuration] bootstrap value is "
-                  << configuration.bootstrap_ << std::endl;
-        return;
-      } else {
-        std::cerr << "[Configuration] bootstrap file" << variables_map_value
-                  << " not found!" << std::endl;
-        exit(1);
-      }
+      configuration.bootstrap_ = variables_map_value;
+      std::cout << "[Configuration] bootstrap value is "
+                << configuration.bootstrap_ << std::endl;
+      return;
     }
     if (ptree.count("system") > 0 &&
         ptree.get_child("system").count("bootstrap") > 0) {
       std::string ptree_value =
           ptree.get_child("system").get<std::string>("bootstrap");
-      if (boost::filesystem::exists(ptree_value +
-                                    detail::utility::shared_library_suffix())) {
-        configuration.bootstrap_ = ptree_value;
-        std::cout << "[Configuration] bootstrap value is "
-                  << configuration.bootstrap_ << std::endl;
-        return;
-      } else {
-        std::cerr << "[Configuration] bootstrap file " << ptree_value
-                  << " not found!" << std::endl;
-        exit(1);
-      }
+
+      configuration.bootstrap_ = ptree_value;
+      std::cout << "[Configuration] bootstrap value is "
+                << configuration.bootstrap_ << std::endl;
+      return;
     } else {
       std::string default_value = "bootstrap";
-      if (boost::filesystem::exists(default_value +
-                                    detail::utility::shared_library_suffix())) {
-        configuration.bootstrap_ = default_value;
-        std::cout << "[Configuration] bootstrap value is "
-                  << configuration.bootstrap_ << std::endl;
-        return;
-      } else {
-        std::cerr << "[Configuration] bootstrap file " << default_value
-                  << " not found!" << std::endl;
-        exit(1);
-      }
+      configuration.bootstrap_ = default_value;
+      std::cout << "[Configuration] bootstrap value is "
+                << configuration.bootstrap_ << std::endl;
+      return;
     }
   };
 };
