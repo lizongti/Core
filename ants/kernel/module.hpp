@@ -5,7 +5,6 @@
 #include <ants/interface/import.h>
 
 #include <ants/detail/singleton.hpp>
-#include <ants/detail/utility.hpp>
 #include <boost/config.hpp>
 #include <boost/dll/shared_library.hpp>
 #include <boost/noncopyable.hpp>
@@ -23,10 +22,11 @@ class module : public std::enable_shared_from_this<module> {
   bool load(std::string const &module_name) {
     name = module_name;
     try {
-      shared_library.load(name + detail::utility::shared_library_suffix());
-    } catch (std::exception const &) {
-      std::cerr << "Insufficient memory when loading shared memory:" << name
+      shared_library.load(name);
+    } catch (std::exception const &e) {
+      std::cerr << e.what() << "when loading shared memory:" << name
                 << std::endl;
+      return false;
     }
 
     if (!shared_library.is_loaded()) {

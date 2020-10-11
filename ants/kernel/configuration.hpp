@@ -2,7 +2,6 @@
 #define ANTS_KERNEL_CONFIGURATION_HPP
 
 #include <ants/detail/singleton.hpp>
-#include <ants/detail/utility.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -76,7 +75,7 @@ class configuration : public detail::singleton<configuration>,
     std::cout << "[Configuration] path value is "
               << boost::algorithm::join(configuration.path_, ";") << std::endl;
   };
-  
+
   static void init_bootstrap(
       boost::program_options::variables_map const &variables_map,
       boost::property_tree::ptree const &ptree, configuration &configuration) {

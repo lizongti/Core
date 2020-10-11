@@ -8,12 +8,12 @@
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/Server.exe",
+            "program": "${workspaceFolder}/bin/Debug/Server.exe",
             "args": [
-                "stability_test"
+                "stability_test.dll"
             ],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/bin",
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}/bin/Debug",
             "environment": [],
             "externalConsole": false,
             "preLaunchTask": "(Windows) Make"

@@ -1,6 +1,6 @@
 set(VCPKG_ROOT "C:/Program Files/vcpkg")
 set(VCPKG_TRIPLET x64-windows)
 set(VCPKG_INCLUDE "${VCPKG_ROOT}/installed/${VCPKG_TRIPLET}/include")
-set(VCPKG_BIN "${VCPKG_ROOT}/installed/${VCPKG_TRIPLET}/bin")
-set(VCPKG_LIB "${VCPKG_ROOT}/installed/${VCPKG_TRIPLET}/lib")
+set(VCPKG_BIN "${VCPKG_ROOT}/installed/${VCPKG_TRIPLET}/debug/bin")
+set(VCPKG_LIB "${VCPKG_ROOT}/installed/${VCPKG_TRIPLET}/debug/lib")
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")

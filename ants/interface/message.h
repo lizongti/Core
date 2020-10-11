@@ -3,6 +3,11 @@
 
 #include <ants/interface/event.h>
 
+#ifndef __cplusplus
+#include <stdlib.h>
+#include <string.h>
+#endif
+
 #ifdef __cplusplus
 namespace ants {
 namespace interface {
