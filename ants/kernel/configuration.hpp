@@ -49,6 +49,7 @@ class configuration : public detail::singleton<configuration>,
     std::cout << "[Configuration] thread value is " << configuration.thread_
               << std::endl;
   };
+
   static void init_path(
       boost::program_options::variables_map const &variables_map,
       boost::property_tree::ptree const &ptree, configuration &configuration) {
@@ -75,6 +76,7 @@ class configuration : public detail::singleton<configuration>,
     std::cout << "[Configuration] path value is "
               << boost::algorithm::join(configuration.path_, ";") << std::endl;
   };
+  
   static void init_bootstrap(
       boost::program_options::variables_map const &variables_map,
       boost::property_tree::ptree const &ptree, configuration &configuration) {
