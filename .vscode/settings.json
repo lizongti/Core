@@ -2,7 +2,7 @@
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.formatting": "clangFormat",
     "editor.rulers": [
-        80
+        80,
     ],
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
@@ -94,6 +94,7 @@
         "export.h": "c",
         "context.h": "c",
         "export_helper.h": "c",
-        "shared_library.h": "c"
+        "shared_library.h": "c",
+        "compare": "cpp"
     }
 }

@@ -9,19 +9,19 @@ namespace kernel {
 
 class thread {
  public:
-  thread() { thread_ = std::shared_ptr<std::thread>(new std::thread(work)); }
+  thread() { thread_ = std::shared_ptr<std::thread>(new std::thread(run)); }
   virtual ~thread(){};
 
  public:
-  static void work() {
+  static void run() {
     while (true) {
       auto service = unique_shared_queue<kernel::service>::pop(true);
       if (!service) {
         std::cerr << "Get empty service when working." << std::endl;
         exit(1);
       }
-      if (!service->work()) {
-        std::cerr << "Service work failed." << std::endl;
+      if (!service->digest()) {
+        std::cerr << "Service digest failed." << std::endl;
         exit(1);
       }
     }

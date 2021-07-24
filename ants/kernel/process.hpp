@@ -28,7 +28,7 @@ class process : public detail::singleton<process>, private boost::noncopyable {
 
   void init_bootstrap() {
     auto service =
-        service_loader::load(configuration::bootstrap(), "bootstrap");
+        service_factory::load(configuration::bootstrap(), "bootstrap");
     if (!service) {
       std::cerr << "Bootstrap service load failed." << std::endl;
       exit(1);
@@ -40,12 +40,13 @@ class process : public detail::singleton<process>, private boost::noncopyable {
       thread_ids.push_back((new thread())->get_id());
 
     init_bootstrap();
-    thread::work();
+    thread::run();
   }
 
  protected:
   std::vector<std::thread::id> thread_ids;
 };
+
 };      // namespace kernel
 };      // namespace ants
 #endif  // ANTS_KERNEL_PROCESS_HPP

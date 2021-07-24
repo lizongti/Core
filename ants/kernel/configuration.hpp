@@ -20,11 +20,13 @@ class configuration : public detail::singleton<configuration>,
   static uint32_t thread() { return instance().thread_; };
   static std::vector<std::string> &path() { return instance().path_; };
   static std::string bootstrap() { return instance().bootstrap_; };
+  static std::string cluster_name() { return instance().cluter_name_; };
 
  private:
   uint32_t thread_;
   std::vector<std::string> path_;
   std::string bootstrap_;
+  std::string cluter_name_;
 
  public:
   static void init_thread(
@@ -101,6 +103,35 @@ class configuration : public detail::singleton<configuration>,
       configuration.bootstrap_ = default_value;
       std::cout << "[Configuration] bootstrap value is "
                 << configuration.bootstrap_ << std::endl;
+      return;
+    }
+  };
+
+  static void init_cluster_name(
+      boost::program_options::variables_map const &variables_map,
+      boost::property_tree::ptree const &ptree, configuration &configuration) {
+    if (variables_map.count("cluster_name")) {
+      std::string variables_map_value =
+          variables_map["cluster_name"].as<std::string>();
+      configuration.cluster_name_ = variables_map_value;
+      std::cout << "[Configuration] cluster_name value is "
+                << configuration.cluster_name_ << std::endl;
+      return;
+    }
+    if (ptree.count("system") > 0 &&
+        ptree.get_child("system").count("cluster_name") > 0) {
+      std::string ptree_value =
+          ptree.get_child("system").get<std::string>("cluster_name");
+
+      configuration.cluster_name_ = ptree_value;
+      std::cout << "[Configuration] cluster_name value is "
+                << configuration.cluster_name_ << std::endl;
+      return;
+    } else {
+      std::string default_value = "cluster_name";
+      configuration.cluster_name_ = default_value;
+      std::cout << "[Configuration] cluster_name value is "
+                << configuration.cluster_name_ << std::endl;
       return;
     }
   };
@@ -202,6 +233,7 @@ class configuration_loader : public detail::singleton<configuration_loader> {
     configuration::init_thread(variables_map, ptree, configuration);
     configuration::init_path(variables_map, ptree, configuration);
     configuration::init_bootstrap(variables_map, ptree, configuration);
+    configuration::init_cluster_name(variables_map, ptree, configuration);
   }
 
  protected:

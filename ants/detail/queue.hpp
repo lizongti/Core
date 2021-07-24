@@ -1,5 +1,5 @@
-#ifndef ANTS_KERNEL_QUEUE_HPP
-#define ANTS_KERNEL_QUEUE_HPP
+#ifndef ANTS_DETAIL_QUEUE_HPP
+#define ANTS_DETAIL_QUEUE_HPP
 
 #include <condition_variable>
 #include <initializer_list>
@@ -8,7 +8,7 @@
 #include <shared_mutex>
 
 namespace ants {
-namespace kernel {
+namespace detail {
 
 template <typename T>
 class queue {
@@ -96,6 +96,6 @@ class unique_shared_queue {
   }
 };
 
-};  // namespace kernel
+};  // namespace detail
 }  // namespace ants
-#endif  // ANTS_KERNEL_QUEUE_HPP
+#endif  // ANTS_DETAIL_QUEUE_HPP
